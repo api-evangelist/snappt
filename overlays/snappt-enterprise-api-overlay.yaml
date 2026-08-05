@@ -1,0 +1,75 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Snappt Enterprise API
+  version: 1.0.0
+extends: openapi/snappt-enterprise-api-openapi-original.yml
+x-generated: '2026-08-05'
+x-method: generated
+x-source: >-
+  Derived from the harvested OpenAPI plus the Snappt Enterprise API documentation. Captures API
+  Evangelist enhancements only; the harvested spec is never mutated.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profile: https://apis.io/providers/snappt/
+    x-apievangelist-harvested-from: https://dash.readme.com/api/v1/api-registry/5lumsmmm5mkez
+    x-apievangelist-harvested-on: '2026-08-05'
+    contact:
+      name: Snappt Partner Support
+      email: partnersupport@snappt.com
+      url: https://snappt-enterprise-api.readme.io/docs/need-more-help
+- target: $.servers
+  description: >-
+    The published spec declares only the demo host. The production host is documented in prose on the
+    Embedded SDK integration guide; recorded here so agents can resolve the live base URL.
+  update:
+  - url: https://enterprise-api.demo.snappt.com
+    description: Demo environment (the only server declared in the published spec)
+  - url: https://enterprise-api.snappt.com
+    description: Production environment (documented at https://snappt-enterprise-api.readme.io/docs/embedded-sdk-integration-guide)
+- target: $
+  description: >-
+    Snappt documents four outbound webhook events but publishes no AsyncAPI and no OpenAPI 3.1
+    webhooks block. Cross-linked here rather than fabricated into the contract.
+  update:
+    x-apievangelist-webhooks:
+      artifact: asyncapi/snappt-enterprise-api-webhooks.yml
+      docs: https://snappt-enterprise-api.readme.io/docs/webhook-event-types
+      events: [APPLICATION_SUBMITTED, REPORT_READY, REPORT_UPDATED, IDV_REPORT_READY]
+      deprecated_events: [ACCEPTED_DOCUMENT]
+      signature_header: Snappt-Signature-v2
+- target: $
+  description: Cross-links to the derived and searched artifacts in this repo.
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/snappt-authentication.yml
+      conventions: conventions/snappt-conventions.yml
+      errors: errors/snappt-problem-types.yml
+      data_model: data-model/snappt-data-model.yml
+      lifecycle: lifecycle/snappt-lifecycle.yml
+      changelog: changelog/snappt-changelog.yml
+      conformance: conformance/snappt-conformance.yml
+      components: components/snappt-components.yml
+      sandbox: sandbox/snappt-sandbox.yml
+      agentic_access: agentic-access/snappt-agentic-access.yml
+      skills: skills/_index.yml
+- target: $
+  description: >-
+    Contract gaps observed in the published spec, recorded for a follow-up conversation with the
+    provider. These are NOT patched into the original — the scorer reads the provider's own content.
+  update:
+    x-apievangelist-review:
+      operation_ids: >-
+        Not one of the 48 operations declares an operationId, so no operation in this API can be
+        referenced by a stable machine name — this blocks Arazzo workflows, SDK generation, and
+        agent tool binding.
+      response_coverage: >-
+        No operation declares a 5xx response; 403, 409, 422 and 429 are absent entirely. 401 is the
+        only error status declared on all 48 operations.
+      error_format: Errors are a custom envelope rather than RFC 9457 application/problem+json.
+      examples: Almost no response examples are declared in-spec.
+      schemas: >-
+        Only 8 named component schemas for 48 operations — most request and response bodies are
+        declared inline, so there is little reuse for a generator or an agent to key on.
+      rate_limits: No rate-limit policy, no 429, and no rate-limit response headers documented.
+      servers: The published spec points only at the demo host.

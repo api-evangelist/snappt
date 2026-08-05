@@ -1,0 +1,52 @@
+generated: '2026-08-05'
+method: searched
+source: >-
+  npm registry search, PyPI, RubyGems, NuGet, Packagist, pkg.go.dev, crates.io, and the Snappt
+  Enterprise API docs (Embedded SDK Integration Guide)
+note: >-
+  Snappt publishes no client library to any public package registry. The only first-party client
+  artifact is the Snappt Embedded SDK, a browser script served directly from the API host and
+  gated on a Client ID plus a domain allowlist — there is no npm/CDN package for it. The single
+  registry hit is a third-party Laravel/PHP wrapper maintained by TenantCloud, not by Snappt.
+packages:
+- language: javascript
+  registry: none
+  distribution: hosted-script
+  name: Snappt Embedded SDK
+  url: https://snappt-enterprise-api.readme.io/docs/embedded-sdk-integration-guide
+  install: '<script src="https://enterprise-api.snappt.com/embedded/v1.0.0.js?iframe=true&clientId=YOUR_CLIENT_ID"></script>'
+  version: v1.0.0
+  official: true
+  global: Snappt
+  note: >-
+    Loads the global `Snappt` object exposing `Snappt.portal.show({companyShortId, propertyShortId, ...})`.
+    Requires a Client ID issued by the Snappt account team; the script will not load unless the page
+    origin matches the Client ID's configured domain allowlist (exact origins or *.wildcard subdomains).
+- language: php
+  registry: packagist
+  name: tenantcloud/snappt-sdk
+  url: https://packagist.org/packages/tenantcloud/snappt-sdk
+  install: composer require tenantcloud/snappt-sdk
+  repository: https://github.com/tenantcloud/php-snappt-sdk
+  official: false
+  note: Third-party Laravel partner-API SDK maintained by TenantCloud, not by Snappt.
+registries_probed:
+- registry: npm
+  query: snappt
+  results: 0
+- registry: pypi
+  packages_probed: [snappt, snappt-api, snappt-sdk]
+  results: 0
+- registry: rubygems
+  packages_probed: [snappt]
+  results: 0
+- registry: nuget
+  query: snappt
+  results: 0
+- registry: packagist
+  query: snappt
+  results: 1 (third-party)
+- registry: github
+  org: https://github.com/Snappt
+  public_repos: 0
+  note: The GitHub organization exists but publishes no public repositories.

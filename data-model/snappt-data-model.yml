@@ -1,0 +1,151 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/snappt-enterprise-api-openapi-original.yml
+docs: https://snappt-enterprise-api.readme.io/reference/get_account
+note: >-
+  Derived from the OpenAPI path structure, the eight declared component schemas, and the id-reference
+  fields they carry. The spec is schema-light — most responses are declared inline rather than as
+  named components — so entities below are named from the resource paths they are addressed by, and
+  relationships from actual id fields present in the contract or the docs.
+entities:
+- name: Company
+  identified_by: [id (uuid), shortId]
+  source_schema: ApiKeyResponse.company
+  description: The partner organization the API key is scoped to.
+  addressed_by: [GET /account]
+- name: ApiKey
+  identified_by: [id]
+  source_schema: ApiKeyResponse
+  fields: [id, description, insertedAt, company]
+  description: The partner API key; every webhook delivery carries the issuing apiKeyId.
+  addressed_by: [GET /account]
+- name: Property
+  identified_by: [propertyId, propertyShortId]
+  description: A physical property/community. All applicant sessions are associated with a company and a property.
+  addressed_by:
+  - GET /properties
+  - POST /properties
+  - GET /properties/{propertyId}
+  - PUT /properties/{propertyId}
+  fields_of_note: [status (ACTIVE | DISABLED)]
+  note: Properties cannot be deleted; set status to DISABLED instead.
+- name: PropertyIdentityVerificationSettings
+  identified_by: [propertyId]
+  description: Per-property configuration for the identity-verification report (attach selfie or document to the PDF).
+  addressed_by:
+  - GET /properties/{propertyId}/identity-verification/settings
+  - PUT /properties/{propertyId}/identity-verification/settings
+- name: ApplicantDetail
+  identified_by: [applicantDetailId (uuid)]
+  source_schema: SessionApplicantDetail
+  description: >-
+    The durable record of a person across submissions. One ApplicantDetail may have many Applicants
+    (submissions); this is the key that links repeat submissions by the same applicant.
+  addressed_by: [returned by generate-applicant-link, send-document-upload-email, session creation, and every applicant-scoped webhook]
+- name: Application
+  identified_by: [id (uuid)]
+  source_schema: ApplicationResponse
+  description: The applicant-entered data attached to a session — name, unit, email, phone, rental history.
+  addressed_by:
+  - GET /session/application
+  - PUT /session/application
+  fields_of_note: [type (leasing_team | unauthenticated_user), unit, firstName, lastName, email, phone, metadata, prefilledFields, rentalHistories]
+- name: Session
+  identified_by: [id (uuid), token (uuid)]
+  source_schema: PublicPostSessionResponse
+  description: >-
+    A short-lived applicant session. The returned token is the x-unauthenticated-session-token used
+    for all session-scoped calls; it expires after 24 hours or on submission.
+  addressed_by: [POST /session, POST /session/public, POST /session/submit]
+- name: Proof
+  identified_by: [id (uuid)]
+  source_schema: ProofResponse
+  description: An uploaded application document (PDF).
+  fields_of_note:
+  - 'type: BANK_STATEMENT | PAYSTUB | OTHER'
+  - 'processStatus: IN_QUEUE | IN_PROCESS | PASSED | FAILED | SUCCESS'
+  - 'result: PENDING | CLEAN | EDITED | UNDETERMINED'
+  addressed_by:
+  - GET /session/documents
+  - POST /session/documents
+  - GET /session/documents/{id}
+  - PUT /session/documents/{id}
+  - DELETE /session/documents/{id}
+  - GET /session/documents/{id}/thumbnail
+  limits: max 15 documents per application
+- name: Applicant
+  identified_by: [applicantId (uuid)]
+  aka: entry
+  description: >-
+    One submitted application and its fraud/income verdict. A new applicantId is created for every
+    submission; the applicantDetailId ties multiple submissions together.
+  fields_of_note:
+  - 'status: PENDING | READY'
+  - 'result: PENDING | CLEAN | EDITED | UNDETERMINED (or PENDING | PASSED | FAILED | UNDETERMINED depending on company display setting)'
+  - externalId (partner identifier, max 255 chars)
+  - externalMetadata (partner object, max 10KB serialized)
+  addressed_by:
+  - GET /applicants
+  - GET /applicants/{applicantId}
+  - PUT /applicants/{applicantId}
+  - GET /applicants/{applicantId}/report
+  - GET /applicants/{applicantId}/document/{documentId}/pdf
+  - GET /applicants/{applicantId}/document/{documentProofId}/thumbnail
+  - GET /applicants/{applicantId}/documents.zip
+  - GET /applicants/{applicantId}/referenceCheck
+- name: IdVerification
+  identified_by: [idVerificationId (uuid)]
+  description: >-
+    An identity-verification session and its PASS/FAIL verdict. Explicitly NOT linked to the
+    Applicant graph — IDV records and fraud-detection applicants do not share ids.
+  addressed_by:
+  - GET /id-verification/applicants
+  - GET /id-verification/applicants/{idVerificationId}
+  - GET /id-verification/applicants/{idVerificationId}/report
+  - POST /id-verification/generate-identity-upload-link
+  - POST /id-verification/send-identity-upload-email
+  - GET /id-verification/{propertyShortId}/link
+  - GET /id-verification/{propertyShortId}/qr-code
+  - 'GET|POST /id-verification/public/{propertyShortId}'
+  fields_of_note: [status (PASS | FAIL), metadata (partner object echoed to IDV_REPORT_READY), redirectUrl]
+  link_lifetime: single-use, expires 72 hours after creation
+- name: Webhook
+  identified_by: [id (uuid)]
+  description: A registered outbound webhook subscription with a whsec_-prefixed signing secret.
+  fields_of_note: ['url', 'events[]', 'isActive', 'custom headers']
+  addressed_by:
+  - POST /webhooks
+  - GET /webhooks
+  - GET /webhooks/{id}
+  - PUT /webhooks/{id}
+  - DELETE /webhooks/{id}
+  - GET /webhooks/{id}/signing-secret
+relationships:
+- {from: ApiKey, to: Company, kind: belongs_to, via: company.id}
+- {from: Property, to: Company, kind: belongs_to, via: companyShortId}
+- {from: PropertyIdentityVerificationSettings, to: Property, kind: belongs_to, via: propertyId}
+- {from: Session, to: Property, kind: belongs_to, via: propertyShortId}
+- {from: Session, to: ApplicantDetail, kind: belongs_to, via: applicantDetailId}
+- {from: Session, to: Application, kind: has_one, via: id}
+- {from: Session, to: Proof, kind: has_many, via: unauthenticatedSessionId}
+- {from: Proof, to: Session, kind: belongs_to, via: unauthenticatedSessionId}
+- {from: ApplicantDetail, to: Applicant, kind: has_many, via: applicantDetailId}
+- {from: Applicant, to: ApplicantDetail, kind: belongs_to, via: applicantDetailId}
+- {from: Applicant, to: Property, kind: belongs_to, via: propertyId}
+- {from: Applicant, to: Proof, kind: has_many, via: documentId / documentProofId}
+- {from: Webhook, to: ApiKey, kind: belongs_to, via: apiKeyId}
+- {from: IdVerification, to: Property, kind: belongs_to, via: propertyShortId}
+disjoint_graphs:
+- graph: fraud-detection
+  root: ApplicantDetail -> Applicant -> Proof
+- graph: identity-verification
+  root: IdVerification
+  note: >-
+    Snappt states explicitly that Identity Verification applicants and Fraud Detection applicants do
+    not share ids and are not linked. Partners correlate the two through their own externalId /
+    metadata, not through Snappt.
+id_conventions:
+  format: UUID v4 for most resources
+  short_ids: companyShortId and propertyShortId are separate opaque short identifiers used by the Embedded SDK and public IDV links
+  prefixed_ids:
+    webhook_signing_secret: whsec_

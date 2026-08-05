@@ -1,0 +1,62 @@
+generated: '2026-08-05'
+method: searched
+source:
+- https://status.snappt.com/
+- https://snappt-enterprise-api.readme.io/changelog
+- openapi/snappt-enterprise-api-openapi-original.yml
+versioning:
+  scheme: none-in-path
+  current: '1.75.3'
+  note: >-
+    The base URL (https://enterprise-api.snappt.com) carries no version segment and no version
+    header is documented. Versioning is expressed only through the release notes and the OpenAPI
+    info.version. The Embedded SDK loader is separately versioned in its path (embedded/v1.0.0.js).
+  docs: https://snappt-enterprise-api.readme.io/changelog
+deprecation:
+  policy_url: https://snappt-enterprise-api.readme.io/changelog
+  formal_policy: false
+  sunset_header: false
+  deprecation_header: false
+  practice: >-
+    Deprecations are announced as a "Scheduled for Removal" section in the release notes, with no
+    stated notice period, no Sunset/Deprecation (RFC 8594) header support, and no dated end-of-life.
+  announced_deprecations:
+  - item: ACCEPTED_DOCUMENT webhook event
+    announced_in: v0.9.0
+    replacement: synchronous checks via `?checks=true` on POST /session/documents
+  - item: '`includeDocuments` and `showThumbnails` query parameters on GET /applicants/{applicantId}/report'
+    announced_in: v0.10.0
+    replacement: '`preset` query parameter (summary | summary-and-documents | fcra)'
+  - item: 'Snappt-Signature (v1) webhook signature header, keyed on the API Key ID'
+    announced_in: https://snappt-enterprise-api.readme.io/docs/webhook-snappt-signature-v2
+    replacement: Snappt-Signature-v2, keyed on the whsec_-prefixed webhook signing secret
+    note: Both headers are sent during the transition period; the legacy header will eventually be removed.
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in the OpenAPI carries `deprecated: true`; the deprecations above are documented in
+  prose and in the changelog only, not marked in the machine-readable contract.
+status_page:
+  url: https://status.snappt.com/
+  provider: Atlassian Statuspage
+  api: https://status.snappt.com/api/v2/summary.json
+  page_id: f4fnbjmxbtng
+  components:
+  - Applicant Experience
+  - Yardi Integration
+  - Enterprise Partner API
+  - Other Integration
+  - Leasing Agent Experience
+  - Trigo Web Application
+  - Verification of Rent
+sla:
+  published: false
+  note: No public SLA or uptime target is published; uptime commitments appear to be contractual.
+support:
+  email: partnersupport@snappt.com
+  response_target: 1 business day
+  url: https://snappt-enterprise-api.readme.io/docs/need-more-help
+  general_support: https://snappt.com/contact-support/
+x-evidence:
+- {url: 'https://status.snappt.com/', http_status: 200}
+- {url: 'https://status.snappt.com/api/v2/summary.json', http_status: 200}
+- {url: 'https://snappt-enterprise-api.readme.io/changelog/v0120.md', http_status: 200}

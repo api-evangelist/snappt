@@ -1,0 +1,108 @@
+generated: '2026-08-05'
+method: searched
+source:
+- https://snappt-enterprise-api.readme.io/docs/webhook-event-types
+- https://snappt-enterprise-api.readme.io/docs/webhook-event-types-identity-verification
+- https://snappt-enterprise-api.readme.io/docs/webhook-delivery-retry-behavior
+- https://snappt-enterprise-api.readme.io/docs/webhook-snappt-signature-v2
+spec_type: Webhooks
+asyncapi_published: false
+note: >-
+  Snappt documents a complete outbound-webhook surface but publishes no AsyncAPI document. This
+  artifact captures the webhook catalog as documented; no AsyncAPI file has been fabricated.
+direction: outbound (Snappt -> partner endpoint)
+management:
+  register: POST /webhooks
+  list: GET /webhooks
+  retrieve: GET /webhooks/{id}
+  update: PUT /webhooks/{id}
+  delete: DELETE /webhooks/{id}
+  signing_secret: GET /webhooks/{id}/signing-secret
+  subscription_model: per-webhook `events` array — a webhook only receives events whose type it lists
+  inactive: isActive=false stops all deliveries and redeliveries for that webhook
+envelope:
+  fields:
+  - {name: eventType, type: string, description: One of the event types below}
+  - {name: apiKeyId, type: uuid, description: The API key whose webhook is being delivered}
+  - {name: webhookId, type: uuid, description: The webhook that produced this delivery}
+  - {name: applicantId, type: 'uuid|null', description: The applicant this event is about; null for IDV_REPORT_READY}
+  - {name: applicantDetailId, type: 'uuid|null', description: The applicant-detail record; null for IDV_REPORT_READY}
+  - {name: externalId, type: 'string|null', description: Partner identifier echoed back; always null on IDV_REPORT_READY}
+  - {name: externalMetadata, type: 'object|null', description: Partner metadata echoed back unchanged; always null on IDV_REPORT_READY}
+  - {name: data, type: object, description: Event-specific payload}
+  - {name: update, type: object, description: Present only on REPORT_UPDATED; describes why the report changed}
+events:
+- name: APPLICATION_SUBMITTED
+  fires_when: An applicant finishes submitting their documents, before any review has run.
+  retried: false
+  delivery: single attempt only
+  data_fields:
+  - {name: id, type: uuid, description: The entry (applicant) id; use with eventType as an idempotency key}
+  - {name: note, type: 'string|null', description: Reviewer note; null at submission time}
+  - {name: result, type: string, values: [PENDING]}
+  - {name: status, type: string, values: [PENDING]}
+- name: REPORT_READY
+  fires_when: >-
+    Snappt has finished reviewing the applicant's documents for authenticity — and for income when
+    Income Verification is enabled on the property — and has rendered a verdict. Always the first
+    report event for an applicant.
+  retried: true
+  retry_window: up to 24 hours after the report completed
+  retry_cadence: every ~61-70 minutes (~20-24 attempts); stops on HTTP 200
+  data_fields:
+  - {name: id, type: uuid, description: The entry (applicant) id}
+  - {name: note, type: 'string|null', description: Human-readable note, populated for some EDITED and UNDETERMINED verdicts}
+  - {name: result, type: string, description: The fraud verdict}
+  - {name: status, type: string, values: [READY]}
+  result_values:
+  - {meaning: Documents look authentic, default_display: CLEAN, alt_display: PASSED}
+  - {meaning: Evidence of editing/fraud, default_display: EDITED, alt_display: FAILED}
+  - {meaning: 'Could not be determined (for example, Print-to-PDF documents)', default_display: UNDETERMINED, alt_display: UNDETERMINED}
+  - {meaning: Not yet reviewed, default_display: PENDING, alt_display: PENDING}
+  note: Which display set is used depends on the company's result-display setting.
+- name: REPORT_UPDATED
+  fires_when: A previously delivered report changes — income dispute, override, or fraud re-review.
+  retried: false
+  extra_object: update
+  note: Carries an additional top-level `update` object describing why the report changed.
+- name: IDV_REPORT_READY
+  fires_when: An ID verification reaches a terminal status.
+  retried: false
+  data_fields:
+  - {name: idVerificationId, type: uuid}
+  - {name: status, type: string, values: [PASS, FAIL]}
+  note: >-
+    Not tied to an applicant record — applicantId, applicantDetailId, externalId and externalMetadata
+    are always null. Identity Verification applicants and Fraud Detection applicants do not share ids.
+- name: ACCEPTED_DOCUMENT
+  status: deprecated
+  fires_when: Snappt finished running basic checks on a document uploaded to an applicant session.
+  note: >-
+    Scheduled for removal since v0.9.0; superseded by the synchronous ?checks=true query parameter
+    on POST /session/documents.
+delivery:
+  content_type: application/json
+  body_format: compact JSON, no whitespace — the signature is computed over these exact bytes
+  headers: [Snappt-Signature-v2, 'Snappt-Signature (legacy v1)', 'any custom headers registered on the webhook']
+  timeout: 30 seconds
+  success_criteria: HTTP 200 within the timeout
+  failure_criteria: [non-2xx (including 301/302, which are not followed), connection errors, timeouts]
+  ordering: not guaranteed — parallel delivery across applicants, and a retry of an older event can arrive after a newer one
+security:
+  signature_header: Snappt-Signature-v2
+  algorithm: HMAC-SHA256
+  encoding: base64url
+  signed_string: '{timestamp}.{rawBody}'
+  key: webhook signing secret (whsec_ prefix)
+  timestamp_units: milliseconds
+  recommended_max_age: 5 minutes
+  constant_time_comparison: recommended
+  legacy:
+    header: Snappt-Signature
+    key: API Key ID
+    status: deprecated, will be removed in a future release
+consumer_guidance:
+  idempotency_key: data.id + eventType
+  advice: >-
+    Return 2xx as soon as the applicant is matched, then do long-running work; treat duplicate
+    deliveries as no-ops and still return 200; do not rely on exactly-once delivery.

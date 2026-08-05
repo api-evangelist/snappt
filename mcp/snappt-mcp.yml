@@ -1,0 +1,76 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/snappt-enterprise-api-openapi-original.yml
+status: candidate
+published: false
+note: >-
+  Snappt publishes NO MCP server. Searched the developer portal, llms.txt, the Snappt GitHub
+  organization (0 public repos), the npm registry (0 results for "snappt"), and the web — nothing.
+  The tool list below is a DERIVED candidate mapped from real OpenAPI operations so a partner could
+  stand one up; it is not a Snappt product. Because no server exists, NO `MCPServer` pointer is
+  wired in apis.yml, and no tool crosswalk is emitted (a crosswalk requires a real MCP or GraphQL
+  surface to bind against).
+server:
+  name: snappt
+  transport: null
+  url: null
+binding_note: >-
+  The published OpenAPI declares no operationId on any of its 48 operations, so candidate tools are
+  bound by HTTP method + path rather than by a stable operation name. That missing operationId set
+  is the single biggest blocker to agent-binding this API.
+tools:
+- name: get_account
+  description: Return the account and company associated with the partner API key.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /account'
+- name: list_properties
+  description: List properties for the account.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /properties'
+- name: create_property
+  description: Create a property that applicant sessions can be attached to.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /properties'
+- name: get_property
+  description: Retrieve a single property.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /properties/{propertyId}'
+- name: update_property
+  description: Update a property, including setting status to ACTIVE or DISABLED.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#PUT /properties/{propertyId}'
+- name: generate_applicant_link
+  description: Generate a document-upload-portal link for an applicant at a property.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /properties/{propertyId}/generate-applicant-link'
+- name: send_document_upload_email
+  description: Email an applicant a link to the Snappt document upload portal.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /properties/{propertyId}/send-document-upload-email'
+- name: list_applicants
+  description: List applicants with page/rowsPerPage, sort, filter, and free-text q.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /applicants'
+- name: get_applicant
+  description: Retrieve one applicant and its fraud verdict.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /applicants/{applicantId}'
+- name: get_applicant_report
+  description: Download the applicant PDF report (preset summary | summary-and-documents | fcra).
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /applicants/{applicantId}/report'
+- name: create_applicant_session
+  description: Start an applicant session and obtain a short-lived session token.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /session'
+- name: upload_application_document
+  description: Upload a PDF document to an applicant session (multipart/form-data, field `upload`).
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /session/documents'
+- name: submit_application
+  description: Submit the applicant session for fraud review.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /session/submit'
+- name: generate_identity_upload_link
+  description: Create a single-use identity verification upload link.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /id-verification/generate-identity-upload-link'
+- name: get_id_verification
+  description: Retrieve one ID verification record and its PASS/FAIL status.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /id-verification/applicants/{idVerificationId}'
+- name: create_webhook
+  description: Register an outbound webhook subscription and receive its whsec_ signing secret.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#POST /webhooks'
+- name: list_webhooks
+  description: List registered webhooks.
+  source_operation: 'openapi/snappt-enterprise-api-openapi-original.yml#GET /webhooks'
+safety_note: >-
+  See agentic-access/snappt-agentic-access.yml. This API touches applicant PII and consumer-report
+  data governed by the FCRA and the Fair Housing Act; report retrieval and applicant mutation should
+  not be exposed to an unattended agent without a human-in-the-loop and a purpose-bound token.

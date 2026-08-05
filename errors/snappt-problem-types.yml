@@ -1,0 +1,87 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/snappt-enterprise-api-openapi-original.yml
+docs: https://snappt-enterprise-api.readme.io/reference/get_account
+format: custom
+rfc9457: false
+note: >-
+  Snappt does not use RFC 9457 problem+json. Errors are returned as application/json bodies matching
+  the `ErrorResponse` schema. The catalog below is derived from the 4xx responses declared across all
+  48 operations in the OpenAPI; the descriptions are the provider's own, verbatim from the spec.
+envelope:
+  schema: ErrorResponse
+  content_type: application/json
+  fields:
+  - {name: statusCode, type: number, required: false}
+  - {name: error, type: string, required: true, description: Human-readable error message}
+  - {name: failedChecks, type: array of string, required: false, description: Names of the synchronous document checks that failed}
+coverage:
+  operations: 48
+  with_400: 30
+  with_401: 48
+  with_404: 31
+  with_5xx: 0
+  note: >-
+    No operation declares a 5xx response and none declares 403, 409, 422 or 429 — a real contract
+    gap. 401 is the only error status declared on every operation.
+problems:
+- status: 400
+  title: Bad Request
+  detail: The request payload or query string parameter you passed was not valid
+  schema: ErrorResponse
+  occurrences: 30
+  causes:
+  - Invalid or missing request body fields.
+  - Invalid query-string parameter values.
+  - 'Property create/update with a `status` other than ACTIVE or DISABLED (enforced since v0.9.2).'
+  - Document upload rejected by synchronous checks when `?checks=true` — see `failedChecks`.
+  remediation: Correct the payload or query parameter and retry; inspect `failedChecks` for document upload failures.
+- status: 401
+  title: Unauthorized
+  detail: The Authorization header or Snappt applicant session token you passed was not valid
+  schema: ErrorResponse
+  occurrences: 48
+  causes:
+  - Missing or malformed `Authorization: Bearer <partner API key>` header.
+  - Revoked or wrong-environment partner API key (demo key against production, or vice versa).
+  - Expired session token — session tokens expire after 24 hours or on application submission.
+  - Missing or invalid `x-unauthenticated-session-token` header on a session-scoped call.
+  remediation: >-
+    Re-issue the partner API key from your Snappt account team, or create a fresh applicant session
+    with POST /session to obtain a new session token.
+  note: >-
+    The API edge returns 401 for every unauthenticated request including `/` and unknown paths, so a
+    401 does not distinguish "wrong credentials" from "no such route".
+- status: 404
+  title: Not Found
+  detail: The item you requested could not be found
+  schema: ErrorResponse
+  occurrences: 31
+  causes:
+  - Unknown propertyId, applicantId, idVerificationId, document id, or webhook id.
+  - A resource that belongs to a company the API key is not scoped to.
+  remediation: Verify the id, and confirm the API key is scoped to the company/property that owns it.
+documented_limits:
+  - limit: 15 documents per application
+    error_message: 'Only 15 documents may be attached to a single application.'
+    source: https://snappt-enterprise-api.readme.io/docs/faqs
+    status: 400
+  - limit: externalId max 255 characters
+    source: https://snappt-enterprise-api.readme.io/docs/webhook-event-types
+  - limit: externalMetadata max 10 KB serialized to JSON
+    source: https://snappt-enterprise-api.readme.io/docs/webhook-event-types
+synchronous_document_checks:
+  applies_to: 'POST /session/documents?checks=true'
+  source: https://snappt-enterprise-api.readme.io/changelog/090
+  checks:
+  - Document type detection
+  - Print to PDF
+  - Scanned documents
+  - Password protected
+  - PDF encryption
+  - Page limit exceeded
+  note: Failing checks are returned in the `failedChecks` array of the error response.
+gaps:
+- No error code registry — errors carry only a message string, no stable machine-readable code.
+- No 429 / rate-limit error declared anywhere in the spec or the docs.
+- No 5xx responses declared on any operation.

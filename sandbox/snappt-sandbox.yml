@@ -1,0 +1,57 @@
+generated: '2026-08-05'
+method: searched
+source:
+- openapi/snappt-enterprise-api-openapi-original.yml
+- https://snappt-enterprise-api.readme.io/docs/faqs
+- https://snappt-enterprise-api.readme.io/reference
+note: >-
+  Snappt runs a separate demo environment but publishes no self-serve sandbox: there are no test
+  keys, no key prefixes distinguishing test from live, and no published magic/test values. Test
+  documents are provided on request by the Snappt team. Everything below is what the provider
+  actually publishes — nothing has been invented.
+environments:
+- name: demo
+  base_url: https://enterprise-api.demo.snappt.com
+  source: 'OpenAPI servers[0] — the only server the published spec declares'
+  self_serve: false
+  credentials: partner API key issued by the Snappt account team
+  probe: {url: 'https://enterprise-api.demo.snappt.com/', http_status: 401}
+- name: production
+  base_url: https://enterprise-api.snappt.com
+  source: https://snappt-enterprise-api.readme.io/docs/embedded-sdk-integration-guide (Embedded SDK loader host)
+  self_serve: false
+  credentials: partner API key issued by the Snappt account team
+  probe: {url: 'https://enterprise-api.snappt.com/', http_status: 401}
+key_separation:
+  test_key_prefix: null
+  live_key_prefix: null
+  mechanism: separate host per environment, not separate key prefixes
+  note: >-
+    Keys are not visibly namespaced; a key is bound to an environment and to a set of companies and
+    properties. The only prefixed secret Snappt publishes is the webhook signing secret (whsec_).
+test_data:
+  published_test_values: none
+  clean_document:
+    available: true
+    self_serve: false
+    how: 'Request from Snappt — the FAQ states: "Yes, we can provide a clean document to use during testing."'
+    source: https://snappt-enterprise-api.readme.io/docs/faqs
+  test_cards: n/a (not a payments API)
+  time_simulation: not published
+  fixture_tooling: not published
+in_docs_try_it:
+  available: true
+  mechanism: ReadMe "Try It" console on every reference page, proxied through try.readme.io
+  requires_credentials: true
+  url: https://snappt-enterprise-api.readme.io/reference/get_account
+embedded_sdk_testing:
+  domain_allowlist_required: true
+  note: >-
+    The Embedded SDK will not load unless the page origin is on the Client ID's allowlist, so local
+    and staging testing requires the Snappt account team to allowlist those origins (wildcard
+    subdomains such as *.yourcompany.com are supported).
+  source: https://snappt-enterprise-api.readme.io/docs/embedded-sdk-integration-guide
+gaps:
+- No self-serve signup or sandbox key — every environment requires an account-team-issued partner API key.
+- No published test document set, test applicant identifiers, or verdict-forcing values, so partners cannot deterministically exercise the CLEAN / EDITED / UNDETERMINED branches without Snappt's help.
+- The published OpenAPI declares only the demo server; the production host is documented in prose on the Embedded SDK page.

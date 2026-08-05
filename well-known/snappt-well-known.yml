@@ -1,0 +1,76 @@
+generated: '2026-08-05'
+method: probed
+source: live GET of /.well-known/* on every apis.yml and OpenAPI servers[] host
+note: >-
+  No /.well-known document was served by any Snappt host. Recorded here as an honest negative
+  result; no WellKnown or SecurityTxt pointer is wired in apis.yml because nothing was found.
+  fraud.snappt.com answers HTTP 200 with the same SPA HTML shell for EVERY path — a control
+  probe of /this-path-does-not-exist-12345 also returned 200 text/html with identical bytes —
+  so its 200s are catch-all false positives, not documents.
+hosts:
+- host: https://snappt.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  control:
+    path: /definitely-not-a-page-xyz123/
+    status: 404
+    verdict: host returns real 404s, so the 404s above are genuine misses
+- host: https://enterprise-api.snappt.com
+  note: every path on the API host, including /, returns 401 — the edge requires a partner API key
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+  control:
+    path: /nonexistent-control-xyz
+    status: 401
+    verdict: uniform 401 — the well-known surface is gated, not absent
+- host: https://enterprise-api.demo.snappt.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+  control:
+    path: /nonexistent-control-xyz
+    status: 401
+- host: https://fraud.snappt.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    verdict: false-positive — HTML SPA shell, not a document
+  - path: /.well-known/agent-card.json
+    status: 200
+    verdict: false-positive — HTML SPA shell, not an AgentCard
+  - path: /.well-known/agent.json
+    status: 200
+    verdict: false-positive — HTML SPA shell
+  - path: /openapi.json
+    status: 200
+    verdict: false-positive — HTML SPA shell
+  control:
+    path: /this-path-does-not-exist-12345
+    status: 200
+    content_type: text/html
+    verdict: catch-all — every path returns the same HTML, so no 200 on this host is evidence
+findings:
+  security_txt: not published
+  openid_configuration: not published (no OAuth/OIDC surface — API is partner-key authenticated)
+  api_catalog: not published
+  agent_card: not published (see a2a/ — nothing written, correctly)

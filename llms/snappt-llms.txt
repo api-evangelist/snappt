@@ -1,0 +1,84 @@
+# Snappt Enterprise API Documentation
+
+> Documentation for Snappt Enterprise API
+
+## Guides
+- [Using our API with the Document Upload Portal Links](https://snappt-enterprise-api.readme.io/docs/using-our-api-with-the-document-upload-portal-links.md): We have created an option for our partners to use the API in conjunction with our document upload portal.
+- [Getting Started](https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection.md): This page will help you get started with Snappt Enterprise API.
+- [Getting Started](https://snappt-enterprise-api.readme.io/docs/getting-started-identity-verification.md): This page will help you get started with Identity Verification via the Snappt Enterprise API
+- [Webhook Event Types](https://snappt-enterprise-api.readme.io/docs/webhook-event-types-identity-verification.md)
+- [Getting Started](https://snappt-enterprise-api.readme.io/docs/getting-started-income-verification.md): This page will help you get started with Income Verification via the Snappt Enterprise API
+- [Webhook Signing - v1 (DEPRECATED)](https://snappt-enterprise-api.readme.io/docs/webhook-snappt-signature.md): Our webhooks now include an encrypted signature
+- [Webhook Signing - v2](https://snappt-enterprise-api.readme.io/docs/webhook-snappt-signature-v2.md): Our webhooks now include an encrypted signature
+- [Webhook Delivery & Retry Behavior](https://snappt-enterprise-api.readme.io/docs/webhook-delivery-retry-behavior.md)
+- [Webhook Event Types](https://snappt-enterprise-api.readme.io/docs/webhook-event-types.md)
+- [Embedded SDK Integration Guide](https://snappt-enterprise-api.readme.io/docs/embedded-sdk-integration-guide.md)
+- [Need More Help? Contact Support](https://snappt-enterprise-api.readme.io/docs/need-more-help.md)
+- [FAQs](https://snappt-enterprise-api.readme.io/docs/faqs.md): Frequently asked questions.
+
+## API Reference
+- [Get Account Info](https://snappt-enterprise-api.readme.io/reference/get_account.md): Returns information about the account associated with the provided API key.
+- [Create an applicant session](https://snappt-enterprise-api.readme.io/reference/post_session-public.md): Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing.
+- [Retrieve information about the property](https://snappt-enterprise-api.readme.io/reference/get_session-property.md)
+- [Retrieve application data](https://snappt-enterprise-api.readme.io/reference/get_session-application.md)
+- [Update application data](https://snappt-enterprise-api.readme.io/reference/put_session-application.md)
+- [List application documents](https://snappt-enterprise-api.readme.io/reference/get_session-documents.md)
+- [Upload an application document](https://snappt-enterprise-api.readme.io/reference/post_session-documents.md): This API expects multipart/form-data. You should provide a single file as `upload` and specify the document type. Uploaded documents must be PDFs
+- [Update an application document type](https://snappt-enterprise-api.readme.io/reference/put_session-documents-id.md)
+- [Retrieve an application document](https://snappt-enterprise-api.readme.io/reference/get_session-documents-id.md): This API returns the application document that matches the provided id.
+- [Remove an application document](https://snappt-enterprise-api.readme.io/reference/delete_session-documents-id.md)
+- [Retrieve a thumbnail for a specific document](https://snappt-enterprise-api.readme.io/reference/get_session-documents-id-thumbnail.md)
+- [Submit application](https://snappt-enterprise-api.readme.io/reference/post_session-submit.md): After uploading one or more documents and editing the applicant information, use this API to submit the application for processing. After a successful submission, the session token is no longer valid. Use the returned applicant ID to poll for results, or create a webhook to be notified when results are ready.
+- [Create an applicant session](https://snappt-enterprise-api.readme.io/reference/post_session.md): Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing.
+- [Create a webhook](https://snappt-enterprise-api.readme.io/reference/post_webhooks.md)
+- [List webhooks](https://snappt-enterprise-api.readme.io/reference/get_webhooks.md)
+- [Retrieve a webhook](https://snappt-enterprise-api.readme.io/reference/get_webhooks-id.md)
+- [Update a webhook](https://snappt-enterprise-api.readme.io/reference/put_webhooks-id.md)
+- [Delete a webhook](https://snappt-enterprise-api.readme.io/reference/delete_webhooks-id.md)
+- [Retrieve webhook signing secret](https://snappt-enterprise-api.readme.io/reference/get_webhooks-id-signing-secret.md)
+- [List properties](https://snappt-enterprise-api.readme.io/reference/get_properties.md)
+- [Create a new property](https://snappt-enterprise-api.readme.io/reference/post_properties.md): To set up your account, add one or more properties. All applicant sessions are associated with a company and property ID. Note that you cannot delete properties through the Snappt Enterprise API. If you no longer need a property, use the PUT /properties/:id API to set it's status to DISABLED.
+- [Retrieve a property](https://snappt-enterprise-api.readme.io/reference/get_properties-propertyid.md)
+- [Update a property](https://snappt-enterprise-api.readme.io/reference/put_properties-propertyid.md)
+- [Send an applicant a link to the document upload portal](https://snappt-enterprise-api.readme.io/reference/post_properties-propertyid-send-document-upload-email.md)
+- [Generate an applicant a link to the document upload portal](https://snappt-enterprise-api.readme.io/reference/post_properties-propertyid-generate-applicant-link.md)
+- [Enable/Disable ID Verification](https://snappt-enterprise-api.readme.io/reference/post_properties-propertyid-identity-verification.md)
+- [Enable/Disable Income Verification](https://snappt-enterprise-api.readme.io/reference/post_properties-propertyid-income-verification.md)
+- [Enable/Disable features to customize the applicant flow](https://snappt-enterprise-api.readme.io/reference/post_properties-propertyid-features.md)
+- [Retrieve a property's identity verification settings](https://snappt-enterprise-api.readme.io/reference/get_properties-propertyid-identity-verification-settings.md)
+- [Update a property's identity verification settings](https://snappt-enterprise-api.readme.io/reference/put_properties-propertyid-identity-verification-settings.md)
+- [List applicants](https://snappt-enterprise-api.readme.io/reference/get_applicants.md)
+- [Retrieve a single document PDF from the applicant's report](https://snappt-enterprise-api.readme.io/reference/get_applicants-applicantid-document-documentid-pdf.md)
+- [Retrieve a single document thumbnail from the applicant's report](https://snappt-enterprise-api.readme.io/reference/get_applicants-applicantid-document-documentproofid-thumbnail.md)
+- [Retrieve an applicant's report for an entry](https://snappt-enterprise-api.readme.io/reference/get_applicants-applicantid-report.md)
+- [Retrieve a reference check form PDF for an applicant](https://snappt-enterprise-api.readme.io/reference/get_applicants-applicantid-referencecheck.md)
+- [Retrieve a zip file of the applicant's documents](https://snappt-enterprise-api.readme.io/reference/get_applicants-applicantid-documents-zip.md)
+- [Retrieve an applicant](https://snappt-enterprise-api.readme.io/reference/get_applicants-applicantid.md)
+- [Update an applicant's information](https://snappt-enterprise-api.readme.io/reference/put_applicants-applicantid.md)
+- [ID verification request that redirects route](https://snappt-enterprise-api.readme.io/reference/post_id-verification-public-propertyshortid.md): Make a request to this API to redirect to idv provider.
+- [Static identity verification link for a single property](https://snappt-enterprise-api.readme.io/reference/get_id-verification-public-propertyshortid.md): Make a request to this API to begin a new ID verification session.
+- [Send an applicant a link to the identity upload portal](https://snappt-enterprise-api.readme.io/reference/post_id-verification-send-identity-upload-email.md)
+- [Create an Identity Upload Link](https://snappt-enterprise-api.readme.io/reference/post_id-verification-generate-identity-upload-link.md): Make a request to this API to begin a new ID verification session.
+- [Static identity verification link for a single property](https://snappt-enterprise-api.readme.io/reference/get_id-verification-propertyshortid-link.md): Make a request to this API to get a static URL for applicants to verify their identification at this property
+- [Static identity verification link for a single property](https://snappt-enterprise-api.readme.io/reference/get_id-verification-propertyshortid-qr-code.md): Make a request to this API to get a static QR Code for applicants to verify their identification at this property
+- [Retrieve all ID verification records](https://snappt-enterprise-api.readme.io/reference/get_id-verification-applicants.md)
+- [Retrieve an ID verification record](https://snappt-enterprise-api.readme.io/reference/get_id-verification-applicants-idverificationid.md)
+- [Send a PDF report of the results of an ID verification session](https://snappt-enterprise-api.readme.io/reference/get_id-verification-applicants-idverificationid-report.md)
+
+## Recipes
+- [Applicant Detail ID Use Case](https://snappt-enterprise-api.readme.io/recipes/applicant-detail-id-use-case.md)
+- [Creating and Submitting an Application](https://snappt-enterprise-api.readme.io/recipes/creating-and-submitting-an-application-1.md)
+- [Email Request Body](https://snappt-enterprise-api.readme.io/recipes/email-request-body.md)
+- [List, Create, and Update Properties](https://snappt-enterprise-api.readme.io/recipes/list-create-and-update-properties.md)
+
+## Pages
+- [Need More Help? Contact Support](https://snappt-enterprise-api.readme.io/support.md)
+
+## Changelog
+- [v0.12.0](https://snappt-enterprise-api.readme.io/changelog/v0120.md)
+- [v0.10.0](https://snappt-enterprise-api.readme.io/changelog/v0100.md)
+- [v0.9.2](https://snappt-enterprise-api.readme.io/changelog/v092.md)
+- [v0.9.1](https://snappt-enterprise-api.readme.io/changelog/v091.md)
+- [v0.9.0](https://snappt-enterprise-api.readme.io/changelog/090.md)
+- [v0.8.2](https://snappt-enterprise-api.readme.io/changelog/082.md)
+- [v0.8.1](https://snappt-enterprise-api.readme.io/changelog/081.md)

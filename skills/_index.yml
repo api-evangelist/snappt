@@ -1,0 +1,56 @@
+generated: '2026-08-05'
+method: generated
+source: >-
+  Generated from openapi/snappt-enterprise-api-openapi-original.yml plus the Snappt Enterprise API
+  documentation. Snappt publishes no AGENTS.md or skill files of its own — searched the developer
+  portal, its llms.txt, and the Snappt GitHub organization (0 public repos).
+note: >-
+  The published OpenAPI declares no operationId on any of its 48 operations, so every skill grounds
+  its steps in the real HTTP method + path from the spec instead. Nothing below is invented; each
+  listed operation exists verbatim in the harvested contract.
+api: openapi/snappt-enterprise-api-openapi-original.yml
+skills:
+- file: snappt-submit-application-for-fraud-review.md
+  name: Submit a rental application for Snappt fraud review
+  api: openapi/snappt-enterprise-api-openapi-original.yml
+  operations:
+  - POST /session
+  - PUT /session/application
+  - POST /session/documents
+  - POST /session/submit
+  - GET /applicants/{applicantId}
+  - GET /applicants/{applicantId}/report
+- file: snappt-verify-applicant-identity.md
+  name: Run a Snappt identity verification session
+  api: openapi/snappt-enterprise-api-openapi-original.yml
+  operations:
+  - POST /properties/{propertyId}/identity-verification
+  - POST /id-verification/generate-identity-upload-link
+  - POST /id-verification/send-identity-upload-email
+  - GET /id-verification/applicants/{idVerificationId}
+  - GET /id-verification/applicants/{idVerificationId}/report
+  - PUT /properties/{propertyId}/identity-verification/settings
+- file: snappt-receive-and-verify-webhooks.md
+  name: Receive and verify Snappt webhooks
+  api: openapi/snappt-enterprise-api-openapi-original.yml
+  operations:
+  - POST /webhooks
+  - GET /webhooks
+  - GET /webhooks/{id}
+  - PUT /webhooks/{id}
+  - DELETE /webhooks/{id}
+  - GET /webhooks/{id}/signing-secret
+- file: snappt-onboard-property.md
+  name: Onboard a property and configure Snappt verification features
+  api: openapi/snappt-enterprise-api-openapi-original.yml
+  operations:
+  - GET /account
+  - POST /properties
+  - GET /properties
+  - GET /properties/{propertyId}
+  - PUT /properties/{propertyId}
+  - POST /properties/{propertyId}/identity-verification
+  - POST /properties/{propertyId}/income-verification
+  - POST /properties/{propertyId}/features
+  - POST /properties/{propertyId}/send-document-upload-email
+  - POST /properties/{propertyId}/generate-applicant-link

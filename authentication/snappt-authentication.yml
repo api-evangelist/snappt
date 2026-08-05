@@ -1,0 +1,22 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/snappt-enterprise-api-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/snappt-enterprise-api-openapi-original.yml
+- name: snapptSessionAuth
+  type: apiKey
+  in: header
+  parameter: x-unauthenticated-session-token
+  description: Pass the session token obtained from POST /session
+  sources:
+  - openapi/snappt-enterprise-api-openapi-original.yml

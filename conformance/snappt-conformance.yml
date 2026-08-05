@@ -1,0 +1,89 @@
+generated: '2026-08-05'
+method: searched
+source:
+- https://snappt.com/security/
+- https://trust.snappt.com/
+- https://snappt-enterprise-api.readme.io/docs/webhook-snappt-signature-v2
+- openapi/snappt-enterprise-api-openapi-original.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 'openapi/snappt-enterprise-api-openapi-original.yml declares openapi: 3.0.0 with 36 paths / 48 operations'
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in the spec and no OAuth documented; auth is a partner API key as an HTTP bearer token.
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any host; no OIDC surface.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors use a custom ErrorResponse schema (statusCode/error/failedChecks) as application/json, not application/problem+json.'
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header support documented; deprecations announced only in release notes.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: 'https://snappt.com/.well-known/security.txt returned 404 (host returns real 404s — control path verified).'
+- id: rfc6750-bearer-token
+  conforms: true
+  evidence: 'securitySchemes.bearerAuth is type http, scheme bearer — partner API key passed in the Authorization header.'
+- id: hmac-sha256-webhook-signing
+  conforms: true
+  evidence: >-
+    Snappt-Signature-v2 header carries t=<ms timestamp>,v2=<HMAC-SHA256 of "{timestamp}.{rawBody}">
+    keyed on a whsec_ signing secret, base64url-encoded per RFC 4648 §5.
+- id: rfc4648-base64url
+  conforms: true
+  evidence: Webhook signature encoding is explicitly documented as base64url, not standard base64.
+- id: asyncapi
+  conforms: false
+  evidence: A full webhook catalog is documented but no AsyncAPI document is published.
+- id: json-api
+  conforms: false
+  evidence: Plain JSON resource representations; no JSON:API envelope.
+- id: fhir-r4
+  conforms: false
+- id: scim2
+  conforms: false
+- id: odata
+  conforms: false
+- id: psd2
+  conforms: false
+- id: fapi
+  conforms: false
+- id: idempotency-key
+  conforms: false
+  evidence: No Idempotency-Key header or parameter in the spec or docs; idempotency is documented only for webhook consumers.
+- id: pagination
+  conforms: true
+  evidence: 'Page-number pagination via `page` (default 0) and `rowsPerPage` (default 50) query parameters on collection endpoints.'
+compliance_program:
+  published: true
+  page: https://snappt.com/security/
+  trust_center: https://trust.snappt.com/
+  certifications:
+  - name: SOC 2 Type II
+    scope_stated: data availability, processing integrity, confidentiality, and privacy
+    source: https://snappt.com/security/
+  regulatory:
+  - name: FCRA
+    claim: >-
+      Snappt states FCRA compliance, describing its output as an independent applicant-agnostic view
+      that mitigates discrimination. A dedicated `fcra` report preset (added in v0.10.0) strips
+      document thumbnails for FCRA-compliant reporting.
+    source: [https://snappt.com/security/, https://snappt-enterprise-api.readme.io/changelog/v0100]
+  - name: Fair Housing Act
+    claim: Snappt states its screening practices are Fair Housing Act compliant.
+    source: https://snappt.com/security/
+  security_practices:
+  - Encryption of all data in motion and at rest.
+  - Mandatory security and compliance training for employees handling sensitive information.
+  - AWS-hosted infrastructure.
+  not_claimed: [ISO 27001, PCI DSS, HIPAA, FedRAMP, CSA STAR]
+  note: >-
+    Snappt's public security page does not mention ISO 27001, GDPR, CCPA, PCI DSS or a data-retention
+    policy. Certification documents on the Vanta trust center are gated behind an access request.
+x-evidence:
+- {url: 'https://snappt.com/security/', http_status: 200}
+- {url: 'https://trust.snappt.com/', http_status: 200}
+- {url: 'https://snappt.com/.well-known/security.txt', http_status: 404}

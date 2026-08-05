@@ -1,0 +1,77 @@
+generated: '2026-08-05'
+method: searched
+source: https://snappt-enterprise-api.readme.io/changelog
+scheme: semver
+current_spec_version: 1.75.3
+note: >-
+  Two version series coexist: the OpenAPI document reports info.version 1.75.3 (the ReadMe project
+  version), while the published release notes are numbered v0.8.1 through v0.12.0. The changelog
+  below is the published release-note series, most recent first. Entries are undated on the
+  provider's changelog; only version and content are published.
+entries:
+- version: v0.12.0
+  url: https://snappt-enterprise-api.readme.io/changelog/v0120
+  breaking: false
+  additions:
+  - >-
+    Webhook redelivery service that resends stuck REPORT_READY webhooks; runs hourly and retries any
+    undelivered REPORT_READY events.
+  highlights: Resolves previously known REPORT_READY delivery issues.
+- version: v0.10.0
+  url: https://snappt-enterprise-api.readme.io/changelog/v0100
+  breaking: false
+  additions:
+  - >-
+    `preset` query parameter on GET /applicants/{applicantId}/report with values `summary`,
+    `summary-and-documents`, and `fcra` (FCRA-compliant variant that replaces document thumbnails
+    with generic thumbnails).
+  deprecations:
+  - '`includeDocuments` and `showThumbnails` query parameters on GET /applicants/{applicantId}/report — scheduled for removal.'
+- version: v0.9.2
+  url: https://snappt-enterprise-api.readme.io/changelog/v092
+  breaking: false
+  fixes:
+  - Property creation and updates require a valid status of ACTIVE or DISABLED.
+  - Removed filename length check.
+  - Removed filename .doc/.docx check — enforced via MIME type instead.
+  - Removed filename .pdf extension check — enforced via MIME type instead.
+- version: v0.9.1
+  url: https://snappt-enterprise-api.readme.io/changelog/v091
+  breaking: false
+  fixes:
+  - >-
+    POST /session/submit no longer allows submission while other uploaded documents are still
+    PENDING, which had caused documents to be dropped from applications.
+- version: v0.9.0
+  url: https://snappt-enterprise-api.readme.io/changelog/090
+  breaking: false
+  additions:
+  - >-
+    Synchronous document checks on POST /session/documents via `checks=true` query parameter —
+    document type detection, Print-to-PDF, scanned documents, password protected, PDF encryption,
+    and page-limit-exceeded. Removes the need to wait for the ACCEPTED_DOCUMENT webhook before
+    calling POST /session/submit.
+  - Company `shortId` and `id` added to the `company` object in the GET /account response body.
+  fixes:
+  - REPORT_READY now delivered for AV-ruled submissions and insufficient-documentation requests.
+  deprecations:
+  - ACCEPTED_DOCUMENT webhook event — scheduled for removal in a future version.
+- version: v0.8.2
+  url: https://snappt-enterprise-api.readme.io/changelog/082
+  breaking: false
+  fixes:
+  - REPORT_READY now delivered for submissions ruled to have insufficient documentation.
+- version: v0.8.1
+  url: https://snappt-enterprise-api.readme.io/changelog/081
+  breaking: false
+  fixes:
+  - REPORT_READY now delivered after a submission is ruled on by automatic validation (AV).
+undated_docs_updates:
+  note: >-
+    ReadMe stamps each documentation page with an updatedAt timestamp. The most recently revised
+    pages, useful as a recency signal alongside the release notes.
+  pages:
+  - {page: docs/webhook-event-types, updated: '2026-07-23'}
+  - {page: docs/webhook-delivery-retry-behavior, updated: '2026-05-20'}
+  - {page: docs/embedded-sdk-integration-guide, updated: '2026-05-20'}
+  - {page: docs/webhook-snappt-signature-v2, updated: '2026-05-20'}

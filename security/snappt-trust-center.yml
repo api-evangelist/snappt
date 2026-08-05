@@ -1,0 +1,35 @@
+generated: '2026-08-05'
+method: searched
+probe: true
+url: https://trust.snappt.com/
+title: SNAPPT Trust Center
+platform: Vanta
+note: >-
+  0-working/probe-security-programs.py recorded no hit because the Vanta trust report is rendered
+  client-side — the served HTML carries no compliance keywords for the keyword gate to match. The
+  page is real: it returns HTTP 200 with <title>SNAPPT Trust Center</title>, a
+  content-location of https://assets.vanta.com/static/index-trust-report...html and a
+  Vanta-scoped Content-Security-Policy. Certification artifacts on it are gated behind a Vanta
+  document-access request (https://app.vanta.com/doc?s=...), so the named certification below is
+  taken from Snappt's own public security page rather than from the gated trust center.
+certifications:
+- SOC 2 Type II
+regulatory_claims:
+- FCRA
+- Fair Housing Act
+security_page: https://snappt.com/security/
+security_practices:
+- Encryption of all data in motion and at rest
+- Mandatory security and compliance training for employees handling sensitive information
+- AWS-hosted infrastructure with built-in security and redundancy
+document_access:
+  gated: true
+  mechanism: Vanta document request
+  example: https://app.vanta.com/doc?s=695pfvmm32o3enw49nqwc
+evidence:
+- {source: 'https://trust.snappt.com/', http_status: 200, signal: 'title "SNAPPT Trust Center"; content-location assets.vanta.com index-trust-report'}
+- {source: 'https://snappt.com/security/', http_status: 200, signal: 'SOC 2 Type II Compliance, FCRA Compliance, Fair Housing Act'}
+gaps:
+- No /.well-known/security.txt on any Snappt host (snappt.com returns 404; the host returns real 404s).
+- No published vulnerability disclosure or responsible-disclosure policy, and no bug bounty program found on HackerOne, Bugcrowd or Intigriti.
+- 'No security@ contact published; the only published contact is partnersupport@snappt.com (API support).'

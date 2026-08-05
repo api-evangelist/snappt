@@ -1,0 +1,74 @@
+generated: '2026-08-05'
+method: searched
+source: https://snappt-enterprise-api.readme.io/docs/embedded-sdk-integration-guide
+families:
+- name: Embedded SDK
+  kind: hosted-modal
+  description: >-
+    Launches the full Snappt applicant verification flow as a modal overlay inside a partner's own
+    application page — an iframe experience with no redirect and no popup.
+  loader: https://enterprise-api.snappt.com/embedded/v1.0.0.js
+  loader_params:
+  - name: iframe
+    required: true
+    value: 'true'
+    description: Configures the SDK for iframe embedding.
+  - name: clientId
+    required: true
+    description: The Client ID issued by the Snappt account team; bound to an API key and a domain allowlist.
+  global: Snappt
+  methods:
+  - name: Snappt.portal.show(options)
+    returns: instance
+    description: Opens the applicant verification modal for a given company and property.
+    options:
+    - {name: companyShortId, type: string, required: true, description: Snappt company short ID}
+    - {name: propertyShortId, type: string, required: true, description: Snappt property short ID}
+    - {name: email, type: string, required: false, description: Pre-fills the login screen; applicant still confirms a one-time code}
+    - {name: firstName, type: string, required: false}
+    - {name: lastName, type: string, required: false}
+    - {name: phone, type: string, required: false}
+    - {name: externalId, type: string, required: false, description: Partner identifier echoed back on webhooks and GET /applicants}
+    - {name: externalMetadata, type: object, required: false, description: Free-form context, 10KB max serialized, echoed on every webhook}
+    - {name: applicantIdentifier, type: string, required: false, description: A prior applicantDetailId (UUID v4) that links subsequent submissions together}
+  events:
+  - name: close
+    registration: instance.addEventListener('close', callback)
+    payload_fields: [type, applicantDetailId, payload]
+    types:
+    - name: application-complete
+      description: The applicant finished the flow; event.payload.applicantId is the Snappt applicantId.
+    - name: close
+      description: The applicant closed the modal; if application-complete was not received the flow was abandoned.
+  security:
+    client_id_required: true
+    domain_allowlist: true
+    allowlist_forms: [exact origin (https://apply.yourcompany.com), wildcard subdomain (*.yourcompany.com)]
+    validated_headers: [Origin, Referer]
+    note: >-
+      The script will not load if the clientId is missing or inactive, or if the page origin is not
+      on the allowlist. Allowed domains are configured by the Snappt account team.
+- name: Document Upload Portal
+  kind: hosted-page
+  description: >-
+    Snappt-hosted applicant document upload portal, reached by a link the partner generates or has
+    emailed to the applicant. Used instead of building a client-side upload flow against the session API.
+  entry_points:
+  - operation: POST /properties/{propertyId}/send-document-upload-email
+    description: Emails the applicant a link to the hosted portal; returns applicantDetailId.
+  - operation: POST /properties/{propertyId}/generate-applicant-link
+    description: Returns a portal link the partner delivers itself.
+  docs: https://snappt-enterprise-api.readme.io/docs/using-our-api-with-the-document-upload-portal-links
+  note: Document upload links do not expire, and multiple links for the same applicant remain usable.
+- name: Identity Upload Portal
+  kind: hosted-page
+  description: Snappt-hosted ID verification session, reached by a single-use identity upload link, static link, or QR code.
+  entry_points:
+  - operation: POST /id-verification/generate-identity-upload-link
+    description: Returns a single-use identityUploadLink that expires 72 hours after creation; accepts metadata and redirectUrl.
+  - operation: POST /id-verification/send-identity-upload-email
+  - operation: GET /id-verification/{propertyShortId}/link
+    description: Static per-property identity verification link.
+  - operation: GET /id-verification/{propertyShortId}/qr-code
+    description: Static per-property QR code.
+  docs: https://snappt-enterprise-api.readme.io/docs/getting-started-identity-verification

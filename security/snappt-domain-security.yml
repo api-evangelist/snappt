@@ -1,0 +1,34 @@
+generated: '2026-08-05'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: snappt.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 26 06:02:14 2026 GMT
+  hsts: true
+  hsts_max_age: 0
+- host: snappt-enterprise-api.readme.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  9 13:12:37 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: enterprise-api.snappt.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 24 14:13:46 2026 GMT
+  hsts: null
+domains:
+- domain: snappt.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: readme.io
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
