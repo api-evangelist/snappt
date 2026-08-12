@@ -30,26 +30,16 @@ tags:
 - rental-applications
 - webhooks
 apis:
-- name: Snappt Enterprise API
-  description: >-
-    Partner REST API for the Snappt fraud-detection, income-verification and identity-verification platform. Covers
-    account lookup, property creation and feature configuration, applicant sessions (create session, update
-    application, upload PDF documents, submit), applicant lookup and PDF report retrieval, ID-verification session
-    creation and reports, and webhook registration with signing secrets. Authenticated with a Snappt partner API key
-    passed as an HTTP bearer token; applicant-session calls use a short-lived session token in the
-    x-unauthenticated-session-token header.
+- aid: snappt:snappt-account-api
+  name: Snappt Account API
+  description: The Account API from Snappt — 1 operation(s) for account.
   humanURL: https://snappt-enterprise-api.readme.io/
   baseURL: https://enterprise-api.snappt.com
   tags:
-  - fraud-detection
-  - document-verification
-  - identity-verification
-  - income-verification
-  - property-management
-  - webhooks
+  - Account
   properties:
   - type: OpenAPI
-    url: openapi/snappt-enterprise-api-openapi-original.yml
+    url: openapi/snappt-account-api-openapi.yml
   - type: Documentation
     url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
   - type: APIReference
@@ -66,22 +56,212 @@ apis:
     url: conventions/snappt-conventions.yml
   - type: DataModel
     url: data-model/snappt-data-model.yml
-  - type: Overlay
-    url: overlays/snappt-enterprise-api-overlay.yaml
   - type: Sandbox
     url: sandbox/snappt-sandbox.yml
   - type: Components
     url: components/snappt-components.yml
   - type: ChangeLog
     url: changelog/snappt-changelog.yml
-  - type: AgentSkill
-    url: skills/_index.yml
+- aid: snappt:snappt-applicant-sessions-api
+  name: Snappt Applicant Sessions API
+  description: The Applicant Sessions API from Snappt — 8 operation(s) for applicant sessions.
+  humanURL: https://snappt-enterprise-api.readme.io/
+  baseURL: https://enterprise-api.snappt.com
+  tags:
+  - Applicant Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/snappt-applicant-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: APIReference
+    url: https://snappt-enterprise-api.readme.io/reference/get_account
+  - type: GettingStarted
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: Authentication
+    url: authentication/snappt-authentication.yml
+  - type: Webhooks
+    url: asyncapi/snappt-enterprise-api-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/snappt-problem-types.yml
+  - type: Conventions
+    url: conventions/snappt-conventions.yml
+  - type: DataModel
+    url: data-model/snappt-data-model.yml
+  - type: Sandbox
+    url: sandbox/snappt-sandbox.yml
+  - type: Components
+    url: components/snappt-components.yml
+  - type: ChangeLog
+    url: changelog/snappt-changelog.yml
+- aid: snappt:snappt-applicants-api
+  name: Snappt Applicants API
+  description: The Applicants API from Snappt — 7 operation(s) for applicants.
+  humanURL: https://snappt-enterprise-api.readme.io/
+  baseURL: https://enterprise-api.snappt.com
+  tags:
+  - Applicants
+  properties:
+  - type: OpenAPI
+    url: openapi/snappt-applicants-api-openapi.yml
+  - type: Documentation
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: APIReference
+    url: https://snappt-enterprise-api.readme.io/reference/get_account
+  - type: GettingStarted
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: Authentication
+    url: authentication/snappt-authentication.yml
+  - type: Webhooks
+    url: asyncapi/snappt-enterprise-api-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/snappt-problem-types.yml
+  - type: Conventions
+    url: conventions/snappt-conventions.yml
+  - type: DataModel
+    url: data-model/snappt-data-model.yml
+  - type: Sandbox
+    url: sandbox/snappt-sandbox.yml
+  - type: Components
+    url: components/snappt-components.yml
+  - type: ChangeLog
+    url: changelog/snappt-changelog.yml
+- aid: snappt:snappt-id-verification-api
+  name: Snappt ID Verification API
+  description: The ID Verification API from Snappt — 8 operation(s) for id verification.
+  humanURL: https://snappt-enterprise-api.readme.io/
+  baseURL: https://enterprise-api.snappt.com
+  tags:
+  - ID Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/snappt-id-verification-api-openapi.yml
+  - type: Documentation
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: APIReference
+    url: https://snappt-enterprise-api.readme.io/reference/get_account
+  - type: GettingStarted
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: Authentication
+    url: authentication/snappt-authentication.yml
+  - type: Webhooks
+    url: asyncapi/snappt-enterprise-api-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/snappt-problem-types.yml
+  - type: Conventions
+    url: conventions/snappt-conventions.yml
+  - type: DataModel
+    url: data-model/snappt-data-model.yml
+  - type: Sandbox
+    url: sandbox/snappt-sandbox.yml
+  - type: Components
+    url: components/snappt-components.yml
+  - type: ChangeLog
+    url: changelog/snappt-changelog.yml
+- aid: snappt:snappt-internal-idv-api
+  name: Snappt Internal IDV API
+  description: The Internal IDV API from Snappt — 1 operation(s) for internal idv.
+  humanURL: https://snappt-enterprise-api.readme.io/
+  baseURL: https://enterprise-api.snappt.com
+  tags:
+  - Internal IDV
+  properties:
+  - type: OpenAPI
+    url: openapi/snappt-internal-idv-api-openapi.yml
+  - type: Documentation
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: APIReference
+    url: https://snappt-enterprise-api.readme.io/reference/get_account
+  - type: GettingStarted
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: Authentication
+    url: authentication/snappt-authentication.yml
+  - type: Webhooks
+    url: asyncapi/snappt-enterprise-api-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/snappt-problem-types.yml
+  - type: Conventions
+    url: conventions/snappt-conventions.yml
+  - type: DataModel
+    url: data-model/snappt-data-model.yml
+  - type: Sandbox
+    url: sandbox/snappt-sandbox.yml
+  - type: Components
+    url: components/snappt-components.yml
+  - type: ChangeLog
+    url: changelog/snappt-changelog.yml
+- aid: snappt:snappt-properties-api
+  name: Snappt Properties API
+  description: The Properties API from Snappt — 8 operation(s) for properties.
+  humanURL: https://snappt-enterprise-api.readme.io/
+  baseURL: https://enterprise-api.snappt.com
+  tags:
+  - Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/snappt-properties-api-openapi.yml
+  - type: Documentation
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: APIReference
+    url: https://snappt-enterprise-api.readme.io/reference/get_account
+  - type: GettingStarted
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: Authentication
+    url: authentication/snappt-authentication.yml
+  - type: Webhooks
+    url: asyncapi/snappt-enterprise-api-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/snappt-problem-types.yml
+  - type: Conventions
+    url: conventions/snappt-conventions.yml
+  - type: DataModel
+    url: data-model/snappt-data-model.yml
+  - type: Sandbox
+    url: sandbox/snappt-sandbox.yml
+  - type: Components
+    url: components/snappt-components.yml
+  - type: ChangeLog
+    url: changelog/snappt-changelog.yml
+- aid: snappt:snappt-webhooks-api
+  name: Snappt Webhooks API
+  description: The Webhooks API from Snappt — 3 operation(s) for webhooks.
+  humanURL: https://snappt-enterprise-api.readme.io/
+  baseURL: https://enterprise-api.snappt.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/snappt-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: APIReference
+    url: https://snappt-enterprise-api.readme.io/reference/get_account
+  - type: GettingStarted
+    url: https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection
+  - type: Authentication
+    url: authentication/snappt-authentication.yml
+  - type: Webhooks
+    url: asyncapi/snappt-enterprise-api-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/snappt-problem-types.yml
+  - type: Conventions
+    url: conventions/snappt-conventions.yml
+  - type: DataModel
+    url: data-model/snappt-data-model.yml
+  - type: Sandbox
+    url: sandbox/snappt-sandbox.yml
+  - type: Components
+    url: components/snappt-components.yml
+  - type: ChangeLog
+    url: changelog/snappt-changelog.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/snappt-mcp.yml
 - type: Website
   url: https://snappt.com/
 - type: DeveloperPortal
