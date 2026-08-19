@@ -1,0 +1,90 @@
+openapi: 3.2.0
+info:
+  version: 1.75.3
+  title: Snappt Internal IDV API
+  description: Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.
+servers:
+- url: https://enterprise-api.demo.snappt.com
+security:
+- {}
+- bearerAuth: []
+tags:
+- name: Internal IDV
+paths:
+  /identity/applicants/clear-images/{clearId}/{imageType}:
+    get:
+      tags:
+      - Internal IDV
+      summary: Pass through endpoint for images from clear identity verifications
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: clearId
+        in: path
+      - schema:
+          type: string
+          enum:
+          - selfie
+          - document
+        required: true
+        name: imageType
+        in: path
+      - schema:
+          type:
+          - number
+          - 'null'
+        required: false
+        name: expires
+        in: query
+      - schema:
+          type: string
+        required: true
+        name: signature
+        in: query
+      responses:
+        '204':
+          description: No content - successful operation
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    snapptSessionAuth:
+      type: apiKey
+      in: header
+      name: x-unauthenticated-session-token
+      description: Pass the session token obtained from POST /session

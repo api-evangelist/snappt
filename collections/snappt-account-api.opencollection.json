@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Snappt Account API",
+    "version": "1.75.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Account Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/account"
+          },
+          "docs": "Returns information about the account associated with the provided API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

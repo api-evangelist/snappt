@@ -1,0 +1,243 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Snappt ID Verification API",
+    "version": "1.75.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ID Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Static identity verification link for a single property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/public/:propertyShortId",
+            "params": [
+              {
+                "name": "propertyShortId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flowType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Make a request to this API to begin a new ID verification session."
+        },
+        {
+          "info": {
+            "name": "ID verification request that redirects route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/public/:propertyShortId",
+            "params": [
+              {
+                "name": "propertyShortId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flowType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "overrideToIncode",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Make a request to this API to redirect to idv provider."
+        },
+        {
+          "info": {
+            "name": "Send an applicant a link to the identity upload portal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/send-identity-upload-email",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an applicant a link to the identity upload portal"
+        },
+        {
+          "info": {
+            "name": "Create an Identity Upload Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/generate-identity-upload-link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Make a request to this API to begin a new ID verification session."
+        },
+        {
+          "info": {
+            "name": "Static identity verification link for a single property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/:propertyShortId/link",
+            "params": [
+              {
+                "name": "propertyShortId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flowType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Make a request to this API to get a static URL for applicants to verify their identification at this property"
+        },
+        {
+          "info": {
+            "name": "Static identity verification link for a single property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/:propertyShortId/qr-code",
+            "params": [
+              {
+                "name": "propertyShortId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flowType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Make a request to this API to get a static QR Code for applicants to verify their identification at this property"
+        },
+        {
+          "info": {
+            "name": "Retrieve all ID verification records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/applicants",
+            "params": [
+              {
+                "name": "rowsPerPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve all ID verification records"
+        },
+        {
+          "info": {
+            "name": "Retrieve an ID verification record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/applicants/:idVerificationId",
+            "params": [
+              {
+                "name": "idVerificationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an ID verification record"
+        },
+        {
+          "info": {
+            "name": "Send a PDF report of the results of an ID verification session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/id-verification/applicants/:idVerificationId/report",
+            "params": [
+              {
+                "name": "idVerificationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "preset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Send a PDF report of the results of an ID verification session"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

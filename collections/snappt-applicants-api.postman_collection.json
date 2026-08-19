@@ -1,0 +1,1857 @@
+{
+  "item": [
+    {
+      "id": "eb2617da-e86c-4721-862d-ce902aaca7f2",
+      "name": "Applicants",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b43a9488-3743-464c-bc08-0ab0c02beb6b",
+          "name": "List applicants",
+          "request": {
+            "name": "List applicants",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rowsPerPage",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0fc66f4-1fdd-48e5-9d78-8ed615585e08",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rowsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "`firstName=example,status=READY` OR `status@>READY|PENDING` OR `externalId=PROSPECT-123`"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6c3f98e5-c48f-d34c-7d17-6e67dc755e59\",\n    \"fullName\": null,\n    \"firstName\": \"string\",\n    \"middleInitial\": null,\n    \"lastName\": null,\n    \"email\": \"nttLBbOrtgbqe@zVcJRlvSjzvXaPfyhNNkRBFrirPRD.kkzi\",\n    \"phone\": null,\n    \"notification\": true,\n    \"entryId\": \"562c572d-8e87-531a-4ec0-3db6c39c1bc6\",\n    \"insertedAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"status\": \"READY\",\n    \"result\": \"PENDING\",\n    \"applicantDetailId\": null,\n    \"externalId\": null,\n    \"externalMetadata\": null,\n    \"documents\": null,\n    \"incomeVerificationDetails\": {\n      \"calculationDate\": \"string\",\n      \"grossDailyIncome\": null,\n      \"grossMonthlyIncome\": 7835.937808099501,\n      \"grossYearlyIncome\": null,\n      \"consecutiveDays\": null,\n      \"statusDetails\": [\n        {\n          \"code\": 3020\n        },\n        {\n          \"code\": 4005\n        }\n      ],\n      \"status\": \"error\"\n    },\n    \"assetVerificationDetails\": {\n      \"calculationDate\": \"string\",\n      \"totalVerifiedAssets\": null,\n      \"status\": \"ok\",\n      \"statusDetails\": [\n        {\n          \"code\": 4002\n        },\n        {\n          \"code\": 4003\n        }\n      ],\n      \"accounts\": [\n        {\n          \"accountId\": \"ec1c9ea5-036e-ac45-840c-8ab1bf8d340d\",\n          \"institutionName\": null,\n          \"accountType\": \"PERSONAL_CHECKING\",\n          \"accountHolderName\": null,\n          \"verifiedAssets\": 1571.4196489463295,\n          \"statements\": [\n            {\n              \"documentId\": \"1e5284fb-23f7-78f1-bca7-b29e7a20d3a4\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": null\n            },\n            {\n              \"documentId\": \"e5f38522-eeef-e610-d535-f8a36e65dd72\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": null\n            }\n          ]\n        },\n        {\n          \"accountId\": \"24998388-d8d2-0354-5f4d-5f11f9220559\",\n          \"institutionName\": \"string\",\n          \"accountType\": \"PERSONAL_CHECKING\",\n          \"accountHolderName\": null,\n          \"verifiedAssets\": 8213.631141822236,\n          \"statements\": [\n            {\n              \"documentId\": \"f27f736e-0295-6482-4b17-bfe0c1475e37\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": 5660.72293736389\n            },\n            {\n              \"documentId\": \"86a05caa-ec2a-5ca9-247d-3501f70a39e5\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": null\n            }\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"24e6e16f-ed34-6e46-f09c-9cd17a671e95\",\n    \"fullName\": \"string\",\n    \"firstName\": null,\n    \"middleInitial\": null,\n    \"lastName\": \"string\",\n    \"email\": null,\n    \"phone\": null,\n    \"notification\": true,\n    \"entryId\": \"b097bccf-de18-1f18-9e8a-72ebb50ff6de\",\n    \"insertedAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"status\": \"READY\",\n    \"result\": \"CLEAN\",\n    \"applicantDetailId\": \"f9a268cc-2637-33c9-0c41-ce8d3cbc4438\",\n    \"externalId\": null,\n    \"externalMetadata\": {\n      \"key_0\": \"\",\n      \"key_1\": \"\"\n    },\n    \"documents\": null,\n    \"incomeVerificationDetails\": {\n      \"calculationDate\": \"string\",\n      \"grossDailyIncome\": null,\n      \"grossMonthlyIncome\": null,\n      \"grossYearlyIncome\": null,\n      \"consecutiveDays\": 5582.945295068388,\n      \"statusDetails\": null,\n      \"status\": \"warning\"\n    },\n    \"assetVerificationDetails\": {\n      \"calculationDate\": \"string\",\n      \"totalVerifiedAssets\": null,\n      \"status\": \"ok\",\n      \"statusDetails\": [\n        {\n          \"code\": 2022\n        },\n        {\n          \"code\": 2025\n        }\n      ],\n      \"accounts\": [\n        {\n          \"accountId\": \"b5b10d31-bf69-8841-9b20-e1e39de21df6\",\n          \"institutionName\": null,\n          \"accountType\": \"PERSONAL_SAVINGS\",\n          \"accountHolderName\": null,\n          \"verifiedAssets\": null,\n          \"statements\": [\n            {\n              \"documentId\": \"f07cf8b0-426e-37d1-3ddb-a7e8a39db272\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": null\n            },\n            {\n              \"documentId\": \"63bb8c35-0e16-a333-2401-693c98424989\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": 207.14637476314857\n            }\n          ]\n        },\n        {\n          \"accountId\": \"0e694be5-9121-c599-56c5-b2fdf4c6b568\",\n          \"institutionName\": \"string\",\n          \"accountType\": \"PERSONAL_CHECKING\",\n          \"accountHolderName\": \"string\",\n          \"verifiedAssets\": 4974.557812515184,\n          \"statements\": [\n            {\n              \"documentId\": \"c90037f7-82c5-273a-bb15-9f5ca83dc845\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": 7768.127596706793\n            },\n            {\n              \"documentId\": \"1a91123d-e9d9-b1e8-8ed2-6807b7b59588\",\n              \"startDate\": \"string\",\n              \"endDate\": \"string\",\n              \"endBalance\": 466.456371626246\n            }\n          ]\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7d2325f-2300-4474-8ca2-f258d76a79e4",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rowsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "`firstName=example,status=READY` OR `status@>READY|PENDING` OR `externalId=PROSPECT-123`"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c416f97-1dc1-4472-8071-7e38086ce27e",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rowsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "`firstName=example,status=READY` OR `status@>READY|PENDING` OR `externalId=PROSPECT-123`"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "875cb8e1-3e41-4566-b022-06c3d50bd7cc",
+          "name": "Retrieve a single document PDF from the applicant's report",
+          "request": {
+            "name": "Retrieve a single document PDF from the applicant's report",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants",
+                ":applicantId",
+                "document",
+                ":documentId",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "applicantId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "documentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "accb2aff-82d4-470c-b53c-22a084e2c578",
+              "name": "A application/pdf payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "document",
+                    ":documentId",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88e9612a-0f9b-4d35-b65f-713fc77ec078",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "document",
+                    ":documentId",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c85bcc9-a69b-42b3-9657-3e0f1099931e",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "document",
+                    ":documentId",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad9f3116-8583-40a9-853e-229f3935f938",
+          "name": "Retrieve a single document thumbnail from the applicant's report",
+          "request": {
+            "name": "Retrieve a single document thumbnail from the applicant's report",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants",
+                ":applicantId",
+                "document",
+                ":documentProofId",
+                "thumbnail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "applicantId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "documentProofId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9953c61e-b4e6-4e0f-8716-32e892dcc902",
+              "name": "A image/png payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "document",
+                    ":documentProofId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentProofId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ee706ae-5baf-4504-b8f9-873cdb83032b",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "document",
+                    ":documentProofId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentProofId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8cc7777-bbdb-4d93-8814-179941be14fd",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "document",
+                    ":documentProofId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "documentProofId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38437d6d-3b85-4d73-bb43-1a808b63c548",
+          "name": "Retrieve an applicant's report for an entry",
+          "request": {
+            "name": "Retrieve an applicant's report for an entry",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants",
+                ":applicantId",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDocuments",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "showThumbnails",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "preset",
+                  "value": "summary-and-documents"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "pdf"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "applicantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e69bdfde-290f-4434-a15a-81afa835f810",
+              "name": "A application/pdf payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "true"
+                    },
+                    {
+                      "key": "showThumbnails",
+                      "value": "true"
+                    },
+                    {
+                      "key": "preset",
+                      "value": "summary-and-documents"
+                    },
+                    {
+                      "key": "format",
+                      "value": "pdf"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfbd490f-f49d-4e9d-9d14-16ade24d1de0",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "true"
+                    },
+                    {
+                      "key": "showThumbnails",
+                      "value": "true"
+                    },
+                    {
+                      "key": "preset",
+                      "value": "summary-and-documents"
+                    },
+                    {
+                      "key": "format",
+                      "value": "pdf"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3e5eff3-bb25-4edd-bff0-6097d654de35",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "true"
+                    },
+                    {
+                      "key": "showThumbnails",
+                      "value": "true"
+                    },
+                    {
+                      "key": "preset",
+                      "value": "summary-and-documents"
+                    },
+                    {
+                      "key": "format",
+                      "value": "pdf"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "865527cd-8e9d-4371-97ec-a23f611ab5f7",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "true"
+                    },
+                    {
+                      "key": "showThumbnails",
+                      "value": "true"
+                    },
+                    {
+                      "key": "preset",
+                      "value": "summary-and-documents"
+                    },
+                    {
+                      "key": "format",
+                      "value": "pdf"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7361b71e-40ef-4e75-a47e-3e986145d028",
+          "name": "Retrieve a reference check form PDF for an applicant",
+          "request": {
+            "name": "Retrieve a reference check form PDF for an applicant",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants",
+                ":applicantId",
+                "referenceCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "applicantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0d8f055-09db-4d74-ae06-a325e084891c",
+              "name": "A application/pdf payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "referenceCheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13000ed3-c1e8-4204-b07e-8e3dbe875585",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "referenceCheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55b1e882-84e5-4346-9e95-f64e5ee35313",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "referenceCheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6108b195-de98-4ea6-bf85-513fdb939db3",
+          "name": "Retrieve a zip file of the applicant's documents",
+          "request": {
+            "name": "Retrieve a zip file of the applicant's documents",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants",
+                ":applicantId",
+                "documents.zip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "applicantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1df86a2-8f03-4099-852b-412bbc34751f",
+              "name": "A application/zip payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "documents.zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84f5670e-b443-4427-92c9-d612fedbb1d7",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "documents.zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd3e09e4-5c76-4020-b0e6-effd2447828d",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId",
+                    "documents.zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b78395d4-efe5-49f1-9565-9d7c9b4b6211",
+          "name": "Retrieve an applicant",
+          "request": {
+            "name": "Retrieve an applicant",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants",
+                ":applicantId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDocuments",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "applicantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf017bbc-5567-4103-9e99-511adc595a99",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"da9140be-cce5-4021-53bf-4e94c7652950\",\n  \"fullName\": null,\n  \"firstName\": null,\n  \"middleInitial\": null,\n  \"lastName\": \"string\",\n  \"email\": null,\n  \"phone\": null,\n  \"notification\": false,\n  \"entryId\": \"8ce632d0-597d-22e6-93da-ac82e0e7fa57\",\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"status\": \"VIEWED\",\n  \"result\": \"EDITED\",\n  \"applicantDetailId\": null,\n  \"externalId\": null,\n  \"externalMetadata\": {\n    \"key_0\": \"\",\n    \"key_1\": \"\",\n    \"key_2\": \"\",\n    \"key_3\": \"\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"de27c3c3-03e0-70d2-a767-ae0ba039ae1b\",\n      \"insertedAt\": \"string\",\n      \"type\": \"BANK_STATEMENT\",\n      \"result\": \"UNDETERMINED\",\n      \"fileName\": \"string\",\n      \"sourceType\": \"DOCUMENT_UPLOAD\",\n      \"incomeVerificationDetails\": null\n    },\n    {\n      \"id\": \"090e0a7e-105c-0910-cc27-1921309dca8f\",\n      \"insertedAt\": \"string\",\n      \"type\": \"BANK_STATEMENT\",\n      \"result\": \"UNDETERMINED\",\n      \"fileName\": \"string\",\n      \"sourceType\": \"DOCUMENT_UPLOAD\",\n      \"incomeVerificationDetails\": {\n        \"calculationStartDate\": \"string\",\n        \"calculationEndDate\": \"string\",\n        \"grossIncome\": null,\n        \"incomeSource\": null,\n        \"applicantName\": \"string\"\n      }\n    }\n  ],\n  \"incomeVerificationDetails\": {\n    \"calculationDate\": \"string\",\n    \"grossDailyIncome\": 9404.577641906902,\n    \"grossMonthlyIncome\": 5463.620176198081,\n    \"grossYearlyIncome\": 5648.735905883746,\n    \"consecutiveDays\": null,\n    \"statusDetails\": [\n      {\n        \"code\": 2022\n      },\n      {\n        \"code\": 2021\n      }\n    ],\n    \"status\": \"ok\"\n  },\n  \"assetVerificationDetails\": {\n    \"calculationDate\": \"string\",\n    \"totalVerifiedAssets\": 2212.770441880849,\n    \"status\": \"ok\",\n    \"statusDetails\": [\n      {\n        \"code\": 4003\n      },\n      {\n        \"code\": 2024\n      }\n    ],\n    \"accounts\": [\n      {\n        \"accountId\": \"68f6c869-309d-de5b-ed46-567657875dc2\",\n        \"institutionName\": \"string\",\n        \"accountType\": \"PERSONAL_SAVINGS\",\n        \"accountHolderName\": null,\n        \"verifiedAssets\": 7943.948450584089,\n        \"statements\": [\n          {\n            \"documentId\": \"1f91dba3-ae10-5af4-0811-224bc16b1092\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": 6270.92586409029\n          },\n          {\n            \"documentId\": \"9890c540-a6be-1780-29e8-248b8c6dc100\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": 3552.8016258242965\n          }\n        ]\n      },\n      {\n        \"accountId\": \"e73a7cef-b4c3-5705-5f63-32fc83145868\",\n        \"institutionName\": \"string\",\n        \"accountType\": \"PERSONAL_SAVINGS\",\n        \"accountHolderName\": \"string\",\n        \"verifiedAssets\": null,\n        \"statements\": [\n          {\n            \"documentId\": \"168ea148-1734-c35d-c2c6-e72e8a6d718c\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": null\n          },\n          {\n            \"documentId\": \"663ce0ce-b5de-e6fc-5a90-b94ed85de603\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": null\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d5f10f8-aa21-4827-8b84-93cc9af4bf90",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20c31315-9dc2-491a-a790-6e8e4c39fcb4",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb96f667-d8e1-40a1-8c53-745331926b91",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDocuments",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf11569a-323d-4dad-bb8d-cfc4f6640306",
+          "name": "Update an applicant's information",
+          "request": {
+            "name": "Update an applicant's information",
+            "description": {},
+            "url": {
+              "path": [
+                "applicants",
+                ":applicantId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "applicantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"fullName\": \"<string,null>\",\n  \"middleInitial\": \"<string>\",\n  \"notification\": \"<boolean>\",\n  \"updatedAt\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eec3212d-c35b-46d1-87f5-281c3bab369a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"fullName\": \"<string,null>\",\n  \"middleInitial\": \"<string>\",\n  \"notification\": \"<boolean>\",\n  \"updatedAt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"da9140be-cce5-4021-53bf-4e94c7652950\",\n  \"fullName\": null,\n  \"firstName\": null,\n  \"middleInitial\": null,\n  \"lastName\": \"string\",\n  \"email\": null,\n  \"phone\": null,\n  \"notification\": false,\n  \"entryId\": \"8ce632d0-597d-22e6-93da-ac82e0e7fa57\",\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"status\": \"VIEWED\",\n  \"result\": \"EDITED\",\n  \"applicantDetailId\": null,\n  \"externalId\": null,\n  \"externalMetadata\": {\n    \"key_0\": \"\",\n    \"key_1\": \"\",\n    \"key_2\": \"\",\n    \"key_3\": \"\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"de27c3c3-03e0-70d2-a767-ae0ba039ae1b\",\n      \"insertedAt\": \"string\",\n      \"type\": \"BANK_STATEMENT\",\n      \"result\": \"UNDETERMINED\",\n      \"fileName\": \"string\",\n      \"sourceType\": \"DOCUMENT_UPLOAD\",\n      \"incomeVerificationDetails\": null\n    },\n    {\n      \"id\": \"090e0a7e-105c-0910-cc27-1921309dca8f\",\n      \"insertedAt\": \"string\",\n      \"type\": \"BANK_STATEMENT\",\n      \"result\": \"UNDETERMINED\",\n      \"fileName\": \"string\",\n      \"sourceType\": \"DOCUMENT_UPLOAD\",\n      \"incomeVerificationDetails\": {\n        \"calculationStartDate\": \"string\",\n        \"calculationEndDate\": \"string\",\n        \"grossIncome\": null,\n        \"incomeSource\": null,\n        \"applicantName\": \"string\"\n      }\n    }\n  ],\n  \"incomeVerificationDetails\": {\n    \"calculationDate\": \"string\",\n    \"grossDailyIncome\": 9404.577641906902,\n    \"grossMonthlyIncome\": 5463.620176198081,\n    \"grossYearlyIncome\": 5648.735905883746,\n    \"consecutiveDays\": null,\n    \"statusDetails\": [\n      {\n        \"code\": 2022\n      },\n      {\n        \"code\": 2021\n      }\n    ],\n    \"status\": \"ok\"\n  },\n  \"assetVerificationDetails\": {\n    \"calculationDate\": \"string\",\n    \"totalVerifiedAssets\": 2212.770441880849,\n    \"status\": \"ok\",\n    \"statusDetails\": [\n      {\n        \"code\": 4003\n      },\n      {\n        \"code\": 2024\n      }\n    ],\n    \"accounts\": [\n      {\n        \"accountId\": \"68f6c869-309d-de5b-ed46-567657875dc2\",\n        \"institutionName\": \"string\",\n        \"accountType\": \"PERSONAL_SAVINGS\",\n        \"accountHolderName\": null,\n        \"verifiedAssets\": 7943.948450584089,\n        \"statements\": [\n          {\n            \"documentId\": \"1f91dba3-ae10-5af4-0811-224bc16b1092\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": 6270.92586409029\n          },\n          {\n            \"documentId\": \"9890c540-a6be-1780-29e8-248b8c6dc100\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": 3552.8016258242965\n          }\n        ]\n      },\n      {\n        \"accountId\": \"e73a7cef-b4c3-5705-5f63-32fc83145868\",\n        \"institutionName\": \"string\",\n        \"accountType\": \"PERSONAL_SAVINGS\",\n        \"accountHolderName\": \"string\",\n        \"verifiedAssets\": null,\n        \"statements\": [\n          {\n            \"documentId\": \"168ea148-1734-c35d-c2c6-e72e8a6d718c\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": null\n          },\n          {\n            \"documentId\": \"663ce0ce-b5de-e6fc-5a90-b94ed85de603\",\n            \"startDate\": \"string\",\n            \"endDate\": \"string\",\n            \"endBalance\": null\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afc47a0e-72a7-4a37-aeef-49d90c9c80fc",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"fullName\": \"<string,null>\",\n  \"middleInitial\": \"<string>\",\n  \"notification\": \"<boolean>\",\n  \"updatedAt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12e3b86d-266a-4e58-a7b9-fecd943f519e",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"fullName\": \"<string,null>\",\n  \"middleInitial\": \"<string>\",\n  \"notification\": \"<boolean>\",\n  \"updatedAt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "961dd4c1-1f4c-457c-b9a1-4a510d39eb4d",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "applicants",
+                    ":applicantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "applicantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"fullName\": \"<string,null>\",\n  \"middleInitial\": \"<string>\",\n  \"notification\": \"<boolean>\",\n  \"updatedAt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://enterprise-api.demo.snappt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "4c565e97-b0d4-466d-87df-f38ee30959b9",
+    "name": "Snappt Applicants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.",
+      "type": "text/plain"
+    }
+  }
+}

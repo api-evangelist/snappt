@@ -1,0 +1,1541 @@
+openapi: 3.2.0
+info:
+  version: 1.75.3
+  title: Snappt Applicants API
+  description: Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.
+servers:
+- url: https://enterprise-api.demo.snappt.com
+security:
+- {}
+- bearerAuth: []
+tags:
+- name: Applicants
+paths:
+  /applicants:
+    get:
+      tags:
+      - Applicants
+      summary: List applicants
+      parameters:
+      - schema:
+          type: number
+          description: The total number of rows to respond with. Defaults to 50.
+        required: false
+        name: rowsPerPage
+        in: query
+      - schema:
+          type: number
+          description: The current page. Defaults to 0.
+        required: false
+        name: page
+        in: query
+      - schema:
+          type: string
+          description: 'Sort by any of the allowed options: result, status, insertedAt, firstName, lastName, email, externalId.'
+        required: false
+        name: sort
+        in: query
+      - schema:
+          type: string
+          description: 'Filter results by any of these fields: result, status, insertedAt, firstName, lastName, email, externalId. You can filter using the following operators: =,<=,>=,!=,<,>,!@>,@>. The last option (@>) is the equivalent to the in operator (!@> is equivalent to not in) and should receive a list of values separated by a "|". You can also filter by null values passing the key word IS_NULL, ex: email=IS_NULL or email!=IS_NULL to look for the not nulls ones.'
+          example: '`firstName=example,status=READY` OR `status@>READY|PENDING` OR `externalId=PROSPECT-123`'
+        required: false
+        name: filter
+        in: query
+      - schema:
+          type: string
+          description: Filter applicants by name, email address, or property.
+        required: false
+        name: q
+        in: query
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    fullName:
+                      type:
+                      - string
+                      - 'null'
+                    firstName:
+                      type:
+                      - string
+                      - 'null'
+                    middleInitial:
+                      type:
+                      - string
+                      - 'null'
+                    lastName:
+                      type:
+                      - string
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    notification:
+                      type: boolean
+                    entryId:
+                      type: string
+                      format: uuid
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    status:
+                      type: string
+                      enum:
+                      - PENDING
+                      - VIEWED
+                      - READY
+                    result:
+                      type: string
+                      enum:
+                      - CLEAN
+                      - PENDING
+                      - EDITED
+                      - UNDETERMINED
+                    applicantDetailId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    externalId:
+                      type:
+                      - string
+                      - 'null'
+                    externalMetadata:
+                      type:
+                      - object
+                      - 'null'
+                      additionalProperties: {}
+                      description: Arbitrary metadata from your external system. Keys/values are stored but not interpreted by Snappt.
+                    documents:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          fileName:
+                            type: string
+                          insertedAt:
+                            type: string
+                            description: An ISO-formattted datetime
+                          type:
+                            type: string
+                            example: BANK_STATEMENT
+                            enum:
+                            - BANK_STATEMENT
+                            - PAYSTUB
+                            - OTHER
+                          result:
+                            type: string
+                            enum:
+                            - PENDING
+                            - CLEAN
+                            - EDITED
+                            - UNDETERMINED
+                          sourceType:
+                            type: string
+                            enum:
+                            - BANK_LINKING
+                            - CONNECTED_PAYROLL
+                            - DOCUMENT_UPLOAD
+                            - TAX_RETURN_LINKING
+                            default: DOCUMENT_UPLOAD
+                          incomeVerificationDetails:
+                            type:
+                            - object
+                            - 'null'
+                            properties:
+                              calculationStartDate:
+                                type: string
+                                description: An ISO-formattted datetime
+                              calculationEndDate:
+                                type: string
+                                description: An ISO-formattted datetime
+                              grossIncome:
+                                type:
+                                - number
+                                - 'null'
+                              incomeSource:
+                                type:
+                                - string
+                                - 'null'
+                              applicantName:
+                                type:
+                                - string
+                                - 'null'
+                            required:
+                            - calculationStartDate
+                            - calculationEndDate
+                            - grossIncome
+                            - incomeSource
+                            - applicantName
+                        required:
+                        - id
+                        - insertedAt
+                        - type
+                        - result
+                    incomeVerificationDetails:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        calculationDate:
+                          type: string
+                          description: An ISO-formattted datetime
+                        grossDailyIncome:
+                          type:
+                          - number
+                          - 'null'
+                        grossMonthlyIncome:
+                          type:
+                          - number
+                          - 'null'
+                        grossYearlyIncome:
+                          type:
+                          - number
+                          - 'null'
+                        consecutiveDays:
+                          type:
+                          - number
+                          - 'null'
+                        statusDetails:
+                          type:
+                          - array
+                          - 'null'
+                          items:
+                            type: object
+                            properties:
+                              code:
+                                type: integer
+                                enum:
+                                - 2000
+                                - 2006
+                                - 2008
+                                - 2009
+                                - 2003
+                                - 2010
+                                - 2011
+                                - 2012
+                                - 2018
+                                - 2019
+                                - 2020
+                                - 2021
+                                - 2022
+                                - 2023
+                                - 3001
+                                - 3002
+                                - 3003
+                                - 3004
+                                - 3005
+                                - 3007
+                                - 3008
+                                - 3020
+                                - 3021
+                                - 3022
+                                - 3023
+                                - 4001
+                                - 4002
+                                - 4003
+                                - 4004
+                                - 4005
+                            required:
+                            - code
+                        status:
+                          type: string
+                          enum:
+                          - ok
+                          - warning
+                          - error
+                      required:
+                      - calculationDate
+                      - grossDailyIncome
+                      - grossMonthlyIncome
+                      - grossYearlyIncome
+                      - consecutiveDays
+                      - statusDetails
+                      - status
+                    assetVerificationDetails:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        calculationDate:
+                          type: string
+                          description: An ISO-formattted datetime
+                        totalVerifiedAssets:
+                          type:
+                          - number
+                          - 'null'
+                        status:
+                          type: string
+                          enum:
+                          - ok
+                          - warning
+                          - error
+                        statusDetails:
+                          type:
+                          - array
+                          - 'null'
+                          items:
+                            type: object
+                            properties:
+                              code:
+                                type: integer
+                                enum:
+                                - 3027
+                                - 3026
+                                - 3022
+                                - 3021
+                                - 3024
+                                - 3025
+                                - 3020
+                                - 2025
+                                - 2024
+                                - 2020
+                                - 2021
+                                - 2022
+                                - 2023
+                                - 4001
+                                - 4002
+                                - 4003
+                                - 4004
+                                - 2003
+                            required:
+                            - code
+                        accounts:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              accountId:
+                                type: string
+                                format: uuid
+                              institutionName:
+                                type:
+                                - string
+                                - 'null'
+                              accountType:
+                                type:
+                                - string
+                                - 'null'
+                                enum:
+                                - PERSONAL_CHECKING
+                                - PERSONAL_SAVINGS
+                              accountHolderName:
+                                type:
+                                - string
+                                - 'null'
+                              verifiedAssets:
+                                type:
+                                - number
+                                - 'null'
+                              statements:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    documentId:
+                                      type: string
+                                      format: uuid
+                                    startDate:
+                                      type: string
+                                      description: An ISO-formattted datetime
+                                    endDate:
+                                      type: string
+                                      description: An ISO-formattted datetime
+                                    endBalance:
+                                      type:
+                                      - number
+                                      - 'null'
+                                  required:
+                                  - documentId
+                                  - startDate
+                                  - endDate
+                                  - endBalance
+                            required:
+                            - accountId
+                            - institutionName
+                            - accountType
+                            - accountHolderName
+                            - verifiedAssets
+                            - statements
+                      required:
+                      - calculationDate
+                      - totalVerifiedAssets
+                      - status
+                      - statusDetails
+                      - accounts
+                  required:
+                  - id
+                  - fullName
+                  - firstName
+                  - middleInitial
+                  - lastName
+                  - email
+                  - phone
+                  - notification
+                  - entryId
+                  - insertedAt
+                  - updatedAt
+                  - status
+                  - result
+                  - applicantDetailId
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /applicants/{applicantId}/document/{documentId}/pdf:
+    get:
+      tags:
+      - Applicants
+      summary: Retrieve a single document PDF from the applicant's report
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: applicantId
+        in: path
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: documentId
+        in: path
+      responses:
+        '200':
+          description: A application/pdf payload
+          content:
+            application/pdf:
+              schema: {}
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /applicants/{applicantId}/document/{documentProofId}/thumbnail:
+    get:
+      tags:
+      - Applicants
+      summary: Retrieve a single document thumbnail from the applicant's report
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: applicantId
+        in: path
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: documentProofId
+        in: path
+      responses:
+        '200':
+          description: A image/png payload
+          content:
+            image/png:
+              schema: {}
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /applicants/{applicantId}/report:
+    get:
+      tags:
+      - Applicants
+      summary: Retrieve an applicant's report for an entry
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: applicantId
+        in: path
+      - schema:
+          type: boolean
+          description: 'Pass false to omit the contents of the applicant documents from the report and include only the result. Note: this parameter will be deprecated in the future. use `preset` instead.'
+          default: 'true'
+          deprecated: true
+        required: false
+        name: includeDocuments
+        in: query
+      - schema:
+          type: boolean
+          description: 'Pass false to omit thumbnail images and receive a FCRA compatible report. Note: this parameter will only have an effect if `includeDocuments=false` Note: this parameter will be deprecated in the future. use `preset` instead.'
+          default: 'true'
+          deprecated: true
+        required: false
+        name: showThumbnails
+        in: query
+      - schema:
+          type: string
+          description: Pass `fcra` to receive a FCRA compatible report, `summary` to receive a report without documents or `summary-and-documents` to receive a report with the applicant's documents included.
+          enum:
+          - fcra
+          - summary-and-documents
+          - summary
+          default: summary-and-documents
+        required: false
+        name: preset
+        in: query
+      - schema:
+          type: string
+          description: Pass HTML to get an HTML version of the report instead of the default PDF format.
+          enum:
+          - html
+          - pdf
+          default: pdf
+        required: false
+        name: format
+        in: query
+      responses:
+        '200':
+          description: A application/pdf payload
+          content:
+            application/pdf:
+              schema: {}
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /applicants/{applicantId}/referenceCheck:
+    get:
+      tags:
+      - Applicants
+      summary: Retrieve a reference check form PDF for an applicant
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: applicantId
+        in: path
+      responses:
+        '200':
+          description: A application/pdf payload
+          content:
+            application/pdf:
+              schema: {}
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /applicants/{applicantId}/documents.zip:
+    get:
+      tags:
+      - Applicants
+      summary: Retrieve a zip file of the applicant's documents
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: applicantId
+        in: path
+      responses:
+        '200':
+          description: A application/zip payload
+          content:
+            application/zip:
+              schema: {}
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /applicants/{applicantId}:
+    get:
+      tags:
+      - Applicants
+      summary: Retrieve an applicant
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: applicantId
+        in: path
+      - schema:
+          type: boolean
+          description: Pass true to include the status of each applicant document and false to include only the result of the overall submission.
+          default: 'false'
+        required: false
+        name: includeDocuments
+        in: query
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  fullName:
+                    type:
+                    - string
+                    - 'null'
+                  firstName:
+                    type:
+                    - string
+                    - 'null'
+                  middleInitial:
+                    type:
+                    - string
+                    - 'null'
+                  lastName:
+                    type:
+                    - string
+                    - 'null'
+                  email:
+                    type:
+                    - string
+                    - 'null'
+                    format: email
+                  phone:
+                    type:
+                    - string
+                    - 'null'
+                  notification:
+                    type: boolean
+                  entryId:
+                    type: string
+                    format: uuid
+                  insertedAt:
+                    type: string
+                    description: An ISO-formattted datetime
+                  updatedAt:
+                    type: string
+                    description: An ISO-formattted datetime
+                  status:
+                    type: string
+                    enum:
+                    - PENDING
+                    - VIEWED
+                    - READY
+                  result:
+                    type: string
+                    enum:
+                    - CLEAN
+                    - PENDING
+                    - EDITED
+                    - UNDETERMINED
+                  applicantDetailId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  externalId:
+                    type:
+                    - string
+                    - 'null'
+                  externalMetadata:
+                    type:
+                    - object
+                    - 'null'
+                    additionalProperties: {}
+                    description: Arbitrary metadata from your external system. Keys/values are stored but not interpreted by Snappt.
+                  documents:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        fileName:
+                          type: string
+                        insertedAt:
+                          type: string
+                          description: An ISO-formattted datetime
+                        type:
+                          type: string
+                          example: BANK_STATEMENT
+                          enum:
+                          - BANK_STATEMENT
+                          - PAYSTUB
+                          - OTHER
+                        result:
+                          type: string
+                          enum:
+                          - PENDING
+                          - CLEAN
+                          - EDITED
+                          - UNDETERMINED
+                        sourceType:
+                          type: string
+                          enum:
+                          - BANK_LINKING
+                          - CONNECTED_PAYROLL
+                          - DOCUMENT_UPLOAD
+                          - TAX_RETURN_LINKING
+                          default: DOCUMENT_UPLOAD
+                        incomeVerificationDetails:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            calculationStartDate:
+                              type: string
+                              description: An ISO-formattted datetime
+                            calculationEndDate:
+                              type: string
+                              description: An ISO-formattted datetime
+                            grossIncome:
+                              type:
+                              - number
+                              - 'null'
+                            incomeSource:
+                              type:
+                              - string
+                              - 'null'
+                            applicantName:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - calculationStartDate
+                          - calculationEndDate
+                          - grossIncome
+                          - incomeSource
+                          - applicantName
+                      required:
+                      - id
+                      - insertedAt
+                      - type
+                      - result
+                  incomeVerificationDetails:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      calculationDate:
+                        type: string
+                        description: An ISO-formattted datetime
+                      grossDailyIncome:
+                        type:
+                        - number
+                        - 'null'
+                      grossMonthlyIncome:
+                        type:
+                        - number
+                        - 'null'
+                      grossYearlyIncome:
+                        type:
+                        - number
+                        - 'null'
+                      consecutiveDays:
+                        type:
+                        - number
+                        - 'null'
+                      statusDetails:
+                        type:
+                        - array
+                        - 'null'
+                        items:
+                          type: object
+                          properties:
+                            code:
+                              type: integer
+                              enum:
+                              - 2000
+                              - 2006
+                              - 2008
+                              - 2009
+                              - 2003
+                              - 2010
+                              - 2011
+                              - 2012
+                              - 2018
+                              - 2019
+                              - 2020
+                              - 2021
+                              - 2022
+                              - 2023
+                              - 3001
+                              - 3002
+                              - 3003
+                              - 3004
+                              - 3005
+                              - 3007
+                              - 3008
+                              - 3020
+                              - 3021
+                              - 3022
+                              - 3023
+                              - 4001
+                              - 4002
+                              - 4003
+                              - 4004
+                              - 4005
+                          required:
+                          - code
+                      status:
+                        type: string
+                        enum:
+                        - ok
+                        - warning
+                        - error
+                    required:
+                    - calculationDate
+                    - grossDailyIncome
+                    - grossMonthlyIncome
+                    - grossYearlyIncome
+                    - consecutiveDays
+                    - statusDetails
+                    - status
+                  assetVerificationDetails:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      calculationDate:
+                        type: string
+                        description: An ISO-formattted datetime
+                      totalVerifiedAssets:
+                        type:
+                        - number
+                        - 'null'
+                      status:
+                        type: string
+                        enum:
+                        - ok
+                        - warning
+                        - error
+                      statusDetails:
+                        type:
+                        - array
+                        - 'null'
+                        items:
+                          type: object
+                          properties:
+                            code:
+                              type: integer
+                              enum:
+                              - 3027
+                              - 3026
+                              - 3022
+                              - 3021
+                              - 3024
+                              - 3025
+                              - 3020
+                              - 2025
+                              - 2024
+                              - 2020
+                              - 2021
+                              - 2022
+                              - 2023
+                              - 4001
+                              - 4002
+                              - 4003
+                              - 4004
+                              - 2003
+                          required:
+                          - code
+                      accounts:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            accountId:
+                              type: string
+                              format: uuid
+                            institutionName:
+                              type:
+                              - string
+                              - 'null'
+                            accountType:
+                              type:
+                              - string
+                              - 'null'
+                              enum:
+                              - PERSONAL_CHECKING
+                              - PERSONAL_SAVINGS
+                            accountHolderName:
+                              type:
+                              - string
+                              - 'null'
+                            verifiedAssets:
+                              type:
+                              - number
+                              - 'null'
+                            statements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  documentId:
+                                    type: string
+                                    format: uuid
+                                  startDate:
+                                    type: string
+                                    description: An ISO-formattted datetime
+                                  endDate:
+                                    type: string
+                                    description: An ISO-formattted datetime
+                                  endBalance:
+                                    type:
+                                    - number
+                                    - 'null'
+                                required:
+                                - documentId
+                                - startDate
+                                - endDate
+                                - endBalance
+                          required:
+                          - accountId
+                          - institutionName
+                          - accountType
+                          - accountHolderName
+                          - verifiedAssets
+                          - statements
+                    required:
+                    - calculationDate
+                    - totalVerifiedAssets
+                    - status
+                    - statusDetails
+                    - accounts
+                required:
+                - id
+                - fullName
+                - firstName
+                - middleInitial
+                - lastName
+                - email
+                - phone
+                - notification
+                - entryId
+                - insertedAt
+                - updatedAt
+                - status
+                - result
+                - applicantDetailId
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    put:
+      tags:
+      - Applicants
+      summary: Update an applicant's information
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: applicantId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type:
+                  - string
+                  - 'null'
+                firstName:
+                  type: string
+                  minLength: 1
+                  maxLength: 25
+                  pattern: ^[A-Za-z]+$
+                middleInitial:
+                  type: string
+                  minLength: 1
+                  maxLength: 1
+                  pattern: ^[A-Z]$
+                lastName:
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  pattern: ^[A-Za-z]+$
+                email:
+                  type: string
+                  minLength: 1
+                  format: email
+                phone:
+                  type: string
+                  minLength: 10
+                  maxLength: 15
+                  pattern: ^[0-9]+$
+                notification:
+                  type: boolean
+                updatedAt:
+                  type: string
+                  description: An ISO-formattted datetime
+              required:
+              - firstName
+              - lastName
+              - email
+              - phone
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  fullName:
+                    type:
+                    - string
+                    - 'null'
+                  firstName:
+                    type:
+                    - string
+                    - 'null'
+                  middleInitial:
+                    type:
+                    - string
+                    - 'null'
+                  lastName:
+                    type:
+                    - string
+                    - 'null'
+                  email:
+                    type:
+                    - string
+                    - 'null'
+                    format: email
+                  phone:
+                    type:
+                    - string
+                    - 'null'
+                  notification:
+                    type: boolean
+                  entryId:
+                    type: string
+                    format: uuid
+                  insertedAt:
+                    type: string
+                    description: An ISO-formattted datetime
+                  updatedAt:
+                    type: string
+                    description: An ISO-formattted datetime
+                  status:
+                    type: string
+                    enum:
+                    - PENDING
+                    - VIEWED
+                    - READY
+                  result:
+                    type: string
+                    enum:
+                    - CLEAN
+                    - PENDING
+                    - EDITED
+                    - UNDETERMINED
+                  applicantDetailId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  externalId:
+                    type:
+                    - string
+                    - 'null'
+                  externalMetadata:
+                    type:
+                    - object
+                    - 'null'
+                    additionalProperties: {}
+                    description: Arbitrary metadata from your external system. Keys/values are stored but not interpreted by Snappt.
+                  documents:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        fileName:
+                          type: string
+                        insertedAt:
+                          type: string
+                          description: An ISO-formattted datetime
+                        type:
+                          type: string
+                          example: BANK_STATEMENT
+                          enum:
+                          - BANK_STATEMENT
+                          - PAYSTUB
+                          - OTHER
+                        result:
+                          type: string
+                          enum:
+                          - PENDING
+                          - CLEAN
+                          - EDITED
+                          - UNDETERMINED
+                        sourceType:
+                          type: string
+                          enum:
+                          - BANK_LINKING
+                          - CONNECTED_PAYROLL
+                          - DOCUMENT_UPLOAD
+                          - TAX_RETURN_LINKING
+                          default: DOCUMENT_UPLOAD
+                        incomeVerificationDetails:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            calculationStartDate:
+                              type: string
+                              description: An ISO-formattted datetime
+                            calculationEndDate:
+                              type: string
+                              description: An ISO-formattted datetime
+                            grossIncome:
+                              type:
+                              - number
+                              - 'null'
+                            incomeSource:
+                              type:
+                              - string
+                              - 'null'
+                            applicantName:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - calculationStartDate
+                          - calculationEndDate
+                          - grossIncome
+                          - incomeSource
+                          - applicantName
+                      required:
+                      - id
+                      - insertedAt
+                      - type
+                      - result
+                  incomeVerificationDetails:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      calculationDate:
+                        type: string
+                        description: An ISO-formattted datetime
+                      grossDailyIncome:
+                        type:
+                        - number
+                        - 'null'
+                      grossMonthlyIncome:
+                        type:
+                        - number
+                        - 'null'
+                      grossYearlyIncome:
+                        type:
+                        - number
+                        - 'null'
+                      consecutiveDays:
+                        type:
+                        - number
+                        - 'null'
+                      statusDetails:
+                        type:
+                        - array
+                        - 'null'
+                        items:
+                          type: object
+                          properties:
+                            code:
+                              type: integer
+                              enum:
+                              - 2000
+                              - 2006
+                              - 2008
+                              - 2009
+                              - 2003
+                              - 2010
+                              - 2011
+                              - 2012
+                              - 2018
+                              - 2019
+                              - 2020
+                              - 2021
+                              - 2022
+                              - 2023
+                              - 3001
+                              - 3002
+                              - 3003
+                              - 3004
+                              - 3005
+                              - 3007
+                              - 3008
+                              - 3020
+                              - 3021
+                              - 3022
+                              - 3023
+                              - 4001
+                              - 4002
+                              - 4003
+                              - 4004
+                              - 4005
+                          required:
+                          - code
+                      status:
+                        type: string
+                        enum:
+                        - ok
+                        - warning
+                        - error
+                    required:
+                    - calculationDate
+                    - grossDailyIncome
+                    - grossMonthlyIncome
+                    - grossYearlyIncome
+                    - consecutiveDays
+                    - statusDetails
+                    - status
+                  assetVerificationDetails:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      calculationDate:
+                        type: string
+                        description: An ISO-formattted datetime
+                      totalVerifiedAssets:
+                        type:
+                        - number
+                        - 'null'
+                      status:
+                        type: string
+                        enum:
+                        - ok
+                        - warning
+                        - error
+                      statusDetails:
+                        type:
+                        - array
+                        - 'null'
+                        items:
+                          type: object
+                          properties:
+                            code:
+                              type: integer
+                              enum:
+                              - 3027
+                              - 3026
+                              - 3022
+                              - 3021
+                              - 3024
+                              - 3025
+                              - 3020
+                              - 2025
+                              - 2024
+                              - 2020
+                              - 2021
+                              - 2022
+                              - 2023
+                              - 4001
+                              - 4002
+                              - 4003
+                              - 4004
+                              - 2003
+                          required:
+                          - code
+                      accounts:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            accountId:
+                              type: string
+                              format: uuid
+                            institutionName:
+                              type:
+                              - string
+                              - 'null'
+                            accountType:
+                              type:
+                              - string
+                              - 'null'
+                              enum:
+                              - PERSONAL_CHECKING
+                              - PERSONAL_SAVINGS
+                            accountHolderName:
+                              type:
+                              - string
+                              - 'null'
+                            verifiedAssets:
+                              type:
+                              - number
+                              - 'null'
+                            statements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  documentId:
+                                    type: string
+                                    format: uuid
+                                  startDate:
+                                    type: string
+                                    description: An ISO-formattted datetime
+                                  endDate:
+                                    type: string
+                                    description: An ISO-formattted datetime
+                                  endBalance:
+                                    type:
+                                    - number
+                                    - 'null'
+                                required:
+                                - documentId
+                                - startDate
+                                - endDate
+                                - endBalance
+                          required:
+                          - accountId
+                          - institutionName
+                          - accountType
+                          - accountHolderName
+                          - verifiedAssets
+                          - statements
+                    required:
+                    - calculationDate
+                    - totalVerifiedAssets
+                    - status
+                    - statusDetails
+                    - accounts
+                required:
+                - id
+                - fullName
+                - firstName
+                - middleInitial
+                - lastName
+                - email
+                - phone
+                - notification
+                - entryId
+                - insertedAt
+                - updatedAt
+                - status
+                - result
+                - applicantDetailId
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    snapptSessionAuth:
+      type: apiKey
+      in: header
+      name: x-unauthenticated-session-token
+      description: Pass the session token obtained from POST /session

@@ -1,0 +1,2449 @@
+{
+  "item": [
+    {
+      "id": "f7f6fd16-e13b-4342-8f51-03c1b6544ad0",
+      "name": "Applicant Sessions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9fedbf5-e574-4748-a637-dde313a1284b",
+          "name": "Create an applicant session",
+          "request": {
+            "name": "Create an applicant session",
+            "description": {
+              "content": "Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session",
+                "public"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "applicationType",
+                  "value": "unauthenticated_user"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"applicantIdentifier\": \"<uuid>\",\n  \"identityId\": \"<string,null-uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08e20cd9-7808-46fd-8d9a-6c611b18c75b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "public"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationType",
+                      "value": "unauthenticated_user"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Smith\",\n  \"email\": \"bob@gmail.com\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"identityId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"1339a96e-3cc7-c7a2-ab15-29b96919b719\",\n  \"id\": \"42fabc46-dfc7-9f73-6167-08e925228752\",\n  \"applicantDetailId\": \"77929d15-8300-406f-f882-24961fe1b846\",\n  \"identityId\": \"2ad37e8a-3a39-e8a9-a9fe-51cd4333ccfb\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24c4a10f-2943-49c3-b16d-24c3f07a8102",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "public"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationType",
+                      "value": "unauthenticated_user"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Smith\",\n  \"email\": \"bob@gmail.com\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"identityId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9423cc47-4b9b-4027-9273-bfe026e7312c",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "public"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationType",
+                      "value": "unauthenticated_user"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Smith\",\n  \"email\": \"bob@gmail.com\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"identityId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adc62966-92df-4723-b515-6000261600a5",
+          "name": "Retrieve information about the property",
+          "request": {
+            "name": "Retrieve information about the property",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                "property"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3330196b-77ce-4d31-8553-25321a9f6ced",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"83708b70-9c34-5d72-996b-cd8049723798\",\n  \"shortId\": \"string\",\n  \"name\": \"string\",\n  \"entityName\": null,\n  \"logo\": null,\n  \"phone\": null,\n  \"phoneIsRequired\": true,\n  \"website\": null,\n  \"unit\": null,\n  \"unitIsRequired\": null,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"zip\": \"string\",\n  \"status\": \"DISABLED\",\n  \"bankStatement\": 276.1532499257024,\n  \"paystub\": null,\n  \"email\": null,\n  \"companyId\": null,\n  \"companyShortId\": null,\n  \"applicantLink\": \"string\",\n  \"leasingTeamLink\": \"string\",\n  \"isLinkedToYardi\": true,\n  \"identityVerificationEnabled\": null,\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"supportedDoctypes\": {\n    \"paystub\": 9237.21027735916,\n    \"bank_statement\": 4592.133853794119,\n    \"cash_app_statement\": 1764.003977630537,\n    \"credit_debit_card_statement\": 6448.285439552677,\n    \"department_of_veterans_affairs_benefit_letter\": 1434.4459091671192,\n    \"investment_account\": 5610.614060888139,\n    \"social_security_benefits_letter\": 2558.1577692876776,\n    \"social_security_statement\": 3458.476833154028,\n    \"tax_transcript\": 24.148242652046736,\n    \"utility_bill\": 7281.534427679271,\n    \"payroll_statement\": 2609.598719816706,\n    \"bank_linking_verification_of_income\": 1403.7987650301031,\n    \"tax_return_linking_report\": 6592.206953430109,\n    \"w2\": 7307.89623283164,\n    \"child_support\": 9353.99693411602,\n    \"financial_aid\": 8374.61960045493,\n    \"offer_letter\": 7912.717036354235,\n    \"student_visa\": 6913.548133603861\n  },\n  \"pmcName\": null,\n  \"incomeVerificationEnabled\": null,\n  \"assetVerificationEnabled\": null,\n  \"payrollLinkingEnabled\": null,\n  \"bankLinkingEnabled\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72bf3e05-a54d-4b40-8d4d-a26e97f8cd72",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b84f7dc0-28d9-4081-b02f-b49da164fd72",
+          "name": "Retrieve application data",
+          "request": {
+            "name": "Retrieve application data",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                "application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7142240e-2e2d-438f-bcee-20ab21f532a9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7733bafe-efd4-0747-a571-406aa2d15afc\",\n  \"identityId\": null,\n  \"type\": \"unauthenticated_user\",\n  \"firstName\": null,\n  \"lastName\": null,\n  \"email\": \"string\",\n  \"applicantDetailId\": null,\n  \"propertyShortId\": \"string\",\n  \"companyShortId\": null,\n  \"rentalHistories\": null,\n  \"isTaxReturnConnected\": null,\n  \"taxReturnData\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"provider\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"icon\": \"string\",\n      \"logo\": \"string\",\n      \"category\": \"string\",\n      \"display_name\": \"string\",\n      \"record_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primary_color\": \"string\"\n    },\n    \"externalId\": \"string\",\n    \"taxYear\": 1256.7982585349014,\n    \"status\": \"string\",\n    \"data\": {\n      \"name\": \"string\",\n      \"tax_year\": 1659.1237676604853\n    }\n  },\n  \"unit\": null,\n  \"middleInitial\": \"string\",\n  \"notificationEmail\": null,\n  \"phone\": \"string\",\n  \"hasPreviouslySubmitted\": false,\n  \"metadata\": {},\n  \"prefilledFields\": null,\n  \"hasRentalHistory\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf2db6c5-c183-4172-9e8b-de33da6ad4f8",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b25cd7c-5c5a-48d0-a50b-58e392394d1f",
+          "name": "Update application data",
+          "request": {
+            "name": "Update application data",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                "application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"identityId\": \"<string,null-uuid>\",\n  \"type\": \"<string>\",\n  \"unit\": \"<string,null>\",\n  \"firstName\": \"<string,null>\",\n  \"middleInitial\": \"<string,null>\",\n  \"lastName\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"notificationEmail\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"hasPreviouslySubmitted\": \"<boolean,null>\",\n  \"metadata\": \"<object>\",\n  \"applicantDetailId\": \"<string,null-uuid>\",\n  \"prefilledFields\": \"<array,null>\",\n  \"propertyShortId\": \"<string,null>\",\n  \"companyShortId\": \"<string,null>\",\n  \"hasRentalHistory\": \"<boolean,null>\",\n  \"rentalHistories\": \"<array,null>\",\n  \"isTaxReturnConnected\": \"<boolean,null>\",\n  \"taxReturnData\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"provider\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"icon\": \"<string>\",\n      \"logo\": \"<string>\",\n      \"category\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"record_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"primary_color\": \"<string>\"\n    },\n    \"externalId\": \"<string>\",\n    \"taxYear\": \"<number>\",\n    \"status\": \"<string>\",\n    \"data\": {\n      \"name\": \"<string>\",\n      \"tax_year\": \"<number>\",\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53b3f0fd-5785-4d2f-9a5d-821c6af54a0f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"identityId\": \"<string,null-uuid>\",\n  \"type\": \"<string>\",\n  \"unit\": \"<string,null>\",\n  \"firstName\": \"<string,null>\",\n  \"middleInitial\": \"<string,null>\",\n  \"lastName\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"notificationEmail\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"hasPreviouslySubmitted\": \"<boolean,null>\",\n  \"metadata\": \"<object>\",\n  \"applicantDetailId\": \"<string,null-uuid>\",\n  \"prefilledFields\": \"<array,null>\",\n  \"propertyShortId\": \"<string,null>\",\n  \"companyShortId\": \"<string,null>\",\n  \"hasRentalHistory\": \"<boolean,null>\",\n  \"rentalHistories\": \"<array,null>\",\n  \"isTaxReturnConnected\": \"<boolean,null>\",\n  \"taxReturnData\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"provider\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"icon\": \"<string>\",\n      \"logo\": \"<string>\",\n      \"category\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"record_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"primary_color\": \"<string>\"\n    },\n    \"externalId\": \"<string>\",\n    \"taxYear\": \"<number>\",\n    \"status\": \"<string>\",\n    \"data\": {\n      \"name\": \"<string>\",\n      \"tax_year\": \"<number>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7733bafe-efd4-0747-a571-406aa2d15afc\",\n  \"identityId\": null,\n  \"type\": \"unauthenticated_user\",\n  \"firstName\": null,\n  \"lastName\": null,\n  \"email\": \"string\",\n  \"applicantDetailId\": null,\n  \"propertyShortId\": \"string\",\n  \"companyShortId\": null,\n  \"rentalHistories\": null,\n  \"isTaxReturnConnected\": null,\n  \"taxReturnData\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"provider\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"icon\": \"string\",\n      \"logo\": \"string\",\n      \"category\": \"string\",\n      \"display_name\": \"string\",\n      \"record_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primary_color\": \"string\"\n    },\n    \"externalId\": \"string\",\n    \"taxYear\": 1256.7982585349014,\n    \"status\": \"string\",\n    \"data\": {\n      \"name\": \"string\",\n      \"tax_year\": 1659.1237676604853\n    }\n  },\n  \"unit\": null,\n  \"middleInitial\": \"string\",\n  \"notificationEmail\": null,\n  \"phone\": \"string\",\n  \"hasPreviouslySubmitted\": false,\n  \"metadata\": {},\n  \"prefilledFields\": null,\n  \"hasRentalHistory\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a134eeb0-1498-4a28-8808-86894f6a3af6",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"identityId\": \"<string,null-uuid>\",\n  \"type\": \"<string>\",\n  \"unit\": \"<string,null>\",\n  \"firstName\": \"<string,null>\",\n  \"middleInitial\": \"<string,null>\",\n  \"lastName\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"notificationEmail\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"hasPreviouslySubmitted\": \"<boolean,null>\",\n  \"metadata\": \"<object>\",\n  \"applicantDetailId\": \"<string,null-uuid>\",\n  \"prefilledFields\": \"<array,null>\",\n  \"propertyShortId\": \"<string,null>\",\n  \"companyShortId\": \"<string,null>\",\n  \"hasRentalHistory\": \"<boolean,null>\",\n  \"rentalHistories\": \"<array,null>\",\n  \"isTaxReturnConnected\": \"<boolean,null>\",\n  \"taxReturnData\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"provider\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"icon\": \"<string>\",\n      \"logo\": \"<string>\",\n      \"category\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"record_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"primary_color\": \"<string>\"\n    },\n    \"externalId\": \"<string>\",\n    \"taxYear\": \"<number>\",\n    \"status\": \"<string>\",\n    \"data\": {\n      \"name\": \"<string>\",\n      \"tax_year\": \"<number>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13bd56b8-3228-48a6-add4-73c98137858d",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"identityId\": \"<string,null-uuid>\",\n  \"type\": \"<string>\",\n  \"unit\": \"<string,null>\",\n  \"firstName\": \"<string,null>\",\n  \"middleInitial\": \"<string,null>\",\n  \"lastName\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"notificationEmail\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"hasPreviouslySubmitted\": \"<boolean,null>\",\n  \"metadata\": \"<object>\",\n  \"applicantDetailId\": \"<string,null-uuid>\",\n  \"prefilledFields\": \"<array,null>\",\n  \"propertyShortId\": \"<string,null>\",\n  \"companyShortId\": \"<string,null>\",\n  \"hasRentalHistory\": \"<boolean,null>\",\n  \"rentalHistories\": \"<array,null>\",\n  \"isTaxReturnConnected\": \"<boolean,null>\",\n  \"taxReturnData\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"provider\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"icon\": \"<string>\",\n      \"logo\": \"<string>\",\n      \"category\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"record_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"primary_color\": \"<string>\"\n    },\n    \"externalId\": \"<string>\",\n    \"taxYear\": \"<number>\",\n    \"status\": \"<string>\",\n    \"data\": {\n      \"name\": \"<string>\",\n      \"tax_year\": \"<number>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c7720f9-b7e4-400f-bde3-cc1badded776",
+          "name": "List application documents",
+          "request": {
+            "name": "List application documents",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8e79b949-f621-401f-9b67-71b476489ec5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ee61d64f-56b0-d2a4-ed0a-78a83c1b64af\",\n    \"unauthenticatedSessionId\": \"4b0169d6-d573-2858-07b2-757d500e6062\",\n    \"insertedAt\": \"string\",\n    \"type\": \"BANK_STATEMENT\",\n    \"processStatus\": \"IN_QUEUE\",\n    \"result\": \"UNDETERMINED\",\n    \"fileName\": \"string\"\n  },\n  {\n    \"id\": \"acba68c8-3796-c8d9-d5de-3293f4b3de2c\",\n    \"unauthenticatedSessionId\": \"6f8a876c-11fd-31f9-ca67-52fd585d65e0\",\n    \"insertedAt\": \"string\",\n    \"type\": \"BANK_STATEMENT\",\n    \"processStatus\": \"FAILED\",\n    \"result\": \"UNDETERMINED\",\n    \"fileName\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f95278a-baee-4b6d-9f55-8114f6e711f3",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be49c560-75b7-458c-a686-f5b13868d1b1",
+          "name": "Upload an application document",
+          "request": {
+            "name": "Upload an application document",
+            "description": {
+              "content": "This API expects multipart/form-data. You should provide a single file as `upload` and specify the document type. Uploaded documents must be PDFs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "checks",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required)  (This can only be one of BANK_STATEMENT,PAYSTUB,OTHER)"
+                },
+                {
+                  "key": "fileName",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "upload",
+                  "type": "file",
+                  "description": "The file being uploaded"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1801a072-5072-460c-8516-a57834c9113d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "checks",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of BANK_STATEMENT,PAYSTUB,OTHER)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "BANK_STATEMENT",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file being uploaded",
+                        "type": "text/plain"
+                      },
+                      "key": "upload",
+                      "value": "<<PDF document data>>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f2224403-ac00-d191-c3da-b0c16bfb59e9\",\n  \"unauthenticatedSessionId\": \"1763fb3b-d34f-8a5d-2aa2-2bedf6554b32\",\n  \"insertedAt\": \"string\",\n  \"type\": \"BANK_STATEMENT\",\n  \"processStatus\": \"FAILED\",\n  \"result\": \"CLEAN\",\n  \"fileName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "022ab06e-4a62-485d-90af-a1c123c1a747",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "checks",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of BANK_STATEMENT,PAYSTUB,OTHER)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "BANK_STATEMENT",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file being uploaded",
+                        "type": "text/plain"
+                      },
+                      "key": "upload",
+                      "value": "<<PDF document data>>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc886d51-b337-4d66-bd23-3cb3d763b517",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "checks",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of BANK_STATEMENT,PAYSTUB,OTHER)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "BANK_STATEMENT",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file being uploaded",
+                        "type": "text/plain"
+                      },
+                      "key": "upload",
+                      "value": "<<PDF document data>>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a16340f-7487-48e8-99a4-acac61c46ae4",
+          "name": "Update an application document type",
+          "request": {
+            "name": "Update an application document type",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                "documents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8681fd9c-a111-45b1-b396-a5c002562649",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"BANK_STATEMENT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f2224403-ac00-d191-c3da-b0c16bfb59e9\",\n  \"unauthenticatedSessionId\": \"1763fb3b-d34f-8a5d-2aa2-2bedf6554b32\",\n  \"insertedAt\": \"string\",\n  \"type\": \"BANK_STATEMENT\",\n  \"processStatus\": \"FAILED\",\n  \"result\": \"CLEAN\",\n  \"fileName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af1929d5-4aff-409c-9c37-bfc8d0e875cc",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"BANK_STATEMENT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71ff338a-4a67-4217-94c9-57a4e56da1a9",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"BANK_STATEMENT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f0f1d13-fdd6-4840-9bb3-e7d90d854b01",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"BANK_STATEMENT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6834852c-70e2-4b2e-aad9-d4d04a8d37de",
+          "name": "Retrieve an application document",
+          "request": {
+            "name": "Retrieve an application document",
+            "description": {
+              "content": "This API returns the application document that matches the provided id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session",
+                "documents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5ab488bb-301c-442b-9451-45884f25e93f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f2224403-ac00-d191-c3da-b0c16bfb59e9\",\n  \"unauthenticatedSessionId\": \"1763fb3b-d34f-8a5d-2aa2-2bedf6554b32\",\n  \"insertedAt\": \"string\",\n  \"type\": \"BANK_STATEMENT\",\n  \"processStatus\": \"FAILED\",\n  \"result\": \"CLEAN\",\n  \"fileName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53fe37e8-3a34-4479-bd71-2f84ec05c17a",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a6aa761-fb13-4570-aee8-a1f73090e078",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc3c1b7d-007d-4218-ae5a-9860b22336d5",
+          "name": "Remove an application document",
+          "request": {
+            "name": "Remove an application document",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                "documents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "082151a0-8e48-4208-bad9-93e7a1168659",
+              "name": "No content - successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be6a4910-81a5-4e25-a57e-0a26ae3ce6b5",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c80ab241-ef5c-4287-8402-e5c100ea59ae",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75f4b340-e18d-4098-bf8f-05e9deeb2f6f",
+          "name": "Retrieve a thumbnail for a specific document",
+          "request": {
+            "name": "Retrieve a thumbnail for a specific document",
+            "description": {},
+            "url": {
+              "path": [
+                "session",
+                "documents",
+                ":id",
+                "thumbnail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fdfcca23-e268-4326-988d-62e678e45e8d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://pcEZuXx.hkqGMVEfokz4V474oeSkkJQ5McL1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fc4280f-c81d-4c1a-81a7-3b6b8968a1a3",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "baa91a09-69dd-4eb7-bd8d-1a3aaf9a8de7",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "documents",
+                    ":id",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fb4cdef-4b96-484f-af77-5c7938a4bec1",
+          "name": "Submit application",
+          "request": {
+            "name": "Submit application",
+            "description": {
+              "content": "After uploading one or more documents and editing the applicant information, use this API to submit the application for processing. After a successful submission, the session token is no longer valid. Use the returned applicant ID to poll for results, or create a webhook to be notified when results are ready.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-unauthenticated-session-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a6490a0f-5c8d-4d12-b8ee-4bde94fd1f18",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"applicantId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dfcdf20-8deb-4028-8ce3-228aef69eb6b",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-unauthenticated-session-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f18a8f9-ae6c-40c6-9831-dbd823331525",
+          "name": "Create an applicant session",
+          "request": {
+            "name": "Create an applicant session",
+            "description": {
+              "content": "Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "applicationType",
+                  "value": "unauthenticated_user"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"applicantIdentifier\": \"<uuid>\",\n  \"identityId\": \"<string,null-uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6ab41dd-d2dd-4de5-a38e-0e6a29e76ca2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationType",
+                      "value": "unauthenticated_user"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Smith\",\n  \"email\": \"bob@gmail.com\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"identityId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"1339a96e-3cc7-c7a2-ab15-29b96919b719\",\n  \"id\": \"42fabc46-dfc7-9f73-6167-08e925228752\",\n  \"applicantDetailId\": \"77929d15-8300-406f-f882-24961fe1b846\",\n  \"identityId\": \"2ad37e8a-3a39-e8a9-a9fe-51cd4333ccfb\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea8945ea-88ca-43e4-9654-8a49d7201789",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationType",
+                      "value": "unauthenticated_user"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Smith\",\n  \"email\": \"bob@gmail.com\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"identityId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09427149-f1ef-46f5-8f54-828af32a3efa",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationType",
+                      "value": "unauthenticated_user"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyShortId\": \"<string>\",\n  \"propertyShortId\": \"<string>\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Smith\",\n  \"email\": \"bob@gmail.com\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"identityId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://enterprise-api.demo.snappt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "8b651f3e-dd19-47bc-aa78-147f50df7a22",
+    "name": "Snappt Applicant Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.",
+      "type": "text/plain"
+    }
+  }
+}

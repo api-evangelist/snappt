@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Snappt Internal IDV API",
+    "version": "1.75.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Internal IDV",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pass through endpoint for images from clear identity verifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/identity/applicants/clear-images/:clearId/:imageType",
+            "params": [
+              {
+                "name": "clearId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "imageType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expires",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "signature",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Pass through endpoint for images from clear identity verifications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

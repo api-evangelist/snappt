@@ -1,0 +1,80 @@
+openapi: 3.2.0
+info:
+  version: 1.75.3
+  title: Snappt Account API
+  description: Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.
+servers:
+- url: https://enterprise-api.demo.snappt.com
+security:
+- {}
+- bearerAuth: []
+tags:
+- name: Account
+paths:
+  /account:
+    get:
+      tags:
+      - Account
+      summary: Get Account Info
+      description: Returns information about the account associated with the provided API key.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKeyResponse'
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+components:
+  schemas:
+    ApiKeyResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for this API key
+        description:
+          type: string
+          description: The description of this API key
+        insertedAt:
+          type: string
+          description: The date this API key was created
+        company:
+          type:
+          - object
+          - 'null'
+          properties:
+            id:
+              type: string
+              description: The unique identifier for the company associated with this API Key
+            shortId:
+              type: string
+              description: The short identifier for the company associated with this API Key
+          required:
+          - id
+          - shortId
+      required:
+      - id
+      - description
+      - insertedAt
+      - company
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    snapptSessionAuth:
+      type: apiKey
+      in: header
+      name: x-unauthenticated-session-token
+      description: Pass the session token obtained from POST /session

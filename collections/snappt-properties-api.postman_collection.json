@@ -1,0 +1,2610 @@
+{
+  "item": [
+    {
+      "id": "8ca9487b-f6da-40c0-bca8-42df63b51548",
+      "name": "Properties",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5109ad3-0b06-4b7e-89f5-3a8f3783ff73",
+          "name": "List properties",
+          "request": {
+            "name": "List properties",
+            "description": {},
+            "url": {
+              "path": [
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rowsPerPage",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ccbee97-cc20-420f-813f-4368c2175e9b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rowsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6befe8f3-63a6-8857-5019-b1dc0d5aad91\",\n    \"shortId\": \"string\",\n    \"name\": \"string\",\n    \"entityName\": \"string\",\n    \"logo\": \"string\",\n    \"phone\": null,\n    \"phoneIsRequired\": null,\n    \"website\": \"string\",\n    \"unit\": null,\n    \"unitIsRequired\": true,\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"status\": \"DISABLED\",\n    \"bankStatement\": 9795.809555657914,\n    \"paystub\": 1485.432290841211,\n    \"email\": \"HtQGd8UKPk6NU@JgsOWAfUQmtyTPPGp.jdui\",\n    \"companyId\": \"5493c5b5-813c-0f6b-b907-8a8e6d41e10b\",\n    \"companyShortId\": null,\n    \"applicantLink\": \"string\",\n    \"leasingTeamLink\": \"string\",\n    \"identityVerificationEnabled\": true,\n    \"insertedAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"supportedDoctypes\": {\n      \"paystub\": 4414.1827381195035,\n      \"bank_statement\": 293.81017760168106,\n      \"cash_app_statement\": 3408.8695088737777,\n      \"credit_debit_card_statement\": 7868.744727176431,\n      \"department_of_veterans_affairs_benefit_letter\": 2662.334546959979,\n      \"investment_account\": 7968.522314868464,\n      \"social_security_benefits_letter\": 8323.562613611302,\n      \"social_security_statement\": 104.72984545166652,\n      \"tax_transcript\": 5287.205087855279,\n      \"utility_bill\": 3205.973125125858,\n      \"payroll_statement\": 111.14528655543631,\n      \"bank_linking_verification_of_income\": 5095.794616555216,\n      \"tax_return_linking_report\": 5827.426499529262,\n      \"w2\": 5019.682717367769,\n      \"child_support\": 582.4862660685282,\n      \"financial_aid\": 7110.803045038827,\n      \"offer_letter\": 2756.3586348584813,\n      \"student_visa\": 1260.6814662528786\n    },\n    \"pmcName\": null,\n    \"incomeVerificationEnabled\": null,\n    \"assetVerificationEnabled\": false,\n    \"payrollLinkingEnabled\": null,\n    \"bankLinkingEnabled\": null,\n    \"propertyFeature\": {\n      \"featureCode\": \"bank_linking\",\n      \"state\": \"disabled\"\n    }\n  },\n  {\n    \"id\": \"86c3f3a7-b55b-241e-d83f-1bd79573e34f\",\n    \"shortId\": \"string\",\n    \"name\": \"string\",\n    \"entityName\": \"string\",\n    \"logo\": null,\n    \"phone\": \"string\",\n    \"phoneIsRequired\": false,\n    \"website\": null,\n    \"unit\": null,\n    \"unitIsRequired\": false,\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": null,\n    \"zip\": \"string\",\n    \"status\": \"ARCHIVED\",\n    \"bankStatement\": 997.6460626552797,\n    \"paystub\": 6682.689509430393,\n    \"email\": null,\n    \"companyId\": null,\n    \"companyShortId\": \"string\",\n    \"applicantLink\": \"string\",\n    \"leasingTeamLink\": \"string\",\n    \"identityVerificationEnabled\": true,\n    \"insertedAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"supportedDoctypes\": {\n      \"paystub\": 7936.098541048984,\n      \"bank_statement\": 982.0754923112318,\n      \"cash_app_statement\": 8804.614085701558,\n      \"credit_debit_card_statement\": 7164.9676471908315,\n      \"department_of_veterans_affairs_benefit_letter\": 6834.271876091425,\n      \"investment_account\": 262.2927133051367,\n      \"social_security_benefits_letter\": 3277.0182015950445,\n      \"social_security_statement\": 7787.056437074721,\n      \"tax_transcript\": 2681.65786551728,\n      \"utility_bill\": 5297.493813491569,\n      \"payroll_statement\": 4347.916743718052,\n      \"bank_linking_verification_of_income\": 2022.3529220879677,\n      \"tax_return_linking_report\": 3200.567848570568,\n      \"w2\": 7423.391076970715,\n      \"child_support\": 3458.921494387985,\n      \"financial_aid\": 3797.1463315202914,\n      \"offer_letter\": 7471.779015314612,\n      \"student_visa\": 8331.209602958803\n    },\n    \"pmcName\": \"string\",\n    \"incomeVerificationEnabled\": null,\n    \"assetVerificationEnabled\": null,\n    \"payrollLinkingEnabled\": null,\n    \"bankLinkingEnabled\": false,\n    \"propertyFeature\": {\n      \"featureCode\": \"rental_history\",\n      \"state\": \"enabled\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4567bc1-18e5-4537-80fc-dd06801683ad",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rowsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fae355f-3abc-448b-95c2-527d90504587",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rowsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c705342e-9982-4101-a53e-9fd44d567531",
+          "name": "Create a new property",
+          "request": {
+            "name": "Create a new property",
+            "description": {
+              "content": "To set up your account, add one or more properties. All applicant sessions are associated with a company and property ID. Note that you cannot delete properties through the Snappt Enterprise API. If you no longer need a property, use the PUT /properties/:id API to set it's status to DISABLED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"unit\": \"<number>\",\n  \"status\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1f48578-de71-4c96-946f-431d3d6bf359",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"unit\": \"<number>\",\n  \"status\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c24651ca-55c5-70a1-59ff-05b7c874514d\",\n  \"shortId\": \"string\",\n  \"name\": \"string\",\n  \"entityName\": null,\n  \"logo\": \"string\",\n  \"phone\": \"string\",\n  \"phoneIsRequired\": null,\n  \"website\": null,\n  \"unit\": null,\n  \"unitIsRequired\": null,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": null,\n  \"zip\": \"string\",\n  \"status\": \"DISABLED\",\n  \"bankStatement\": 2404.9189497197276,\n  \"paystub\": 4183.283289204915,\n  \"email\": null,\n  \"companyId\": null,\n  \"companyShortId\": \"string\",\n  \"applicantLink\": \"string\",\n  \"leasingTeamLink\": \"string\",\n  \"identityVerificationEnabled\": null,\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"supportedDoctypes\": {\n    \"paystub\": 9932.137120015272,\n    \"bank_statement\": 4618.989800267158,\n    \"cash_app_statement\": 2554.576548975934,\n    \"credit_debit_card_statement\": 5141.397151228744,\n    \"department_of_veterans_affairs_benefit_letter\": 2973.2411446310725,\n    \"investment_account\": 9545.077375862216,\n    \"social_security_benefits_letter\": 6447.303365934345,\n    \"social_security_statement\": 933.8379724378565,\n    \"tax_transcript\": 5778.965008818161,\n    \"utility_bill\": 2899.826513066902,\n    \"payroll_statement\": 34.64524127320456,\n    \"bank_linking_verification_of_income\": 6521.739190593788,\n    \"tax_return_linking_report\": 1483.809712781673,\n    \"w2\": 1896.3151932017497,\n    \"child_support\": 878.7274504252251,\n    \"financial_aid\": 1281.7971632931412,\n    \"offer_letter\": 1959.005118678606,\n    \"student_visa\": 9140.807395022268\n  },\n  \"pmcName\": null,\n  \"incomeVerificationEnabled\": null,\n  \"assetVerificationEnabled\": true,\n  \"payrollLinkingEnabled\": null,\n  \"bankLinkingEnabled\": null,\n  \"propertyFeature\": {\n    \"featureCode\": \"payroll_linking\",\n    \"state\": \"disabled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfd8ca86-4bb5-4a4a-b852-d41dd7ceab08",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"unit\": \"<number>\",\n  \"status\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0035f73b-105b-4d28-a70f-0b6614da87d7",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"unit\": \"<number>\",\n  \"status\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24635c52-f6d0-4406-98b2-de2c0de02447",
+          "name": "Retrieve a property",
+          "request": {
+            "name": "Retrieve a property",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aadc3514-da3b-446e-ae9a-a5782a893700",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c24651ca-55c5-70a1-59ff-05b7c874514d\",\n  \"shortId\": \"string\",\n  \"name\": \"string\",\n  \"entityName\": null,\n  \"logo\": \"string\",\n  \"phone\": \"string\",\n  \"phoneIsRequired\": null,\n  \"website\": null,\n  \"unit\": null,\n  \"unitIsRequired\": null,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": null,\n  \"zip\": \"string\",\n  \"status\": \"DISABLED\",\n  \"bankStatement\": 2404.9189497197276,\n  \"paystub\": 4183.283289204915,\n  \"email\": null,\n  \"companyId\": null,\n  \"companyShortId\": \"string\",\n  \"applicantLink\": \"string\",\n  \"leasingTeamLink\": \"string\",\n  \"identityVerificationEnabled\": null,\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"supportedDoctypes\": {\n    \"paystub\": 9932.137120015272,\n    \"bank_statement\": 4618.989800267158,\n    \"cash_app_statement\": 2554.576548975934,\n    \"credit_debit_card_statement\": 5141.397151228744,\n    \"department_of_veterans_affairs_benefit_letter\": 2973.2411446310725,\n    \"investment_account\": 9545.077375862216,\n    \"social_security_benefits_letter\": 6447.303365934345,\n    \"social_security_statement\": 933.8379724378565,\n    \"tax_transcript\": 5778.965008818161,\n    \"utility_bill\": 2899.826513066902,\n    \"payroll_statement\": 34.64524127320456,\n    \"bank_linking_verification_of_income\": 6521.739190593788,\n    \"tax_return_linking_report\": 1483.809712781673,\n    \"w2\": 1896.3151932017497,\n    \"child_support\": 878.7274504252251,\n    \"financial_aid\": 1281.7971632931412,\n    \"offer_letter\": 1959.005118678606,\n    \"student_visa\": 9140.807395022268\n  },\n  \"pmcName\": null,\n  \"incomeVerificationEnabled\": null,\n  \"assetVerificationEnabled\": true,\n  \"payrollLinkingEnabled\": null,\n  \"bankLinkingEnabled\": null,\n  \"propertyFeature\": {\n    \"featureCode\": \"payroll_linking\",\n    \"state\": \"disabled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a1fa9f1-10e7-459d-a84f-117e781b805e",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92bf780b-0d08-4df4-bd80-2ceff3e147ca",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0af19931-a91c-4429-9a8e-58bd624b9947",
+          "name": "Update a property",
+          "request": {
+            "name": "Update a property",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"unit\": \"<number>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"status\": \"<string>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06445db1-6019-49c6-81ed-10ab2acb3d9d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"unit\": \"<number>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"status\": \"<string>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c24651ca-55c5-70a1-59ff-05b7c874514d\",\n  \"shortId\": \"string\",\n  \"name\": \"string\",\n  \"entityName\": null,\n  \"logo\": \"string\",\n  \"phone\": \"string\",\n  \"phoneIsRequired\": null,\n  \"website\": null,\n  \"unit\": null,\n  \"unitIsRequired\": null,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": null,\n  \"zip\": \"string\",\n  \"status\": \"DISABLED\",\n  \"bankStatement\": 2404.9189497197276,\n  \"paystub\": 4183.283289204915,\n  \"email\": null,\n  \"companyId\": null,\n  \"companyShortId\": \"string\",\n  \"applicantLink\": \"string\",\n  \"leasingTeamLink\": \"string\",\n  \"identityVerificationEnabled\": null,\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"supportedDoctypes\": {\n    \"paystub\": 9932.137120015272,\n    \"bank_statement\": 4618.989800267158,\n    \"cash_app_statement\": 2554.576548975934,\n    \"credit_debit_card_statement\": 5141.397151228744,\n    \"department_of_veterans_affairs_benefit_letter\": 2973.2411446310725,\n    \"investment_account\": 9545.077375862216,\n    \"social_security_benefits_letter\": 6447.303365934345,\n    \"social_security_statement\": 933.8379724378565,\n    \"tax_transcript\": 5778.965008818161,\n    \"utility_bill\": 2899.826513066902,\n    \"payroll_statement\": 34.64524127320456,\n    \"bank_linking_verification_of_income\": 6521.739190593788,\n    \"tax_return_linking_report\": 1483.809712781673,\n    \"w2\": 1896.3151932017497,\n    \"child_support\": 878.7274504252251,\n    \"financial_aid\": 1281.7971632931412,\n    \"offer_letter\": 1959.005118678606,\n    \"student_visa\": 9140.807395022268\n  },\n  \"pmcName\": null,\n  \"incomeVerificationEnabled\": null,\n  \"assetVerificationEnabled\": true,\n  \"payrollLinkingEnabled\": null,\n  \"bankLinkingEnabled\": null,\n  \"propertyFeature\": {\n    \"featureCode\": \"payroll_linking\",\n    \"state\": \"disabled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d5dc3c6-5d93-4abc-b089-466fd7c208e3",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"unit\": \"<number>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"status\": \"<string>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75517b38-b05d-461d-9138-e6585090c4d0",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"unit\": \"<number>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"status\": \"<string>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e95ac479-dc85-44bd-8903-24d2b1653ef7",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"state\": \"<string,null>\",\n  \"entityName\": \"<string,null>\",\n  \"logo\": \"<string,null>\",\n  \"phone\": \"<string>\",\n  \"phoneIsRequired\": \"<boolean,null>\",\n  \"website\": \"<string,null>\",\n  \"unit\": \"<number>\",\n  \"pmcName\": \"<string,null>\",\n  \"unitIsRequired\": \"<boolean,null>\",\n  \"status\": \"<string>\",\n  \"bankStatement\": \"<number,null>\",\n  \"paystub\": \"<number,null>\",\n  \"supportedDoctypes\": {\n    \"paystub\": \"<number>\",\n    \"bank_statement\": \"<number>\",\n    \"cash_app_statement\": \"<number>\",\n    \"credit_debit_card_statement\": \"<number>\",\n    \"department_of_veterans_affairs_benefit_letter\": \"<number>\",\n    \"investment_account\": \"<number>\",\n    \"social_security_benefits_letter\": \"<number>\",\n    \"social_security_statement\": \"<number>\",\n    \"tax_transcript\": \"<number>\",\n    \"utility_bill\": \"<number>\",\n    \"payroll_statement\": \"<number>\",\n    \"bank_linking_verification_of_income\": \"<number>\",\n    \"tax_return_linking_report\": \"<number>\",\n    \"w2\": \"<number>\",\n    \"child_support\": \"<number>\",\n    \"financial_aid\": \"<number>\",\n    \"offer_letter\": \"<number>\",\n    \"student_visa\": \"<number>\"\n  },\n  \"identityVerificationReportImageTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "090889f0-2c1a-44fe-9499-595063eb38f2",
+          "name": "Send an applicant a link to the document upload portal",
+          "request": {
+            "name": "Send an applicant a link to the document upload portal",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId",
+                "send-document-upload-email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"middleInitial\": \"<string>\",\n  \"applicantIdentifier\": \"<uuid>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f480cff8-c5f6-46ba-a8cf-6eba420537dc",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "send-document-upload-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Bob Mendez\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\",\n  \"applicantDetailId\": \"24751c1f-ac2b-5f6d-c01a-ee58cf5d935a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6a26dae-a9ab-449d-8127-8a98e207ce18",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "send-document-upload-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Bob Mendez\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a37cd43-b5ae-4f13-982a-822bf6c7a466",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "send-document-upload-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Bob Mendez\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf4d556b-261d-4cdf-9548-354e7afd58a6",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "send-document-upload-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Bob Mendez\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed8159ec-47a2-48f2-9d71-7ac325695d17",
+          "name": "Generate an applicant a link to the document upload portal",
+          "request": {
+            "name": "Generate an applicant a link to the document upload portal",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId",
+                "generate-applicant-link"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"middleInitial\": \"<string>\",\n  \"applicantIdentifier\": \"<uuid>\",\n  \"phoneNumber\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"externalId\": \"<string>\",\n  \"externalMetadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"linkOptions\": {\n    \"expiresOnSubmit\": \"<boolean>\",\n    \"expiresAt\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17dc736c-1c5e-4273-be5b-5177a6355732",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "generate-applicant-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"phoneNumber\": \"5551234567\",\n  \"callbackUrl\": \"https://example.com/callback\",\n  \"externalId\": \"PROSPECT-123456\",\n  \"externalMetadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"linkOptions\": {\n    \"expiresOnSubmit\": true,\n    \"expiresAt\": \"2025-12-31T23:59:59Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"error\": \"string\",\n  \"applicantDetailId\": \"27cc82a8-9bf9-cb56-43bd-06f12b84be13\",\n  \"applicantLink\": \"https://mIJAoLqtz.byEgh74Vn6vYd+0q.F1+FV,sQQ2YvK\",\n  \"callbackUrl\": \"https://gzYoeTOkAqdchQtAhD.rpajz+qCv17zszfPPFwRgHSkKkqhu4tbmYQKs57OnQqv9locfK\",\n  \"externalId\": \"string\",\n  \"externalMetadata\": {\n    \"key_0\": {}\n  },\n  \"linkOptions\": {\n    \"expiresOnSubmit\": true,\n    \"expiresAt\": \"2025-12-31T23:59:59Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "011317a9-478f-4206-90bc-4303e48ff7fa",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "generate-applicant-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"phoneNumber\": \"5551234567\",\n  \"callbackUrl\": \"https://example.com/callback\",\n  \"externalId\": \"PROSPECT-123456\",\n  \"externalMetadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"linkOptions\": {\n    \"expiresOnSubmit\": true,\n    \"expiresAt\": \"2025-12-31T23:59:59Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d4e0845-780d-4443-8b40-e07631b09b2d",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "generate-applicant-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"phoneNumber\": \"5551234567\",\n  \"callbackUrl\": \"https://example.com/callback\",\n  \"externalId\": \"PROSPECT-123456\",\n  \"externalMetadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"linkOptions\": {\n    \"expiresOnSubmit\": true,\n    \"expiresAt\": \"2025-12-31T23:59:59Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4b4c4a2-cd7e-4c76-a440-d2cca4f28fcd",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "generate-applicant-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@gmail.com\",\n  \"firstName\": \"Bob\",\n  \"lastName\": \"Mendez\",\n  \"middleInitial\": \"A\",\n  \"applicantIdentifier\": \"00000000-0000-0000-0000-000000000000\",\n  \"phoneNumber\": \"5551234567\",\n  \"callbackUrl\": \"https://example.com/callback\",\n  \"externalId\": \"PROSPECT-123456\",\n  \"externalMetadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"linkOptions\": {\n    \"expiresOnSubmit\": true,\n    \"expiresAt\": \"2025-12-31T23:59:59Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da353886-ca29-4953-a333-bdcaac623ed6",
+          "name": "Enable/Disable ID Verification",
+          "request": {
+            "name": "Enable/Disable ID Verification",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId",
+                "identity-verification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7ccaf7b-3d41-4963-9cf4-36ba2693c1ee",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c24651ca-55c5-70a1-59ff-05b7c874514d\",\n  \"shortId\": \"string\",\n  \"name\": \"string\",\n  \"entityName\": null,\n  \"logo\": \"string\",\n  \"phone\": \"string\",\n  \"phoneIsRequired\": null,\n  \"website\": null,\n  \"unit\": null,\n  \"unitIsRequired\": null,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": null,\n  \"zip\": \"string\",\n  \"status\": \"DISABLED\",\n  \"bankStatement\": 2404.9189497197276,\n  \"paystub\": 4183.283289204915,\n  \"email\": null,\n  \"companyId\": null,\n  \"companyShortId\": \"string\",\n  \"applicantLink\": \"string\",\n  \"leasingTeamLink\": \"string\",\n  \"identityVerificationEnabled\": null,\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"supportedDoctypes\": {\n    \"paystub\": 9932.137120015272,\n    \"bank_statement\": 4618.989800267158,\n    \"cash_app_statement\": 2554.576548975934,\n    \"credit_debit_card_statement\": 5141.397151228744,\n    \"department_of_veterans_affairs_benefit_letter\": 2973.2411446310725,\n    \"investment_account\": 9545.077375862216,\n    \"social_security_benefits_letter\": 6447.303365934345,\n    \"social_security_statement\": 933.8379724378565,\n    \"tax_transcript\": 5778.965008818161,\n    \"utility_bill\": 2899.826513066902,\n    \"payroll_statement\": 34.64524127320456,\n    \"bank_linking_verification_of_income\": 6521.739190593788,\n    \"tax_return_linking_report\": 1483.809712781673,\n    \"w2\": 1896.3151932017497,\n    \"child_support\": 878.7274504252251,\n    \"financial_aid\": 1281.7971632931412,\n    \"offer_letter\": 1959.005118678606,\n    \"student_visa\": 9140.807395022268\n  },\n  \"pmcName\": null,\n  \"incomeVerificationEnabled\": null,\n  \"assetVerificationEnabled\": true,\n  \"payrollLinkingEnabled\": null,\n  \"bankLinkingEnabled\": null,\n  \"propertyFeature\": {\n    \"featureCode\": \"payroll_linking\",\n    \"state\": \"disabled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1bd9b32-d12a-4b13-8bee-64a58dc7d4ef",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a7a0b51-e0a6-4043-9e9e-76e3238cd504",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab719956-e385-43f5-81a8-0b00d212b2b8",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81257d31-a435-4eb0-83d1-eb2599f9fa53",
+          "name": "Enable/Disable Income Verification",
+          "request": {
+            "name": "Enable/Disable Income Verification",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId",
+                "income-verification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2d35319-5506-425e-b0c3-a476b53320c5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "income-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c24651ca-55c5-70a1-59ff-05b7c874514d\",\n  \"shortId\": \"string\",\n  \"name\": \"string\",\n  \"entityName\": null,\n  \"logo\": \"string\",\n  \"phone\": \"string\",\n  \"phoneIsRequired\": null,\n  \"website\": null,\n  \"unit\": null,\n  \"unitIsRequired\": null,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": null,\n  \"zip\": \"string\",\n  \"status\": \"DISABLED\",\n  \"bankStatement\": 2404.9189497197276,\n  \"paystub\": 4183.283289204915,\n  \"email\": null,\n  \"companyId\": null,\n  \"companyShortId\": \"string\",\n  \"applicantLink\": \"string\",\n  \"leasingTeamLink\": \"string\",\n  \"identityVerificationEnabled\": null,\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"supportedDoctypes\": {\n    \"paystub\": 9932.137120015272,\n    \"bank_statement\": 4618.989800267158,\n    \"cash_app_statement\": 2554.576548975934,\n    \"credit_debit_card_statement\": 5141.397151228744,\n    \"department_of_veterans_affairs_benefit_letter\": 2973.2411446310725,\n    \"investment_account\": 9545.077375862216,\n    \"social_security_benefits_letter\": 6447.303365934345,\n    \"social_security_statement\": 933.8379724378565,\n    \"tax_transcript\": 5778.965008818161,\n    \"utility_bill\": 2899.826513066902,\n    \"payroll_statement\": 34.64524127320456,\n    \"bank_linking_verification_of_income\": 6521.739190593788,\n    \"tax_return_linking_report\": 1483.809712781673,\n    \"w2\": 1896.3151932017497,\n    \"child_support\": 878.7274504252251,\n    \"financial_aid\": 1281.7971632931412,\n    \"offer_letter\": 1959.005118678606,\n    \"student_visa\": 9140.807395022268\n  },\n  \"pmcName\": null,\n  \"incomeVerificationEnabled\": null,\n  \"assetVerificationEnabled\": true,\n  \"payrollLinkingEnabled\": null,\n  \"bankLinkingEnabled\": null,\n  \"propertyFeature\": {\n    \"featureCode\": \"payroll_linking\",\n    \"state\": \"disabled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e75c09e8-367d-4d8e-b592-6923257dadbc",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "income-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8671e93-10cf-4faa-8937-2185edc3dd9d",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "income-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f102bf29-5a1f-49c8-aff4-346850131562",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "income-verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c4e9885-327e-4351-8482-eb5f4facb101",
+          "name": "Enable/Disable features to customize the applicant flow",
+          "request": {
+            "name": "Enable/Disable features to customize the applicant flow",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId",
+                "features"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "02331d13-d676-484c-903c-9488ac242dd5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "features"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c24651ca-55c5-70a1-59ff-05b7c874514d\",\n  \"shortId\": \"string\",\n  \"name\": \"string\",\n  \"entityName\": null,\n  \"logo\": \"string\",\n  \"phone\": \"string\",\n  \"phoneIsRequired\": null,\n  \"website\": null,\n  \"unit\": null,\n  \"unitIsRequired\": null,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": null,\n  \"zip\": \"string\",\n  \"status\": \"DISABLED\",\n  \"bankStatement\": 2404.9189497197276,\n  \"paystub\": 4183.283289204915,\n  \"email\": null,\n  \"companyId\": null,\n  \"companyShortId\": \"string\",\n  \"applicantLink\": \"string\",\n  \"leasingTeamLink\": \"string\",\n  \"identityVerificationEnabled\": null,\n  \"insertedAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"supportedDoctypes\": {\n    \"paystub\": 9932.137120015272,\n    \"bank_statement\": 4618.989800267158,\n    \"cash_app_statement\": 2554.576548975934,\n    \"credit_debit_card_statement\": 5141.397151228744,\n    \"department_of_veterans_affairs_benefit_letter\": 2973.2411446310725,\n    \"investment_account\": 9545.077375862216,\n    \"social_security_benefits_letter\": 6447.303365934345,\n    \"social_security_statement\": 933.8379724378565,\n    \"tax_transcript\": 5778.965008818161,\n    \"utility_bill\": 2899.826513066902,\n    \"payroll_statement\": 34.64524127320456,\n    \"bank_linking_verification_of_income\": 6521.739190593788,\n    \"tax_return_linking_report\": 1483.809712781673,\n    \"w2\": 1896.3151932017497,\n    \"child_support\": 878.7274504252251,\n    \"financial_aid\": 1281.7971632931412,\n    \"offer_letter\": 1959.005118678606,\n    \"student_visa\": 9140.807395022268\n  },\n  \"pmcName\": null,\n  \"incomeVerificationEnabled\": null,\n  \"assetVerificationEnabled\": true,\n  \"payrollLinkingEnabled\": null,\n  \"bankLinkingEnabled\": null,\n  \"propertyFeature\": {\n    \"featureCode\": \"payroll_linking\",\n    \"state\": \"disabled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa1bc940-e08b-4aa8-81f0-2dd495bfa181",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "features"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe059eec-4504-4c29-96a3-5a8a87229f6e",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "features"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03f2d282-462e-488d-bfd5-ace29c88ae5c",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "features"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incomeVerificationEnabled\": \"<boolean>\",\n  \"assetVerificationEnabled\": \"<boolean>\",\n  \"identityVerificationEnabled\": \"<boolean>\",\n  \"payrollLinkingEnabled\": \"<boolean>\",\n  \"bankLinkingEnabled\": \"<boolean>\",\n  \"referenceCompletedNotificationEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fb9aead-fcbe-4a5f-b9de-923f84c25082",
+          "name": "Retrieve a property's identity verification settings",
+          "request": {
+            "name": "Retrieve a property's identity verification settings",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId",
+                "identity-verification",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15ac16d2-4a4d-4d95-977a-959a4ea574f4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"idvReportImage\": \"document\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cce2bb5-795c-451b-9eb6-ce7fe9353ebc",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed0b3e0f-7e67-4fa6-98ef-dbb7e0cf75ef",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d48b9ba-ada7-4325-9cae-a22e1d3e5ef9",
+          "name": "Update a property's identity verification settings",
+          "request": {
+            "name": "Update a property's identity verification settings",
+            "description": {},
+            "url": {
+              "path": [
+                "properties",
+                ":propertyId",
+                "identity-verification",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idvReportImage\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "518c8ca3-7003-4d5e-adbf-ea4a7ebe5b0c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idvReportImage\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"idvReportImage\": \"document\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "debf3510-02dc-4334-bc3d-83bc3766a642",
+              "name": "The request payload or query string parameter you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idvReportImage\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a87221d8-d1da-46b6-87f8-69550066509c",
+              "name": "The Authorization header or Snappt applicant session token you passed was not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idvReportImage\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "636e5b26-5658-44d6-935a-97d0cc0d7ff9",
+              "name": "The item you requested could not be found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties",
+                    ":propertyId",
+                    "identity-verification",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idvReportImage\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://enterprise-api.demo.snappt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "23a5648d-2fd4-4dd6-9231-70b92b28a568",
+    "name": "Snappt Properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.",
+      "type": "text/plain"
+    }
+  }
+}

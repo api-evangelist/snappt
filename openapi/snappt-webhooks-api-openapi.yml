@@ -1,0 +1,597 @@
+openapi: 3.2.0
+info:
+  version: 1.75.3
+  title: Snappt Webhooks API
+  description: Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.
+servers:
+- url: https://enterprise-api.demo.snappt.com
+security:
+- {}
+- bearerAuth: []
+tags:
+- name: Webhooks
+paths:
+  /webhooks:
+    post:
+      tags:
+      - Webhooks
+      summary: Create a webhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  example: https://client.url/webhook
+                events:
+                  type: array
+                  description: Must be an array of either "REPORT_READY", "IDV_REPORT_READY" or "APPLICATION_SUBMITTED"
+                method:
+                  type: string
+                  description: Must be either "POST" or "GET"
+                headers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                        pattern: ^[!#$%&'*+\-.^_`|~a-zA-Z\d]+$
+                      value:
+                        type: string
+                    required:
+                    - name
+                    - value
+                  default: []
+                isActive:
+                  type: boolean
+                  default: true
+              required:
+              - url
+              - events
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  method:
+                    type: string
+                    enum:
+                    - POST
+                    - GET
+                  url:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  headers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                      - name
+                      - value
+                  events:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - REPORT_READY
+                      - APPLICATION_SUBMITTED
+                      - IDV_REPORT_READY
+                      - IDV_PRE_TOUR
+                  isActive:
+                    type:
+                    - boolean
+                    - 'null'
+                  apiKeyId:
+                    type: string
+                    format: uuid
+                  insertedAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                  signingSecret:
+                    type: string
+                required:
+                - id
+                - method
+                - url
+                - headers
+                - events
+                - isActive
+                - apiKeyId
+                - insertedAt
+                - updatedAt
+                - signingSecret
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    get:
+      tags:
+      - Webhooks
+      summary: List webhooks
+      parameters:
+      - schema:
+          type: string
+        required: false
+        name: limit
+        in: query
+      - schema:
+          type: string
+        required: false
+        name: offset
+        in: query
+      - schema:
+          type: string
+        required: false
+        name: sort
+        in: query
+      - schema:
+          type: string
+        required: false
+        name: filter
+        in: query
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    method:
+                      type: string
+                      enum:
+                      - POST
+                      - GET
+                    url:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                    headers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                        - name
+                        - value
+                    events:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - REPORT_READY
+                        - APPLICATION_SUBMITTED
+                        - IDV_REPORT_READY
+                        - IDV_PRE_TOUR
+                    isActive:
+                      type:
+                      - boolean
+                      - 'null'
+                    apiKeyId:
+                      type: string
+                      format: uuid
+                    insertedAt:
+                      type: string
+                    updatedAt:
+                      type: string
+                  required:
+                  - id
+                  - method
+                  - url
+                  - headers
+                  - events
+                  - isActive
+                  - apiKeyId
+                  - insertedAt
+                  - updatedAt
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /webhooks/{id}:
+    get:
+      tags:
+      - Webhooks
+      summary: Retrieve a webhook
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  method:
+                    type: string
+                    enum:
+                    - POST
+                    - GET
+                  url:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  headers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                      - name
+                      - value
+                  events:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - REPORT_READY
+                      - APPLICATION_SUBMITTED
+                      - IDV_REPORT_READY
+                      - IDV_PRE_TOUR
+                  isActive:
+                    type:
+                    - boolean
+                    - 'null'
+                  apiKeyId:
+                    type: string
+                    format: uuid
+                  insertedAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                required:
+                - id
+                - method
+                - url
+                - headers
+                - events
+                - isActive
+                - apiKeyId
+                - insertedAt
+                - updatedAt
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    put:
+      tags:
+      - Webhooks
+      summary: Update a webhook
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  example: https://client.url/webhook
+                events:
+                  type: array
+                  description: Must be an array of either "REPORT_READY", "IDV_REPORT_READY" or "APPLICATION_SUBMITTED"
+                method:
+                  type: string
+                  description: Must be either "POST" or "GET"
+                headers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                        pattern: ^[!#$%&'*+\-.^_`|~a-zA-Z\d]+$
+                      value:
+                        type: string
+                    required:
+                    - name
+                    - value
+                  default: []
+                isActive:
+                  type: boolean
+                  default: true
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  method:
+                    type: string
+                    enum:
+                    - POST
+                    - GET
+                  url:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  headers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                      - name
+                      - value
+                  events:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - REPORT_READY
+                      - APPLICATION_SUBMITTED
+                      - IDV_REPORT_READY
+                      - IDV_PRE_TOUR
+                  isActive:
+                    type:
+                    - boolean
+                    - 'null'
+                  apiKeyId:
+                    type: string
+                    format: uuid
+                  insertedAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                required:
+                - id
+                - method
+                - url
+                - headers
+                - events
+                - isActive
+                - apiKeyId
+                - insertedAt
+                - updatedAt
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    delete:
+      tags:
+      - Webhooks
+      summary: Delete a webhook
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      responses:
+        '204':
+          description: No content - successful operation
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /webhooks/{id}/signing-secret:
+    get:
+      tags:
+      - Webhooks
+      summary: Retrieve webhook signing secret
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  signingSecret:
+                    type: string
+                required:
+                - signingSecret
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    snapptSessionAuth:
+      type: apiKey
+      in: header
+      name: x-unauthenticated-session-token
+      description: Pass the session token obtained from POST /session

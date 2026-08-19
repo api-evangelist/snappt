@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Snappt Properties API",
+    "version": "1.75.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/properties",
+            "params": [
+              {
+                "name": "rowsPerPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List properties"
+        },
+        {
+          "info": {
+            "name": "Create a new property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/properties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "To set up your account, add one or more properties. All applicant sessions are associated with a company and property ID. Note that you cannot delete properties through the Snappt Enterprise API. If you no longer need a property, use the PUT /properties/:id API to set it's status to DISABLED."
+        },
+        {
+          "info": {
+            "name": "Retrieve a property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a property"
+        },
+        {
+          "info": {
+            "name": "Update a property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a property"
+        },
+        {
+          "info": {
+            "name": "Send an applicant a link to the document upload portal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId/send-document-upload-email",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an applicant a link to the document upload portal"
+        },
+        {
+          "info": {
+            "name": "Generate an applicant a link to the document upload portal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId/generate-applicant-link",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate an applicant a link to the document upload portal"
+        },
+        {
+          "info": {
+            "name": "Enable/Disable ID Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId/identity-verification",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable/Disable ID Verification"
+        },
+        {
+          "info": {
+            "name": "Enable/Disable Income Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId/income-verification",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable/Disable Income Verification"
+        },
+        {
+          "info": {
+            "name": "Enable/Disable features to customize the applicant flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId/features",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable/Disable features to customize the applicant flow"
+        },
+        {
+          "info": {
+            "name": "Retrieve a property's identity verification settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId/identity-verification/settings",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a property's identity verification settings"
+        },
+        {
+          "info": {
+            "name": "Update a property's identity verification settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://enterprise-api.demo.snappt.com/properties/:propertyId/identity-verification/settings",
+            "params": [
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a property's identity verification settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,35 @@
+{
+  "provider": "snappt",
+  "sources": [
+    "snappt-account-api-openapi.yml",
+    "snappt-applicant-sessions-api-openapi.yml",
+    "snappt-applicants-api-openapi.yml",
+    "snappt-id-verification-api-openapi.yml",
+    "snappt-internal-idv-api-openapi.yml",
+    "snappt-properties-api-openapi.yml",
+    "snappt-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "snappt-account-api-openapi.yml",
+    "snappt-applicant-sessions-api-openapi.yml",
+    "snappt-applicants-api-openapi.yml",
+    "snappt-id-verification-api-openapi.yml",
+    "snappt-internal-idv-api-openapi.yml",
+    "snappt-properties-api-openapi.yml",
+    "snappt-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "snappt-account-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "snappt-applicant-sessions-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "snappt-applicants-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "snappt-id-verification-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "snappt-internal-idv-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "snappt-properties-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "snappt-webhooks-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

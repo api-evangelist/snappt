@@ -1,0 +1,871 @@
+openapi: 3.2.0
+info:
+  version: 1.75.3
+  title: Snappt ID Verification API
+  description: Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.
+servers:
+- url: https://enterprise-api.demo.snappt.com
+security:
+- {}
+- bearerAuth: []
+tags:
+- name: ID Verification
+paths:
+  /id-verification/public/{propertyShortId}:
+    post:
+      tags:
+      - ID Verification
+      summary: ID verification request that redirects route
+      description: Make a request to this API to redirect to idv provider.
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyShortId
+        in: path
+      - schema:
+          type: string
+          description: The type of ID verification flow to use, defaults to full if omitted
+          title: ID Verification Flow Type
+        required: false
+        name: flowType
+        in: query
+      - schema:
+          type: string
+        required: false
+        name: id
+        in: query
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+        required: false
+        name: overrideToIncode
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                provider:
+                  type: string
+                  enum:
+                  - clear
+                  - incode
+      responses:
+        '204':
+          description: No content - successful operation
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    get:
+      tags:
+      - ID Verification
+      summary: Static identity verification link for a single property
+      description: Make a request to this API to begin a new ID verification session.
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyShortId
+        in: path
+      - schema:
+          type: string
+          description: The type of ID verification flow to use, defaults to full if omitted
+          title: ID Verification Flow Type
+        required: false
+        name: flowType
+        in: query
+      - schema:
+          type: string
+        required: false
+        name: id
+        in: query
+      responses:
+        '204':
+          description: No content - successful operation
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /id-verification/send-identity-upload-email:
+    post:
+      tags:
+      - ID Verification
+      summary: Send an applicant a link to the identity upload portal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                companyShortId:
+                  type: string
+                  example: huTnN82gGH
+                propertyShortId:
+                  type: string
+                  example: WyiKu7d4Zm
+                firstName:
+                  type: string
+                  description: Optional, will be auto-filled from the applicant's provided ID if left blank.
+                  example: Bob
+                lastName:
+                  type: string
+                  description: Optional, will be auto-filled from the applicant's provided ID if left blank.
+                  example: Smith
+                email:
+                  type: string
+                  format: email
+                  description: Optional
+                  example: bob@gmail.com
+                metadata:
+                  type: object
+                  description: Optional
+                  example:
+                    yourApplicantId: 4313e1fd-b380-412e-9e0e-26755c698239
+                redirectUrl:
+                  type: string
+                  format: uri
+                  description: Optional, Snappt will redirect to this url at the end of the flow.
+                flowType:
+                  type: string
+                  enum:
+                  - enhanced
+                  - basic
+              required:
+              - email
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  error:
+                    type: string
+                  idVerificationId:
+                    type: string
+                    format: uuid
+                  metadata:
+                    type: object
+                additionalProperties: false
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /id-verification/generate-identity-upload-link:
+    post:
+      tags:
+      - ID Verification
+      summary: Create an Identity Upload Link
+      description: Make a request to this API to begin a new ID verification session.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                companyShortId:
+                  type: string
+                  example: huTnN82gGH
+                propertyShortId:
+                  type: string
+                  example: WyiKu7d4Zm
+                firstName:
+                  type: string
+                  description: Optional, will be auto-filled from the applicant's provided ID if left blank.
+                  example: Bob
+                lastName:
+                  type: string
+                  description: Optional, will be auto-filled from the applicant's provided ID if left blank.
+                  example: Smith
+                email:
+                  type: string
+                  format: email
+                  description: Optional
+                  example: bob@gmail.com
+                metadata:
+                  type: object
+                redirectUrl:
+                  type: string
+                  format: uri
+                  description: Optional, Snappt will redirect to this url at the end of the flow.
+                flowType:
+                  type: string
+                  description: The type of ID verification flow to use, defaults to full if omitted
+                  title: ID Verification Flow Type
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idVerificationId:
+                    type: string
+                    format: uuid
+                  identityUploadLink:
+                    type: string
+                    format: uri
+                  provider:
+                    type: string
+                    enum:
+                    - clear
+                    - incode
+                  property:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                    required:
+                    - id
+                    - name
+                  metadata:
+                    type: object
+                required:
+                - idVerificationId
+                - identityUploadLink
+                - provider
+                - property
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /id-verification/{propertyShortId}/link:
+    get:
+      tags:
+      - ID Verification
+      summary: Static identity verification link for a single property
+      description: Make a request to this API to get a static URL for applicants to verify their identification at this property
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyShortId
+        in: path
+      - schema:
+          type: string
+          description: The type of ID verification flow to use, defaults to full if omitted
+          title: ID Verification Flow Type
+        required: false
+        name: flowType
+        in: query
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link:
+                    type: string
+                    format: uri
+                required:
+                - link
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /id-verification/{propertyShortId}/qr-code:
+    get:
+      tags:
+      - ID Verification
+      summary: Static identity verification link for a single property
+      description: Make a request to this API to get a static QR Code for applicants to verify their identification at this property
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyShortId
+        in: path
+      - schema:
+          type: string
+          description: The type of ID verification flow to use, defaults to full if omitted
+          title: ID Verification Flow Type
+        required: false
+        name: flowType
+        in: query
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link:
+                    type: string
+                    format: uri
+                required:
+                - link
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /id-verification/applicants:
+    get:
+      tags:
+      - ID Verification
+      summary: Retrieve all ID verification records
+      parameters:
+      - schema:
+          type: number
+          description: The total number of rows to respond with. Defaults to 50.
+        required: false
+        name: rowsPerPage
+        in: query
+      - schema:
+          type: number
+          description: The current page. Defaults to 0.
+        required: false
+        name: page
+        in: query
+      - schema:
+          type: string
+          description: 'Sort by any of the allowed options: status, insertedAt, sessionClosedAt, name, propertyName, firstName, lastName, email.'
+        required: false
+        name: sort
+        in: query
+      - schema:
+          type: string
+          description: 'Filter results by any of these fields: status, insertedAt, sessionClosedAt, firstName, lastName, name, email, propertyName.NOTE: Only the "=" operator is supported for score.You can filter using the following operators: =,<=,>=,!=,<,>,!@>,@>. The last option (@>) is the equivalent to the in operator (!@> is equivalent to not in) and should receive a list of values separated by a "|". You can also filter by null values passing the key word IS_NULL, ex: email=IS_NULL or email!=IS_NULL to look for the not nulls ones.'
+          example: '`email=test@snappt.com,insertedAt>2021-01-01T00:00:00.000Z`'
+        required: false
+        name: filter
+        in: query
+      - schema:
+          type: string
+          description: Filter identity applicants by name or email address.
+        required: false
+        name: q
+        in: query
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    sessionCreatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    sessionUpdatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    sessionClosedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    licenseExpiresAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    email:
+                      type: string
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                    id:
+                      type: string
+                      format: uuid
+                    status:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - PASS
+                      - FAIL
+                      - PENDING
+                      - NEEDS REVIEW
+                      - REVIEWING
+                      - CANCELED
+                      - INCOMPLETE
+                    provider:
+                      type: string
+                      enum:
+                      - clear
+                      - incode
+                    flowType:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - enhanced
+                      - basic
+                    property:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                      required:
+                      - id
+                      - name
+                  required:
+                  - sessionCreatedAt
+                  - sessionUpdatedAt
+                  - sessionClosedAt
+                  - licenseExpiresAt
+                  - email
+                  - phone
+                  - firstName
+                  - lastName
+                  - name
+                  - id
+                  - status
+                  - provider
+                  - flowType
+                  - property
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /id-verification/applicants/{idVerificationId}:
+    get:
+      tags:
+      - ID Verification
+      summary: Retrieve an ID verification record
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: idVerificationId
+        in: path
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    statusCode:
+                      type: number
+                    error:
+                      type: string
+                    failedChecks:
+                      type: array
+                      items:
+                        type: string
+                  required:
+                  - error
+                - type: object
+                  properties:
+                    sessionCreatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    sessionUpdatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    sessionClosedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    licenseExpiresAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    email:
+                      type: string
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                    id:
+                      type: string
+                      format: uuid
+                    status:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - PASS
+                      - FAIL
+                      - PENDING
+                      - NEEDS REVIEW
+                      - REVIEWING
+                      - CANCELED
+                      - INCOMPLETE
+                    provider:
+                      type: string
+                      enum:
+                      - clear
+                      - incode
+                    flowType:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - enhanced
+                      - basic
+                    property:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                      required:
+                      - id
+                      - name
+                    results:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        namePhoneNumberMatch:
+                          type: string
+                          enum:
+                          - OK
+                          - WARN
+                          - FAIL
+                          - UNKNOWN
+                        idValidation:
+                          type: string
+                          enum:
+                          - OK
+                          - WARN
+                          - FAIL
+                          - UNKNOWN
+                        faceRecognition:
+                          type: string
+                          enum:
+                          - OK
+                          - WARN
+                          - FAIL
+                          - UNKNOWN
+                        liveness:
+                          type: string
+                          enum:
+                          - OK
+                          - WARN
+                          - FAIL
+                          - UNKNOWN
+                  required:
+                  - sessionCreatedAt
+                  - sessionUpdatedAt
+                  - sessionClosedAt
+                  - licenseExpiresAt
+                  - email
+                  - phone
+                  - firstName
+                  - lastName
+                  - name
+                  - id
+                  - status
+                  - provider
+                  - flowType
+                  - property
+                  - results
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /id-verification/applicants/{idVerificationId}/report:
+    get:
+      tags:
+      - ID Verification
+      summary: Send a PDF report of the results of an ID verification session
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: idVerificationId
+        in: path
+      - schema:
+          type: string
+          description: Pass `fcra` to receive a FCRA compatible report or `summary-and-documents` to receive a report with the applicant's documents included.
+          enum:
+          - fcra
+          - summary-and-documents
+          default: fcra
+        required: false
+        name: preset
+        in: query
+      - schema:
+          type: string
+          description: Pass HTML to get an HTML version of the report instead of the default PDF format.
+          enum:
+          - html
+          - pdf
+          default: pdf
+        required: false
+        name: format
+        in: query
+      responses:
+        '200':
+          description: A application/pdf payload
+          content:
+            application/pdf:
+              schema: {}
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    snapptSessionAuth:
+      type: apiKey
+      in: header
+      name: x-unauthenticated-session-token
+      description: Pass the session token obtained from POST /session

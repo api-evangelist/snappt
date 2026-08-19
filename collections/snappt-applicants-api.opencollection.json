@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Snappt Applicants API",
+    "version": "1.75.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applicants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List applicants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/applicants",
+            "params": [
+              {
+                "name": "rowsPerPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List applicants"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single document PDF from the applicant's report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/applicants/:applicantId/document/:documentId/pdf",
+            "params": [
+              {
+                "name": "applicantId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single document PDF from the applicant's report"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single document thumbnail from the applicant's report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/applicants/:applicantId/document/:documentProofId/thumbnail",
+            "params": [
+              {
+                "name": "applicantId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentProofId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single document thumbnail from the applicant's report"
+        },
+        {
+          "info": {
+            "name": "Retrieve an applicant's report for an entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/applicants/:applicantId/report",
+            "params": [
+              {
+                "name": "applicantId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeDocuments",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "showThumbnails",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "preset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve an applicant's report for an entry"
+        },
+        {
+          "info": {
+            "name": "Retrieve a reference check form PDF for an applicant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/applicants/:applicantId/referenceCheck",
+            "params": [
+              {
+                "name": "applicantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a reference check form PDF for an applicant"
+        },
+        {
+          "info": {
+            "name": "Retrieve a zip file of the applicant's documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/applicants/:applicantId/documents.zip",
+            "params": [
+              {
+                "name": "applicantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a zip file of the applicant's documents"
+        },
+        {
+          "info": {
+            "name": "Retrieve an applicant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/applicants/:applicantId",
+            "params": [
+              {
+                "name": "applicantId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeDocuments",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve an applicant"
+        },
+        {
+          "info": {
+            "name": "Update an applicant's information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://enterprise-api.demo.snappt.com/applicants/:applicantId",
+            "params": [
+              {
+                "name": "applicantId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an applicant's information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

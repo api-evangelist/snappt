@@ -1,0 +1,289 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Snappt Applicant Sessions API",
+    "version": "1.75.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applicant Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an applicant session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/session/public",
+            "params": [
+              {
+                "name": "applicationType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing."
+        },
+        {
+          "info": {
+            "name": "Retrieve information about the property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/session/property",
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve information about the property"
+        },
+        {
+          "info": {
+            "name": "Retrieve application data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/session/application",
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve application data"
+        },
+        {
+          "info": {
+            "name": "Update application data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://enterprise-api.demo.snappt.com/session/application",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update application data"
+        },
+        {
+          "info": {
+            "name": "List application documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/session/documents",
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List application documents"
+        },
+        {
+          "info": {
+            "name": "Upload an application document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/session/documents",
+            "params": [
+              {
+                "name": "checks",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "upload",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This API expects multipart/form-data. You should provide a single file as `upload` and specify the document type. Uploaded documents must be PDFs"
+        },
+        {
+          "info": {
+            "name": "Retrieve an application document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/session/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This API returns the application document that matches the provided id."
+        },
+        {
+          "info": {
+            "name": "Update an application document type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://enterprise-api.demo.snappt.com/session/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an application document type"
+        },
+        {
+          "info": {
+            "name": "Remove an application document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://enterprise-api.demo.snappt.com/session/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove an application document"
+        },
+        {
+          "info": {
+            "name": "Retrieve a thumbnail for a specific document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://enterprise-api.demo.snappt.com/session/documents/:id/thumbnail",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a thumbnail for a specific document"
+        },
+        {
+          "info": {
+            "name": "Submit application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/session/submit",
+            "auth": {
+              "type": "apikey",
+              "key": "x-unauthenticated-session-token",
+              "value": "{{x-unauthenticated-session-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "After uploading one or more documents and editing the applicant information, use this API to submit the application for processing. After a successful submission, the session token is no longer valid. Use the returned applicant ID to poll for results, or create a webhook to be notified when results are ready."
+        },
+        {
+          "info": {
+            "name": "Create an applicant session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://enterprise-api.demo.snappt.com/session",
+            "params": [
+              {
+                "name": "applicationType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

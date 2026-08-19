@@ -1,0 +1,2475 @@
+openapi: 3.2.0
+info:
+  version: 1.75.3
+  title: Snappt Properties API
+  description: Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.
+servers:
+- url: https://enterprise-api.demo.snappt.com
+security:
+- {}
+- bearerAuth: []
+tags:
+- name: Properties
+paths:
+  /properties:
+    get:
+      tags:
+      - Properties
+      summary: List properties
+      parameters:
+      - schema:
+          type: number
+          description: The total number of rows to respond with. Defaults to 5000.
+        required: false
+        name: rowsPerPage
+        in: query
+      - schema:
+          type: number
+          description: The current page. Defaults to 0.
+        required: false
+        name: page
+        in: query
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    shortId:
+                      type: string
+                    name:
+                      type: string
+                    entityName:
+                      type:
+                      - string
+                      - 'null'
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    phoneIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    website:
+                      type:
+                      - string
+                      - 'null'
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    unitIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type:
+                      - string
+                      - 'null'
+                    zip:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - ACTIVE
+                      - ARCHIVED
+                      - DISABLED
+                    supportedDoctypes:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        paystub:
+                          type: number
+                        bank_statement:
+                          type: number
+                        cash_app_statement:
+                          type: number
+                        credit_debit_card_statement:
+                          type: number
+                        department_of_veterans_affairs_benefit_letter:
+                          type: number
+                        investment_account:
+                          type: number
+                        social_security_benefits_letter:
+                          type: number
+                        social_security_statement:
+                          type: number
+                        tax_transcript:
+                          type: number
+                        utility_bill:
+                          type: number
+                        payroll_statement:
+                          type: number
+                        bank_linking_verification_of_income:
+                          type: number
+                        tax_return_linking_report:
+                          type: number
+                        w2:
+                          type: number
+                        child_support:
+                          type: number
+                        financial_aid:
+                          type: number
+                        offer_letter:
+                          type: number
+                        student_visa:
+                          type: number
+                    bankStatement:
+                      type:
+                      - number
+                      - 'null'
+                    paystub:
+                      type:
+                      - number
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    companyId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    pmcName:
+                      type:
+                      - string
+                      - 'null'
+                    applicantLink:
+                      type: string
+                    leasingTeamLink:
+                      type: string
+                    identityVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    incomeVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    assetVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    payrollLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    bankLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    propertyFeature:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        featureCode:
+                          type: string
+                          enum:
+                          - payroll_linking
+                          - bank_linking
+                          - rental_history
+                          - income_verification
+                          - asset_verification
+                          - identity_verification
+                          - reference_completed_notification
+                        state:
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                      required:
+                      - featureCode
+                      - state
+                  required:
+                  - id
+                  - shortId
+                  - name
+                  - entityName
+                  - logo
+                  - phone
+                  - phoneIsRequired
+                  - website
+                  - unit
+                  - unitIsRequired
+                  - address
+                  - city
+                  - state
+                  - zip
+                  - status
+                  - bankStatement
+                  - paystub
+                  - email
+                  - companyId
+                  - companyShortId
+                  - applicantLink
+                  - leasingTeamLink
+                  - identityVerificationEnabled
+                  - insertedAt
+                  - updatedAt
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    post:
+      tags:
+      - Properties
+      summary: Create a new property
+      description: To set up your account, add one or more properties. All applicant sessions are associated with a company and property ID. Note that you cannot delete properties through the Snappt Enterprise API. If you no longer need a property, use the PUT /properties/:id API to set it's status to DISABLED.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                address:
+                  type: string
+                city:
+                  type: string
+                zip:
+                  type: string
+                state:
+                  type:
+                  - string
+                  - 'null'
+                entityName:
+                  type:
+                  - string
+                  - 'null'
+                logo:
+                  type:
+                  - string
+                  - 'null'
+                phone:
+                  type: string
+                phoneIsRequired:
+                  type:
+                  - boolean
+                  - 'null'
+                website:
+                  type:
+                  - string
+                  - 'null'
+                unit:
+                  type: number
+                  exclusiveMinimum: 1
+                pmcName:
+                  type:
+                  - string
+                  - 'null'
+                unitIsRequired:
+                  type:
+                  - boolean
+                  - 'null'
+                status:
+                  type: string
+                  enum:
+                  - ACTIVE
+                  - ARCHIVED
+                  - DISABLED
+                bankStatement:
+                  type:
+                  - number
+                  - 'null'
+                paystub:
+                  type:
+                  - number
+                  - 'null'
+                supportedDoctypes:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    paystub:
+                      type: number
+                    bank_statement:
+                      type: number
+                    cash_app_statement:
+                      type: number
+                    credit_debit_card_statement:
+                      type: number
+                    department_of_veterans_affairs_benefit_letter:
+                      type: number
+                    investment_account:
+                      type: number
+                    social_security_benefits_letter:
+                      type: number
+                    social_security_statement:
+                      type: number
+                    tax_transcript:
+                      type: number
+                    utility_bill:
+                      type: number
+                    payroll_statement:
+                      type: number
+                    bank_linking_verification_of_income:
+                      type: number
+                    tax_return_linking_report:
+                      type: number
+                    w2:
+                      type: number
+                    child_support:
+                      type: number
+                    financial_aid:
+                      type: number
+                    offer_letter:
+                      type: number
+                    student_visa:
+                      type: number
+                identityVerificationReportImageTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - selfie
+                    - document
+                    - none
+                incomeVerificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Income Verification. If omitted, the current value is unchanged.
+                assetVerificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Asset Verification. If omitted, the current value is unchanged.
+                identityVerificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Identity Verification. If omitted, the current value is unchanged.
+                payrollLinkingEnabled:
+                  type: boolean
+                  description: Pass true to enable Payroll Linking. If omitted, the current value is unchanged.
+                bankLinkingEnabled:
+                  type: boolean
+                  description: Pass true to enable Bank Linking. If omitted, the current value is unchanged.
+                referenceCompletedNotificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Reference Completed Notification. If omitted, the current value is unchanged.
+              required:
+              - name
+              - email
+              - address
+              - city
+              - zip
+              - unit
+              - status
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    shortId:
+                      type: string
+                    name:
+                      type: string
+                    entityName:
+                      type:
+                      - string
+                      - 'null'
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    phoneIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    website:
+                      type:
+                      - string
+                      - 'null'
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    unitIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type:
+                      - string
+                      - 'null'
+                    zip:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - ACTIVE
+                      - ARCHIVED
+                      - DISABLED
+                    supportedDoctypes:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        paystub:
+                          type: number
+                        bank_statement:
+                          type: number
+                        cash_app_statement:
+                          type: number
+                        credit_debit_card_statement:
+                          type: number
+                        department_of_veterans_affairs_benefit_letter:
+                          type: number
+                        investment_account:
+                          type: number
+                        social_security_benefits_letter:
+                          type: number
+                        social_security_statement:
+                          type: number
+                        tax_transcript:
+                          type: number
+                        utility_bill:
+                          type: number
+                        payroll_statement:
+                          type: number
+                        bank_linking_verification_of_income:
+                          type: number
+                        tax_return_linking_report:
+                          type: number
+                        w2:
+                          type: number
+                        child_support:
+                          type: number
+                        financial_aid:
+                          type: number
+                        offer_letter:
+                          type: number
+                        student_visa:
+                          type: number
+                    bankStatement:
+                      type:
+                      - number
+                      - 'null'
+                    paystub:
+                      type:
+                      - number
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    companyId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    pmcName:
+                      type:
+                      - string
+                      - 'null'
+                    applicantLink:
+                      type: string
+                    leasingTeamLink:
+                      type: string
+                    identityVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    incomeVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    assetVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    payrollLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    bankLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    propertyFeature:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        featureCode:
+                          type: string
+                          enum:
+                          - payroll_linking
+                          - bank_linking
+                          - rental_history
+                          - income_verification
+                          - asset_verification
+                          - identity_verification
+                          - reference_completed_notification
+                        state:
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                      required:
+                      - featureCode
+                      - state
+                  required:
+                  - id
+                  - shortId
+                  - name
+                  - entityName
+                  - logo
+                  - phone
+                  - phoneIsRequired
+                  - website
+                  - unit
+                  - unitIsRequired
+                  - address
+                  - city
+                  - state
+                  - zip
+                  - status
+                  - bankStatement
+                  - paystub
+                  - email
+                  - companyId
+                  - companyShortId
+                  - applicantLink
+                  - leasingTeamLink
+                  - identityVerificationEnabled
+                  - insertedAt
+                  - updatedAt
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                    propertyId:
+                      type: string
+                      format: uuid
+                  required:
+                  - error
+                  additionalProperties: false
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /properties/{propertyId}:
+    get:
+      tags:
+      - Properties
+      summary: Retrieve a property
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    shortId:
+                      type: string
+                    name:
+                      type: string
+                    entityName:
+                      type:
+                      - string
+                      - 'null'
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    phoneIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    website:
+                      type:
+                      - string
+                      - 'null'
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    unitIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type:
+                      - string
+                      - 'null'
+                    zip:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - ACTIVE
+                      - ARCHIVED
+                      - DISABLED
+                    supportedDoctypes:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        paystub:
+                          type: number
+                        bank_statement:
+                          type: number
+                        cash_app_statement:
+                          type: number
+                        credit_debit_card_statement:
+                          type: number
+                        department_of_veterans_affairs_benefit_letter:
+                          type: number
+                        investment_account:
+                          type: number
+                        social_security_benefits_letter:
+                          type: number
+                        social_security_statement:
+                          type: number
+                        tax_transcript:
+                          type: number
+                        utility_bill:
+                          type: number
+                        payroll_statement:
+                          type: number
+                        bank_linking_verification_of_income:
+                          type: number
+                        tax_return_linking_report:
+                          type: number
+                        w2:
+                          type: number
+                        child_support:
+                          type: number
+                        financial_aid:
+                          type: number
+                        offer_letter:
+                          type: number
+                        student_visa:
+                          type: number
+                    bankStatement:
+                      type:
+                      - number
+                      - 'null'
+                    paystub:
+                      type:
+                      - number
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    companyId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    pmcName:
+                      type:
+                      - string
+                      - 'null'
+                    applicantLink:
+                      type: string
+                    leasingTeamLink:
+                      type: string
+                    identityVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    incomeVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    assetVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    payrollLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    bankLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    propertyFeature:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        featureCode:
+                          type: string
+                          enum:
+                          - payroll_linking
+                          - bank_linking
+                          - rental_history
+                          - income_verification
+                          - asset_verification
+                          - identity_verification
+                          - reference_completed_notification
+                        state:
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                      required:
+                      - featureCode
+                      - state
+                  required:
+                  - id
+                  - shortId
+                  - name
+                  - entityName
+                  - logo
+                  - phone
+                  - phoneIsRequired
+                  - website
+                  - unit
+                  - unitIsRequired
+                  - address
+                  - city
+                  - state
+                  - zip
+                  - status
+                  - bankStatement
+                  - paystub
+                  - email
+                  - companyId
+                  - companyShortId
+                  - applicantLink
+                  - leasingTeamLink
+                  - identityVerificationEnabled
+                  - insertedAt
+                  - updatedAt
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    put:
+      tags:
+      - Properties
+      summary: Update a property
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                address:
+                  type: string
+                city:
+                  type: string
+                zip:
+                  type: string
+                state:
+                  type:
+                  - string
+                  - 'null'
+                entityName:
+                  type:
+                  - string
+                  - 'null'
+                logo:
+                  type:
+                  - string
+                  - 'null'
+                phone:
+                  type: string
+                phoneIsRequired:
+                  type:
+                  - boolean
+                  - 'null'
+                website:
+                  type:
+                  - string
+                  - 'null'
+                unit:
+                  type: number
+                  exclusiveMinimum: 1
+                pmcName:
+                  type:
+                  - string
+                  - 'null'
+                unitIsRequired:
+                  type:
+                  - boolean
+                  - 'null'
+                status:
+                  type: string
+                  enum:
+                  - ACTIVE
+                  - ARCHIVED
+                  - DISABLED
+                bankStatement:
+                  type:
+                  - number
+                  - 'null'
+                paystub:
+                  type:
+                  - number
+                  - 'null'
+                supportedDoctypes:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    paystub:
+                      type: number
+                    bank_statement:
+                      type: number
+                    cash_app_statement:
+                      type: number
+                    credit_debit_card_statement:
+                      type: number
+                    department_of_veterans_affairs_benefit_letter:
+                      type: number
+                    investment_account:
+                      type: number
+                    social_security_benefits_letter:
+                      type: number
+                    social_security_statement:
+                      type: number
+                    tax_transcript:
+                      type: number
+                    utility_bill:
+                      type: number
+                    payroll_statement:
+                      type: number
+                    bank_linking_verification_of_income:
+                      type: number
+                    tax_return_linking_report:
+                      type: number
+                    w2:
+                      type: number
+                    child_support:
+                      type: number
+                    financial_aid:
+                      type: number
+                    offer_letter:
+                      type: number
+                    student_visa:
+                      type: number
+                identityVerificationReportImageTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - selfie
+                    - document
+                    - none
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    shortId:
+                      type: string
+                    name:
+                      type: string
+                    entityName:
+                      type:
+                      - string
+                      - 'null'
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    phoneIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    website:
+                      type:
+                      - string
+                      - 'null'
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    unitIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type:
+                      - string
+                      - 'null'
+                    zip:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - ACTIVE
+                      - ARCHIVED
+                      - DISABLED
+                    supportedDoctypes:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        paystub:
+                          type: number
+                        bank_statement:
+                          type: number
+                        cash_app_statement:
+                          type: number
+                        credit_debit_card_statement:
+                          type: number
+                        department_of_veterans_affairs_benefit_letter:
+                          type: number
+                        investment_account:
+                          type: number
+                        social_security_benefits_letter:
+                          type: number
+                        social_security_statement:
+                          type: number
+                        tax_transcript:
+                          type: number
+                        utility_bill:
+                          type: number
+                        payroll_statement:
+                          type: number
+                        bank_linking_verification_of_income:
+                          type: number
+                        tax_return_linking_report:
+                          type: number
+                        w2:
+                          type: number
+                        child_support:
+                          type: number
+                        financial_aid:
+                          type: number
+                        offer_letter:
+                          type: number
+                        student_visa:
+                          type: number
+                    bankStatement:
+                      type:
+                      - number
+                      - 'null'
+                    paystub:
+                      type:
+                      - number
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    companyId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    pmcName:
+                      type:
+                      - string
+                      - 'null'
+                    applicantLink:
+                      type: string
+                    leasingTeamLink:
+                      type: string
+                    identityVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    incomeVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    assetVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    payrollLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    bankLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    propertyFeature:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        featureCode:
+                          type: string
+                          enum:
+                          - payroll_linking
+                          - bank_linking
+                          - rental_history
+                          - income_verification
+                          - asset_verification
+                          - identity_verification
+                          - reference_completed_notification
+                        state:
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                      required:
+                      - featureCode
+                      - state
+                  required:
+                  - id
+                  - shortId
+                  - name
+                  - entityName
+                  - logo
+                  - phone
+                  - phoneIsRequired
+                  - website
+                  - unit
+                  - unitIsRequired
+                  - address
+                  - city
+                  - state
+                  - zip
+                  - status
+                  - bankStatement
+                  - paystub
+                  - email
+                  - companyId
+                  - companyShortId
+                  - applicantLink
+                  - leasingTeamLink
+                  - identityVerificationEnabled
+                  - insertedAt
+                  - updatedAt
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                    propertyId:
+                      type: string
+                      format: uuid
+                  required:
+                  - error
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /properties/{propertyId}/send-document-upload-email:
+    post:
+      tags:
+      - Properties
+      summary: Send an applicant a link to the document upload portal
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  description: Optional, first name of applicant
+                  example: Bob
+                lastName:
+                  type: string
+                  description: Optional, last name of applicant
+                  example: Mendez
+                middleInitial:
+                  type: string
+                  description: Optional, middle initial of applicant (single uppercase letter)
+                  example: A
+                applicantIdentifier:
+                  type: string
+                  format: uuid
+                  description: The applicant identifier that links this application to a previous application if it exists.
+                  example: 00000000-0000-0000-0000-000000000000
+                email:
+                  type: string
+                  format: email
+                  description: The applicant’s email address to send the document upload link to.
+                  example: bob@gmail.com
+                name:
+                  type: string
+                  description: Optional, improves the appearance of the document upload email
+                  example: Bob Mendez
+                  deprecated: true
+              required:
+              - email
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  error:
+                    type: string
+                  applicantDetailId:
+                    type: string
+                    format: uuid
+                additionalProperties: false
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /properties/{propertyId}/generate-applicant-link:
+    post:
+      tags:
+      - Properties
+      summary: Generate an applicant a link to the document upload portal
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  description: Optional, first name of applicant
+                  example: Bob
+                lastName:
+                  type: string
+                  description: Optional, last name of applicant
+                  example: Mendez
+                middleInitial:
+                  type: string
+                  description: Optional, middle initial of applicant (single uppercase letter)
+                  example: A
+                applicantIdentifier:
+                  type: string
+                  format: uuid
+                  description: The applicant identifier that links this application to a previous application if it exists.
+                  example: 00000000-0000-0000-0000-000000000000
+                email:
+                  type: string
+                  format: email
+                  description: The applicant's email address.
+                  example: bob@gmail.com
+                phoneNumber:
+                  type: string
+                  description: Optional phone number for the applicant. Must be 10-15 digits.
+                  example: '5551234567'
+                callbackUrl:
+                  type: string
+                  format: uri
+                  description: The URL to redirect the user to after they complete the document upload. If not provided, defaults to the Snappt application page.
+                  example: https://example.com/callback
+                externalId:
+                  type: string
+                  description: Optional external identifier from your system (e.g., PMS/CRM prospect ID).
+                  example: PROSPECT-123456
+                externalMetadata:
+                  type: object
+                  additionalProperties: {}
+                  description: 'Optional arbitrary metadata from your external system. Keys/values are stored but not interpreted by Snappt. Maximum size: 10KB.'
+                  example:
+                    unitNumber: 101A
+                    leadSource: Website
+                    agent: Jane Smith
+                linkOptions:
+                  type: object
+                  properties:
+                    expiresOnSubmit:
+                      type: boolean
+                      description: If true, the link expires immediately after the applicant submits their documents.
+                      example: true
+                    expiresAt:
+                      type: string
+                      format: date-time
+                      description: Absolute expiration timestamp in ISO 8601 format.
+                      example: '2025-12-31T23:59:59Z'
+                  additionalProperties: false
+                  description: Optional overrides for link expiration behavior.
+              required:
+              - email
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  error:
+                    type: string
+                  applicantDetailId:
+                    type: string
+                    format: uuid
+                  applicantLink:
+                    type: string
+                    format: uri
+                  callbackUrl:
+                    type: string
+                    format: uri
+                  externalId:
+                    type: string
+                  externalMetadata:
+                    type: object
+                    additionalProperties: {}
+                    description: Arbitrary metadata from your external system. Keys/values are stored but not interpreted by Snappt.
+                  linkOptions:
+                    type: object
+                    properties:
+                      expiresOnSubmit:
+                        type: boolean
+                        description: If true, the link expires immediately after the applicant submits their documents.
+                        example: true
+                      expiresAt:
+                        type: string
+                        format: date-time
+                        description: Absolute expiration timestamp in ISO 8601 format.
+                        example: '2025-12-31T23:59:59Z'
+                    additionalProperties: false
+                additionalProperties: false
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /properties/{propertyId}/identity-verification:
+    post:
+      tags:
+      - Properties
+      summary: Enable/Disable ID Verification
+      deprecated: true
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: Pass true to enable ID Verification and pass false to disable ID Verification
+              required:
+              - enabled
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    shortId:
+                      type: string
+                    name:
+                      type: string
+                    entityName:
+                      type:
+                      - string
+                      - 'null'
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    phoneIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    website:
+                      type:
+                      - string
+                      - 'null'
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    unitIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type:
+                      - string
+                      - 'null'
+                    zip:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - ACTIVE
+                      - ARCHIVED
+                      - DISABLED
+                    supportedDoctypes:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        paystub:
+                          type: number
+                        bank_statement:
+                          type: number
+                        cash_app_statement:
+                          type: number
+                        credit_debit_card_statement:
+                          type: number
+                        department_of_veterans_affairs_benefit_letter:
+                          type: number
+                        investment_account:
+                          type: number
+                        social_security_benefits_letter:
+                          type: number
+                        social_security_statement:
+                          type: number
+                        tax_transcript:
+                          type: number
+                        utility_bill:
+                          type: number
+                        payroll_statement:
+                          type: number
+                        bank_linking_verification_of_income:
+                          type: number
+                        tax_return_linking_report:
+                          type: number
+                        w2:
+                          type: number
+                        child_support:
+                          type: number
+                        financial_aid:
+                          type: number
+                        offer_letter:
+                          type: number
+                        student_visa:
+                          type: number
+                    bankStatement:
+                      type:
+                      - number
+                      - 'null'
+                    paystub:
+                      type:
+                      - number
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    companyId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    pmcName:
+                      type:
+                      - string
+                      - 'null'
+                    applicantLink:
+                      type: string
+                    leasingTeamLink:
+                      type: string
+                    identityVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    incomeVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    assetVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    payrollLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    bankLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    propertyFeature:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        featureCode:
+                          type: string
+                          enum:
+                          - payroll_linking
+                          - bank_linking
+                          - rental_history
+                          - income_verification
+                          - asset_verification
+                          - identity_verification
+                          - reference_completed_notification
+                        state:
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                      required:
+                      - featureCode
+                      - state
+                  required:
+                  - id
+                  - shortId
+                  - name
+                  - entityName
+                  - logo
+                  - phone
+                  - phoneIsRequired
+                  - website
+                  - unit
+                  - unitIsRequired
+                  - address
+                  - city
+                  - state
+                  - zip
+                  - status
+                  - bankStatement
+                  - paystub
+                  - email
+                  - companyId
+                  - companyShortId
+                  - applicantLink
+                  - leasingTeamLink
+                  - identityVerificationEnabled
+                  - insertedAt
+                  - updatedAt
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /properties/{propertyId}/income-verification:
+    post:
+      tags:
+      - Properties
+      summary: Enable/Disable Income Verification
+      deprecated: true
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: Pass true to enable Income Verification and pass false to disable Income Verification
+              required:
+              - enabled
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    shortId:
+                      type: string
+                    name:
+                      type: string
+                    entityName:
+                      type:
+                      - string
+                      - 'null'
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    phoneIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    website:
+                      type:
+                      - string
+                      - 'null'
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    unitIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type:
+                      - string
+                      - 'null'
+                    zip:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - ACTIVE
+                      - ARCHIVED
+                      - DISABLED
+                    supportedDoctypes:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        paystub:
+                          type: number
+                        bank_statement:
+                          type: number
+                        cash_app_statement:
+                          type: number
+                        credit_debit_card_statement:
+                          type: number
+                        department_of_veterans_affairs_benefit_letter:
+                          type: number
+                        investment_account:
+                          type: number
+                        social_security_benefits_letter:
+                          type: number
+                        social_security_statement:
+                          type: number
+                        tax_transcript:
+                          type: number
+                        utility_bill:
+                          type: number
+                        payroll_statement:
+                          type: number
+                        bank_linking_verification_of_income:
+                          type: number
+                        tax_return_linking_report:
+                          type: number
+                        w2:
+                          type: number
+                        child_support:
+                          type: number
+                        financial_aid:
+                          type: number
+                        offer_letter:
+                          type: number
+                        student_visa:
+                          type: number
+                    bankStatement:
+                      type:
+                      - number
+                      - 'null'
+                    paystub:
+                      type:
+                      - number
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    companyId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    pmcName:
+                      type:
+                      - string
+                      - 'null'
+                    applicantLink:
+                      type: string
+                    leasingTeamLink:
+                      type: string
+                    identityVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    incomeVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    assetVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    payrollLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    bankLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    propertyFeature:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        featureCode:
+                          type: string
+                          enum:
+                          - payroll_linking
+                          - bank_linking
+                          - rental_history
+                          - income_verification
+                          - asset_verification
+                          - identity_verification
+                          - reference_completed_notification
+                        state:
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                      required:
+                      - featureCode
+                      - state
+                  required:
+                  - id
+                  - shortId
+                  - name
+                  - entityName
+                  - logo
+                  - phone
+                  - phoneIsRequired
+                  - website
+                  - unit
+                  - unitIsRequired
+                  - address
+                  - city
+                  - state
+                  - zip
+                  - status
+                  - bankStatement
+                  - paystub
+                  - email
+                  - companyId
+                  - companyShortId
+                  - applicantLink
+                  - leasingTeamLink
+                  - identityVerificationEnabled
+                  - insertedAt
+                  - updatedAt
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /properties/{propertyId}/features:
+    post:
+      tags:
+      - Properties
+      summary: Enable/Disable features to customize the applicant flow
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                incomeVerificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Income Verification. If omitted, the current value is unchanged.
+                assetVerificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Asset Verification. If omitted, the current value is unchanged.
+                identityVerificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Identity Verification. If omitted, the current value is unchanged.
+                payrollLinkingEnabled:
+                  type: boolean
+                  description: Pass true to enable Payroll Linking. If omitted, the current value is unchanged.
+                bankLinkingEnabled:
+                  type: boolean
+                  description: Pass true to enable Bank Linking. If omitted, the current value is unchanged.
+                referenceCompletedNotificationEnabled:
+                  type: boolean
+                  description: Pass true to enable Reference Completed Notification. If omitted, the current value is unchanged.
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    shortId:
+                      type: string
+                    name:
+                      type: string
+                    entityName:
+                      type:
+                      - string
+                      - 'null'
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    phoneIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    website:
+                      type:
+                      - string
+                      - 'null'
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    unitIsRequired:
+                      type:
+                      - boolean
+                      - 'null'
+                    address:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type:
+                      - string
+                      - 'null'
+                    zip:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - ACTIVE
+                      - ARCHIVED
+                      - DISABLED
+                    supportedDoctypes:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        paystub:
+                          type: number
+                        bank_statement:
+                          type: number
+                        cash_app_statement:
+                          type: number
+                        credit_debit_card_statement:
+                          type: number
+                        department_of_veterans_affairs_benefit_letter:
+                          type: number
+                        investment_account:
+                          type: number
+                        social_security_benefits_letter:
+                          type: number
+                        social_security_statement:
+                          type: number
+                        tax_transcript:
+                          type: number
+                        utility_bill:
+                          type: number
+                        payroll_statement:
+                          type: number
+                        bank_linking_verification_of_income:
+                          type: number
+                        tax_return_linking_report:
+                          type: number
+                        w2:
+                          type: number
+                        child_support:
+                          type: number
+                        financial_aid:
+                          type: number
+                        offer_letter:
+                          type: number
+                        student_visa:
+                          type: number
+                    bankStatement:
+                      type:
+                      - number
+                      - 'null'
+                    paystub:
+                      type:
+                      - number
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                      format: email
+                    companyId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    pmcName:
+                      type:
+                      - string
+                      - 'null'
+                    applicantLink:
+                      type: string
+                    leasingTeamLink:
+                      type: string
+                    identityVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    incomeVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    assetVerificationEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    payrollLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    bankLinkingEnabled:
+                      type:
+                      - boolean
+                      - 'null'
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    updatedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    propertyFeature:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        featureCode:
+                          type: string
+                          enum:
+                          - payroll_linking
+                          - bank_linking
+                          - rental_history
+                          - income_verification
+                          - asset_verification
+                          - identity_verification
+                          - reference_completed_notification
+                        state:
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                      required:
+                      - featureCode
+                      - state
+                  required:
+                  - id
+                  - shortId
+                  - name
+                  - entityName
+                  - logo
+                  - phone
+                  - phoneIsRequired
+                  - website
+                  - unit
+                  - unitIsRequired
+                  - address
+                  - city
+                  - state
+                  - zip
+                  - status
+                  - bankStatement
+                  - paystub
+                  - email
+                  - companyId
+                  - companyShortId
+                  - applicantLink
+                  - leasingTeamLink
+                  - identityVerificationEnabled
+                  - insertedAt
+                  - updatedAt
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /properties/{propertyId}/identity-verification/settings:
+    get:
+      tags:
+      - Properties
+      summary: Retrieve a property's identity verification settings
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    idvReportImage:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - selfie
+                      - document
+                      - none
+                      description: '''selfie'' includes session selfie on report. ''document'' includes session document on report. ''none'' hide all session images from report.'
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    put:
+      tags:
+      - Properties
+      summary: Update a property's identity verification settings
+      parameters:
+      - schema:
+          type: string
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idvReportImage:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - selfie
+                  - document
+                  - none
+                  description: Pass 'selfie' to include session selfie on report. Pass 'document' to include session document on report. Pass 'none' to hide all images.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    idvReportImage:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - selfie
+                      - document
+                      - none
+                      description: '''selfie'' includes session selfie on report. ''document'' includes session document on report. ''none'' hide all session images from report.'
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    snapptSessionAuth:
+      type: apiKey
+      in: header
+      name: x-unauthenticated-session-token
+      description: Pass the session token obtained from POST /session

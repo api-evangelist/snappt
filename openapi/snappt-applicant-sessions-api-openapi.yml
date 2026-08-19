@@ -1,0 +1,1530 @@
+openapi: 3.2.0
+info:
+  version: 1.75.3
+  title: Snappt Applicant Sessions API
+  description: Welcome to the Snappt API! API endpoints require a Snappt partner API key passed in the HTTP Authorization header.
+servers:
+- url: https://enterprise-api.demo.snappt.com
+security:
+- {}
+- bearerAuth: []
+tags:
+- name: Applicant Sessions
+paths:
+  /session/public:
+    post:
+      tags:
+      - Applicant Sessions
+      summary: Create an applicant session
+      description: Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing.
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - leasing_team
+          - unauthenticated_user
+          default: unauthenticated_user
+        required: false
+        name: applicationType
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicPostSessionBody'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicPostSessionResponse'
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /session/property:
+    get:
+      tags:
+      - Applicant Sessions
+      summary: Retrieve information about the property
+      security:
+      - snapptSessionAuth: []
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  shortId:
+                    type: string
+                  name:
+                    type: string
+                  entityName:
+                    type:
+                    - string
+                    - 'null'
+                  logo:
+                    type:
+                    - string
+                    - 'null'
+                  phone:
+                    type:
+                    - string
+                    - 'null'
+                  phoneIsRequired:
+                    type:
+                    - boolean
+                    - 'null'
+                  website:
+                    type:
+                    - string
+                    - 'null'
+                  unit:
+                    type:
+                    - string
+                    - 'null'
+                  unitIsRequired:
+                    type:
+                    - boolean
+                    - 'null'
+                  address:
+                    type: string
+                  city:
+                    type: string
+                  state:
+                    type:
+                    - string
+                    - 'null'
+                  zip:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                    - ACTIVE
+                    - ARCHIVED
+                    - DISABLED
+                  supportedDoctypes:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      paystub:
+                        type: number
+                      bank_statement:
+                        type: number
+                      cash_app_statement:
+                        type: number
+                      credit_debit_card_statement:
+                        type: number
+                      department_of_veterans_affairs_benefit_letter:
+                        type: number
+                      investment_account:
+                        type: number
+                      social_security_benefits_letter:
+                        type: number
+                      social_security_statement:
+                        type: number
+                      tax_transcript:
+                        type: number
+                      utility_bill:
+                        type: number
+                      payroll_statement:
+                        type: number
+                      bank_linking_verification_of_income:
+                        type: number
+                      tax_return_linking_report:
+                        type: number
+                      w2:
+                        type: number
+                      child_support:
+                        type: number
+                      financial_aid:
+                        type: number
+                      offer_letter:
+                        type: number
+                      student_visa:
+                        type: number
+                  bankStatement:
+                    type:
+                    - number
+                    - 'null'
+                  paystub:
+                    type:
+                    - number
+                    - 'null'
+                  email:
+                    type:
+                    - string
+                    - 'null'
+                    format: email
+                  companyId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  companyShortId:
+                    type:
+                    - string
+                    - 'null'
+                  pmcName:
+                    type:
+                    - string
+                    - 'null'
+                  applicantLink:
+                    type: string
+                  leasingTeamLink:
+                    type: string
+                  isLinkedToYardi:
+                    type:
+                    - boolean
+                    - 'null'
+                  identityVerificationEnabled:
+                    type:
+                    - boolean
+                    - 'null'
+                  incomeVerificationEnabled:
+                    type:
+                    - boolean
+                    - 'null'
+                  assetVerificationEnabled:
+                    type:
+                    - boolean
+                    - 'null'
+                  payrollLinkingEnabled:
+                    type:
+                    - boolean
+                    - 'null'
+                  bankLinkingEnabled:
+                    type:
+                    - boolean
+                    - 'null'
+                  insertedAt:
+                    type: string
+                    description: An ISO-formattted datetime
+                  updatedAt:
+                    type: string
+                    description: An ISO-formattted datetime
+                required:
+                - id
+                - shortId
+                - name
+                - entityName
+                - logo
+                - phone
+                - phoneIsRequired
+                - website
+                - unit
+                - unitIsRequired
+                - address
+                - city
+                - state
+                - zip
+                - status
+                - bankStatement
+                - paystub
+                - email
+                - companyId
+                - companyShortId
+                - applicantLink
+                - leasingTeamLink
+                - isLinkedToYardi
+                - identityVerificationEnabled
+                - insertedAt
+                - updatedAt
+                additionalProperties: false
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /session/application:
+    get:
+      tags:
+      - Applicant Sessions
+      summary: Retrieve application data
+      security:
+      - snapptSessionAuth: []
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    put:
+      tags:
+      - Applicant Sessions
+      summary: Update application data
+      security:
+      - snapptSessionAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                identityId:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                type:
+                  type: string
+                  enum:
+                  - leasing_team
+                  - unauthenticated_user
+                unit:
+                  type:
+                  - string
+                  - 'null'
+                firstName:
+                  type:
+                  - string
+                  - 'null'
+                middleInitial:
+                  type:
+                  - string
+                  - 'null'
+                lastName:
+                  type:
+                  - string
+                  - 'null'
+                email:
+                  type:
+                  - string
+                  - 'null'
+                notificationEmail:
+                  type:
+                  - string
+                  - 'null'
+                phone:
+                  type:
+                  - string
+                  - 'null'
+                hasPreviouslySubmitted:
+                  type:
+                  - boolean
+                  - 'null'
+                metadata:
+                  type: object
+                applicantDetailId:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                prefilledFields:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    type: string
+                propertyShortId:
+                  type:
+                  - string
+                  - 'null'
+                companyShortId:
+                  type:
+                  - string
+                  - 'null'
+                hasRentalHistory:
+                  type:
+                  - boolean
+                  - 'null'
+                rentalHistories:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    type: object
+                    properties:
+                      streetAddress:
+                        type: string
+                      city:
+                        type: string
+                      state:
+                        type: string
+                      zip:
+                        type: string
+                      managementName:
+                        type: string
+                      managementPhone:
+                        type: string
+                      managementEmail:
+                        type: string
+                      monthlyAmount:
+                        type: string
+                      leaseStart:
+                        type: string
+                      leaseEnd:
+                        type:
+                        - string
+                        - 'null'
+                      currentResidence:
+                        type:
+                        - boolean
+                        - 'null'
+                    required:
+                    - streetAddress
+                    - city
+                    - state
+                    - zip
+                    - managementName
+                    - managementPhone
+                    - monthlyAmount
+                    - leaseStart
+                    - leaseEnd
+                    - currentResidence
+                isTaxReturnConnected:
+                  type:
+                  - boolean
+                  - 'null'
+                taxReturnData:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    id:
+                      type: string
+                    provider:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        url:
+                          type: string
+                        icon:
+                          type: string
+                        logo:
+                          type: string
+                        category:
+                          type: string
+                        display_name:
+                          type: string
+                        record_types:
+                          type: array
+                          items:
+                            type: string
+                        primary_color:
+                          type: string
+                      required:
+                      - id
+                    name:
+                      type: string
+                    externalId:
+                      type: string
+                    taxYear:
+                      type: number
+                    status:
+                      type: string
+                    data:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        tax_year:
+                          type: number
+                      additionalProperties: {}
+                  required:
+                  - id
+                  - name
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    identityId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    type:
+                      type: string
+                      enum:
+                      - leasing_team
+                      - unauthenticated_user
+                    unit:
+                      type:
+                      - string
+                      - 'null'
+                    firstName:
+                      type:
+                      - string
+                      - 'null'
+                    middleInitial:
+                      type:
+                      - string
+                      - 'null'
+                    lastName:
+                      type:
+                      - string
+                      - 'null'
+                    email:
+                      type:
+                      - string
+                      - 'null'
+                    notificationEmail:
+                      type:
+                      - string
+                      - 'null'
+                    phone:
+                      type:
+                      - string
+                      - 'null'
+                    hasPreviouslySubmitted:
+                      type:
+                      - boolean
+                      - 'null'
+                    metadata:
+                      type: object
+                    applicantDetailId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    prefilledFields:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                    propertyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    companyShortId:
+                      type:
+                      - string
+                      - 'null'
+                    hasRentalHistory:
+                      type:
+                      - boolean
+                      - 'null'
+                    rentalHistories:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: object
+                        properties:
+                          streetAddress:
+                            type: string
+                          city:
+                            type: string
+                          state:
+                            type: string
+                          zip:
+                            type: string
+                          managementName:
+                            type: string
+                          managementPhone:
+                            type: string
+                          managementEmail:
+                            type: string
+                          monthlyAmount:
+                            type: string
+                          leaseStart:
+                            type: string
+                          leaseEnd:
+                            type:
+                            - string
+                            - 'null'
+                          currentResidence:
+                            type:
+                            - boolean
+                            - 'null'
+                        required:
+                        - streetAddress
+                        - city
+                        - state
+                        - zip
+                        - managementName
+                        - managementPhone
+                        - monthlyAmount
+                        - leaseStart
+                        - leaseEnd
+                        - currentResidence
+                    isTaxReturnConnected:
+                      type:
+                      - boolean
+                      - 'null'
+                    taxReturnData:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        id:
+                          type: string
+                        provider:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            url:
+                              type: string
+                            icon:
+                              type: string
+                            logo:
+                              type: string
+                            category:
+                              type: string
+                            display_name:
+                              type: string
+                            record_types:
+                              type: array
+                              items:
+                                type: string
+                            primary_color:
+                              type: string
+                          required:
+                          - id
+                        name:
+                          type: string
+                        externalId:
+                          type: string
+                        taxYear:
+                          type: number
+                        status:
+                          type: string
+                        data:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            tax_year:
+                              type: number
+                          additionalProperties: {}
+                      required:
+                      - id
+                      - name
+                  required:
+                  - id
+                  - identityId
+                  - type
+                  - firstName
+                  - lastName
+                  - email
+                  - applicantDetailId
+                  - propertyShortId
+                  - companyShortId
+                  - rentalHistories
+                  - isTaxReturnConnected
+                  - taxReturnData
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /session/documents:
+    get:
+      tags:
+      - Applicant Sessions
+      summary: List application documents
+      security:
+      - snapptSessionAuth: []
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProofResponse'
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    post:
+      tags:
+      - Applicant Sessions
+      summary: Upload an application document
+      description: This API expects multipart/form-data. You should provide a single file as `upload` and specify the document type. Uploaded documents must be PDFs
+      security:
+      - snapptSessionAuth: []
+      parameters:
+      - schema:
+          type: boolean
+          description: Hold the POST request open while preliminary checks are performed on the document. This is a feature preview and will soon become the default. If you pass checks=true, you do not need to wait to call the /submit endpoint after a successful upload.
+          example: true
+        required: false
+        name: checks
+        in: query
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: BANK_STATEMENT
+                  enum:
+                  - BANK_STATEMENT
+                  - PAYSTUB
+                  - OTHER
+                fileName:
+                  type: string
+                upload:
+                  type: string
+                  description: The file being uploaded
+                  format: binary
+                  example: <<PDF document data>>
+              required:
+              - type
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    fileName:
+                      type: string
+                    unauthenticatedSessionId:
+                      type: string
+                      format: uuid
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    type:
+                      type: string
+                      example: BANK_STATEMENT
+                      enum:
+                      - BANK_STATEMENT
+                      - PAYSTUB
+                      - OTHER
+                    processStatus:
+                      type: string
+                      enum:
+                      - IN_QUEUE
+                      - IN_PROCESS
+                      - PASSED
+                      - FAILED
+                      - SUCCESS
+                    result:
+                      type: string
+                      enum:
+                      - PENDING
+                      - CLEAN
+                      - EDITED
+                      - UNDETERMINED
+                  required:
+                  - id
+                  - unauthenticatedSessionId
+                  - insertedAt
+                  - type
+                  - processStatus
+                  - result
+                - type: object
+                  properties:
+                    statusCode:
+                      type: number
+                    error:
+                      type: string
+                    failedChecks:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - PDFParseError
+                        - PrintToPDFError
+                        - PdfContainsTextError
+                        - PageLimitError
+                        - PDFTooLargeError
+                        - UnsupportedFileNameError
+                        - UnsupportedFileTypeError
+                        - EncryptedPdfError
+                        - GenericError
+                        - DuplicateDocumentError
+                  required:
+                  - error
+                  - failedChecks
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /session/documents/{id}:
+    put:
+      tags:
+      - Applicant Sessions
+      summary: Update an application document type
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: BANK_STATEMENT
+                  enum:
+                  - BANK_STATEMENT
+                  - PAYSTUB
+                  - OTHER
+              required:
+              - type
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    fileName:
+                      type: string
+                    unauthenticatedSessionId:
+                      type: string
+                      format: uuid
+                    insertedAt:
+                      type: string
+                      description: An ISO-formattted datetime
+                    type:
+                      type: string
+                      example: BANK_STATEMENT
+                      enum:
+                      - BANK_STATEMENT
+                      - PAYSTUB
+                      - OTHER
+                    processStatus:
+                      type: string
+                      enum:
+                      - IN_QUEUE
+                      - IN_PROCESS
+                      - PASSED
+                      - FAILED
+                      - SUCCESS
+                    result:
+                      type: string
+                      enum:
+                      - PENDING
+                      - CLEAN
+                      - EDITED
+                      - UNDETERMINED
+                  required:
+                  - id
+                  - unauthenticatedSessionId
+                  - insertedAt
+                  - type
+                  - processStatus
+                  - result
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                  required:
+                  - error
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    get:
+      tags:
+      - Applicant Sessions
+      summary: Retrieve an application document
+      description: This API returns the application document that matches the provided id.
+      security:
+      - snapptSessionAuth: []
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProofResponse'
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+    delete:
+      tags:
+      - Applicant Sessions
+      summary: Remove an application document
+      security:
+      - snapptSessionAuth: []
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      responses:
+        '204':
+          description: No content - successful operation
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /session/documents/{id}/thumbnail:
+    get:
+      tags:
+      - Applicant Sessions
+      summary: Retrieve a thumbnail for a specific document
+      security:
+      - snapptSessionAuth: []
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+        required: true
+        name: id
+        in: path
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: uri
+                required:
+                - url
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '404':
+          description: The item you requested could not be found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /session/submit:
+    post:
+      tags:
+      - Applicant Sessions
+      summary: Submit application
+      description: After uploading one or more documents and editing the applicant information, use this API to submit the application for processing. After a successful submission, the session token is no longer valid. Use the returned applicant ID to poll for results, or create a webhook to be notified when results are ready.
+      security:
+      - snapptSessionAuth: []
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  applicantId:
+                    type: string
+                required:
+                - applicantId
+                additionalProperties: false
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  /session:
+    post:
+      tags:
+      - Applicant Sessions
+      summary: Create an applicant session
+      description: Make a request to this API to begin a new applicant session and obtain a session token you can use to update applicant info, upload documents, and submit the application for processing.
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - leasing_team
+          - unauthenticated_user
+          default: unauthenticated_user
+        required: false
+        name: applicationType
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                companyShortId:
+                  type: string
+                propertyShortId:
+                  type: string
+                firstName:
+                  type: string
+                  description: Optional, can be provided later via PUT /session/application.
+                  example: Bob
+                lastName:
+                  type: string
+                  description: Optional, can be provided later via PUT /session/application.
+                  example: Smith
+                email:
+                  type: string
+                  format: email
+                  description: Optional, can be provided later via PUT /session/application.
+                  example: bob@gmail.com
+                applicantIdentifier:
+                  type: string
+                  format: uuid
+                  description: The applicant identifier that links this application to a previous application if it exists.
+                  example: 00000000-0000-0000-0000-000000000000
+                identityId:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                  description: The id that relates to the universal user concept across all applications.
+                  example: 00000000-0000-0000-0000-000000000000
+              additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    format: uuid
+                  id:
+                    type: string
+                    format: uuid
+                  applicantDetailId:
+                    type: string
+                    format: uuid
+                  identityId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                required:
+                - token
+                - id
+                - applicantDetailId
+                - identityId
+        '400':
+          description: The request payload or query string parameter you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: The Authorization header or Snappt applicant session token you passed was not valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+components:
+  schemas:
+    ApplicationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        identityId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        type:
+          type: string
+          enum:
+          - leasing_team
+          - unauthenticated_user
+        unit:
+          type:
+          - string
+          - 'null'
+        firstName:
+          type:
+          - string
+          - 'null'
+        middleInitial:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        notificationEmail:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        hasPreviouslySubmitted:
+          type:
+          - boolean
+          - 'null'
+        metadata:
+          type: object
+        applicantDetailId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        prefilledFields:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        propertyShortId:
+          type:
+          - string
+          - 'null'
+        companyShortId:
+          type:
+          - string
+          - 'null'
+        hasRentalHistory:
+          type:
+          - boolean
+          - 'null'
+        rentalHistories:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              streetAddress:
+                type: string
+              city:
+                type: string
+              state:
+                type: string
+              zip:
+                type: string
+              managementName:
+                type: string
+              managementPhone:
+                type: string
+              managementEmail:
+                type: string
+              monthlyAmount:
+                type: string
+              leaseStart:
+                type: string
+              leaseEnd:
+                type:
+                - string
+                - 'null'
+              currentResidence:
+                type:
+                - boolean
+                - 'null'
+            required:
+            - streetAddress
+            - city
+            - state
+            - zip
+            - managementName
+            - managementPhone
+            - monthlyAmount
+            - leaseStart
+            - leaseEnd
+            - currentResidence
+        isTaxReturnConnected:
+          type:
+          - boolean
+          - 'null'
+        taxReturnData:
+          type:
+          - object
+          - 'null'
+          properties:
+            id:
+              type: string
+            provider:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                url:
+                  type: string
+                icon:
+                  type: string
+                logo:
+                  type: string
+                category:
+                  type: string
+                display_name:
+                  type: string
+                record_types:
+                  type: array
+                  items:
+                    type: string
+                primary_color:
+                  type: string
+              required:
+              - id
+            name:
+              type: string
+            externalId:
+              type: string
+            taxYear:
+              type: number
+            status:
+              type: string
+            data:
+              type: object
+              properties:
+                name:
+                  type: string
+                tax_year:
+                  type: number
+              additionalProperties: {}
+          required:
+          - id
+          - name
+      required:
+      - id
+      - identityId
+      - type
+      - firstName
+      - lastName
+      - email
+      - applicantDetailId
+      - propertyShortId
+      - companyShortId
+      - rentalHistories
+      - isTaxReturnConnected
+      - taxReturnData
+    ProofResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        fileName:
+          type: string
+        unauthenticatedSessionId:
+          type: string
+          format: uuid
+        insertedAt:
+          type: string
+          description: An ISO-formattted datetime
+        type:
+          type: string
+          example: BANK_STATEMENT
+          enum:
+          - BANK_STATEMENT
+          - PAYSTUB
+          - OTHER
+        processStatus:
+          type: string
+          enum:
+          - IN_QUEUE
+          - IN_PROCESS
+          - PASSED
+          - FAILED
+          - SUCCESS
+        result:
+          type: string
+          enum:
+          - PENDING
+          - CLEAN
+          - EDITED
+          - UNDETERMINED
+      required:
+      - id
+      - unauthenticatedSessionId
+      - insertedAt
+      - type
+      - processStatus
+      - result
+    PublicPostSessionBody:
+      type: object
+      properties:
+        companyShortId:
+          type: string
+        propertyShortId:
+          type: string
+        firstName:
+          type: string
+          description: Optional, can be provided later via PUT /session/application.
+          example: Bob
+        lastName:
+          type: string
+          description: Optional, can be provided later via PUT /session/application.
+          example: Smith
+        email:
+          type: string
+          format: email
+          description: Optional, can be provided later via PUT /session/application.
+          example: bob@gmail.com
+        applicantIdentifier:
+          type: string
+          format: uuid
+          description: The applicant identifier that links this application to a previous application if it exists.
+          example: 00000000-0000-0000-0000-000000000000
+        identityId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: The id that relates to the universal user concept across all applications.
+          example: 00000000-0000-0000-0000-000000000000
+      required:
+      - companyShortId
+      - propertyShortId
+      additionalProperties: false
+    PublicPostSessionResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        applicantDetailId:
+          type: string
+          format: uuid
+        identityId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      required:
+      - token
+      - id
+      - applicantDetailId
+      - identityId
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    snapptSessionAuth:
+      type: apiKey
+      in: header
+      name: x-unauthenticated-session-token
+      description: Pass the session token obtained from POST /session
