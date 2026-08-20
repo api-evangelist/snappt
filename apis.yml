@@ -18,6 +18,19 @@ created: '2026-08-05'
 modified: '2026-08-05'
 tags:
 - Company
+- Fraud Detection
+- Document Verification
+- Identity Verification
+- Income Verification
+- Property Management
+- Multifamily
+- Real-Estate
+- PropTech
+- Tenant Screening
+- Rental Applications
+- Webhook
+tags_raw:
+- Company
 - fraud-detection
 - document-verification
 - identity-verification
@@ -228,6 +241,8 @@ apis:
   humanURL: https://snappt-enterprise-api.readme.io/
   baseURL: https://enterprise-api.snappt.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
