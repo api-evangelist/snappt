@@ -287,6 +287,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/snappt-capability-edges.yml
+  name: Snappt Business Capability Map
 - type: MCPServer
   url: mcp/snappt-mcp.yml
 - type: Website

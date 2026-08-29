@@ -1,0 +1,47 @@
+slug: snappt
+provider: Snappt
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Real Estate
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Applicant Sessions
+  spec_file: snappt-applicant-sessions-api-openapi.yml
+  capability_id: BC-4950.40
+  capability_id_l1: BC-4950
+  capability_name: Tenant Application & Screening
+  confidence: 0.85
+  evidence: POST /session/public — "Create an applicant session"; "Retrieve application data"; "Upload
+    an application document"; "Submit application"
+  reason: Operations capture a rental applicant's application and supporting documents against a property
+    and submit it for screening — landlord-side tenant application and screening in the multifamily rental
+    context described by the vendor.
+- tag: Applicants
+  spec_file: snappt-applicants-api-openapi.yml
+  capability_id: BC-4950.40
+  capability_id_l1: BC-4950
+  capability_name: Tenant Application & Screening
+  confidence: 0.85
+  evidence: GET /applicants/{applicantId}/report — "Retrieve an applicant's report for an entry"; GET
+    /applicants/{applicantId}/referenceCheck — "Retrieve a reference check form PDF for an applicant"
+  reason: Applicant records, fraud/screening reports and reference-check forms for rental applicants are
+    exactly tenant application and screening execution.
+- tag: ID Verification
+  spec_file: snappt-id-verification-api-openapi.yml
+  capability_id: BC-4950.40
+  capability_id_l1: BC-4950
+  capability_name: Tenant Application & Screening
+  confidence: 0.78
+  evidence: GET /id-verification/{propertyShortId}/link — "Static identity verification link for a single
+    property"; GET /id-verification/applicants/{idVerificationId}/report
+  reason: Identity verification of rental applicants tied to a property is the identity-check element
+    of tenant application and screening ('credit, identity, and reference checks'). Slightly lower confidence
+    as identity verification could be framed as a generic KYC utility.
