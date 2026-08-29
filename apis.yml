@@ -9,6 +9,18 @@ description: >-
   API-key-authenticated REST API covering properties, applicant sessions, document upload, fraud and income reports,
   ID-verification sessions and outbound webhooks — plus an embeddable browser SDK that launches the applicant
   verification flow as a modal inside a partner's own leasing flow.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://snappt.com/wp-content/uploads/2023/05/snappt-sharing-fallback.png
 url: https://raw.githubusercontent.com/api-evangelist/snappt/refs/heads/main/apis.yml
 x-type: company
