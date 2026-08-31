@@ -30,16 +30,16 @@ created: '2026-08-05'
 modified: '2026-08-05'
 tags:
 - Company
-- Fraud Detection
-- Document Verification
+- fraud-detection
+- document-verification
 - Identity Verification
-- Income Verification
-- Property Management
-- Multifamily
-- Real-Estate
-- PropTech
-- Tenant Screening
-- Rental Applications
+- income-verification
+- property-management
+- multifamily
+- real-estate
+- proptech
+- tenant-screening
+- rental-applications
 - Webhook
 tags_raw:
 - Company
