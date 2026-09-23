@@ -424,6 +424,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getApplicants
+      x-operation-id-source: derived
   /applicants/{applicantId}/document/{documentId}/pdf:
     get:
       tags:
@@ -470,6 +472,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getApplicantsByApplicantIdDocumentByDocumentIdPdf
+      x-operation-id-source: derived
   /applicants/{applicantId}/document/{documentProofId}/thumbnail:
     get:
       tags:
@@ -516,6 +520,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getApplicantsByApplicantIdDocumentByDocumentProofIdThumbnail
+      x-operation-id-source: derived
   /applicants/{applicantId}/report:
     get:
       tags:
@@ -604,6 +610,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getApplicantsByApplicantIdReport
+      x-operation-id-source: derived
   /applicants/{applicantId}/referenceCheck:
     get:
       tags:
@@ -644,6 +652,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getApplicantsByApplicantIdReferenceCheck
+      x-operation-id-source: derived
   /applicants/{applicantId}/documents.zip:
     get:
       tags:
@@ -684,6 +694,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getApplicantsByApplicantIdDocumentsZip
+      x-operation-id-source: derived
   /applicants/{applicantId}:
     get:
       tags:
@@ -1088,6 +1100,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getApplicantsByApplicantId
+      x-operation-id-source: derived
     put:
       tags:
       - Applicants
@@ -1529,6 +1543,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: putApplicantsByApplicantId
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

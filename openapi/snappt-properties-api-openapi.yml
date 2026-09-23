@@ -258,6 +258,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getProperties
+      x-operation-id-source: derived
     post:
       tags:
       - Properties
@@ -641,6 +643,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postProperties
+      x-operation-id-source: derived
   /properties/{propertyId}:
     get:
       tags:
@@ -886,6 +890,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getPropertiesByPropertyId
+      x-operation-id-source: derived
     put:
       tags:
       - Properties
@@ -1258,6 +1264,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: putPropertiesByPropertyId
+      x-operation-id-source: derived
   /properties/{propertyId}/send-document-upload-email:
     post:
       tags:
@@ -1354,6 +1362,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postPropertiesByPropertyIdSendDocumentUploadEmail
+      x-operation-id-source: derived
   /properties/{propertyId}/generate-applicant-link:
     post:
       tags:
@@ -1505,6 +1515,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postPropertiesByPropertyIdGenerateApplicantLink
+      x-operation-id-source: derived
   /properties/{propertyId}/identity-verification:
     post:
       tags:
@@ -1774,6 +1786,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postPropertiesByPropertyIdIdentityVerification
+      x-operation-id-source: derived
   /properties/{propertyId}/income-verification:
     post:
       tags:
@@ -2043,6 +2057,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postPropertiesByPropertyIdIncomeVerification
+      x-operation-id-source: derived
   /properties/{propertyId}/features:
     post:
       tags:
@@ -2324,6 +2340,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postPropertiesByPropertyIdFeatures
+      x-operation-id-source: derived
   /properties/{propertyId}/identity-verification/settings:
     get:
       tags:
@@ -2381,6 +2399,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getPropertiesByPropertyIdIdentityVerificationSettings
+      x-operation-id-source: derived
     put:
       tags:
       - Properties
@@ -2463,6 +2483,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: putPropertiesByPropertyIdIdentityVerificationSettings
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

@@ -35,6 +35,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getAccount
+      x-operation-id-source: derived
 components:
   schemas:
     ApiKeyResponse:

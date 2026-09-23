@@ -89,6 +89,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postIdVerificationPublicByPropertyShortId
+      x-operation-id-source: derived
     get:
       tags:
       - ID Verification
@@ -148,6 +150,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getIdVerificationPublicByPropertyShortId
+      x-operation-id-source: derived
   /id-verification/send-identity-upload-email:
     post:
       tags:
@@ -235,6 +239,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postIdVerificationSendIdentityUploadEmail
+      x-operation-id-source: derived
   /id-verification/generate-identity-upload-link:
     post:
       tags:
@@ -338,6 +344,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postIdVerificationGenerateIdentityUploadLink
+      x-operation-id-source: derived
   /id-verification/{propertyShortId}/link:
     get:
       tags:
@@ -403,6 +411,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getIdVerificationByPropertyShortIdLink
+      x-operation-id-source: derived
   /id-verification/{propertyShortId}/qr-code:
     get:
       tags:
@@ -468,6 +478,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getIdVerificationByPropertyShortIdQrCode
+      x-operation-id-source: derived
   /id-verification/applicants:
     get:
       tags:
@@ -618,6 +630,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getIdVerificationApplicants
+      x-operation-id-source: derived
   /id-verification/applicants/{idVerificationId}:
     get:
       tags:
@@ -788,6 +802,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getIdVerificationApplicantsByIdVerificationId
+      x-operation-id-source: derived
   /id-verification/applicants/{idVerificationId}/report:
     get:
       tags:
@@ -859,6 +875,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getIdVerificationApplicantsByIdVerificationIdReport
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

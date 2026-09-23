@@ -145,6 +145,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postWebhooks
+      x-operation-id-source: derived
     get:
       tags:
       - Webhooks
@@ -259,6 +261,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getWebhooks
+      x-operation-id-source: derived
   /webhooks/{id}:
     get:
       tags:
@@ -358,6 +362,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getWebhooksById
+      x-operation-id-source: derived
     put:
       tags:
       - Webhooks
@@ -503,6 +509,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: putWebhooksById
+      x-operation-id-source: derived
     delete:
       tags:
       - Webhooks
@@ -539,6 +547,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: deleteWebhooksById
+      x-operation-id-source: derived
   /webhooks/{id}/signing-secret:
     get:
       tags:
@@ -585,6 +595,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getWebhooksByIdSigningSecret
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

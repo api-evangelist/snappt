@@ -1,13 +1,7 @@
 {
   "provider": "snappt",
   "sources": [
-    "snappt-account-api-openapi.yml",
-    "snappt-applicant-sessions-api-openapi.yml",
-    "snappt-applicants-api-openapi.yml",
-    "snappt-id-verification-api-openapi.yml",
-    "snappt-internal-idv-api-openapi.yml",
-    "snappt-properties-api-openapi.yml",
-    "snappt-webhooks-api-openapi.yml"
+    "_original/snappt-enterprise-api-openapi-original.yml"
   ],
   "outputs": [
     "snappt-account-api-openapi.yml",
@@ -22,14 +16,24 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "snappt-account-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "snappt-applicant-sessions-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "snappt-applicants-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "snappt-id-verification-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "snappt-internal-idv-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "snappt-properties-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "snappt-webhooks-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "snappt-enterprise-api-openapi-original.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "snappt-enterprise-api-openapi-original.yml: declared missing tag: Account",
+    "snappt-enterprise-api-openapi-original.yml: declared missing tag: Applicant Sessions",
+    "snappt-enterprise-api-openapi-original.yml: declared missing tag: Applicants",
+    "snappt-enterprise-api-openapi-original.yml: declared missing tag: ID Verification",
+    "snappt-enterprise-api-openapi-original.yml: declared missing tag: Internal IDV",
+    "snappt-enterprise-api-openapi-original.yml: declared missing tag: Properties",
+    "snappt-enterprise-api-openapi-original.yml: declared missing tag: Webhooks",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "snappt-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "snappt-applicant-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "snappt-applicants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "snappt-id-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "snappt-internal-idv-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "snappt-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "snappt-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

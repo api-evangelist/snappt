@@ -61,6 +61,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postSessionPublic
+      x-operation-id-source: derived
   /session/property:
     get:
       tags:
@@ -267,6 +269,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getSessionProperty
+      x-operation-id-source: derived
   /session/application:
     get:
       tags:
@@ -292,6 +296,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getSessionApplication
+      x-operation-id-source: derived
     put:
       tags:
       - Applicant Sessions
@@ -692,6 +698,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: putSessionApplication
+      x-operation-id-source: derived
   /session/documents:
     get:
       tags:
@@ -719,6 +727,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getSessionDocuments
+      x-operation-id-source: derived
     post:
       tags:
       - Applicant Sessions
@@ -852,6 +862,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postSessionDocuments
+      x-operation-id-source: derived
   /session/documents/{id}:
     put:
       tags:
@@ -968,6 +980,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: putSessionDocumentsById
+      x-operation-id-source: derived
     get:
       tags:
       - Applicant Sessions
@@ -1011,6 +1025,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getSessionDocumentsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Applicant Sessions
@@ -1049,6 +1065,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: deleteSessionDocumentsById
+      x-operation-id-source: derived
   /session/documents/{id}/thumbnail:
     get:
       tags:
@@ -1098,6 +1116,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: getSessionDocumentsByIdThumbnail
+      x-operation-id-source: derived
   /session/submit:
     post:
       tags:
@@ -1130,6 +1150,8 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postSessionSubmit
+      x-operation-id-source: derived
   /session:
     post:
       tags:
@@ -1231,8 +1253,75 @@ paths:
                     type: string
                 required:
                 - error
+      operationId: postSession
+      x-operation-id-source: derived
 components:
   schemas:
+    ProofResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        fileName:
+          type: string
+        unauthenticatedSessionId:
+          type: string
+          format: uuid
+        insertedAt:
+          type: string
+          description: An ISO-formattted datetime
+        type:
+          type: string
+          example: BANK_STATEMENT
+          enum:
+          - BANK_STATEMENT
+          - PAYSTUB
+          - OTHER
+        processStatus:
+          type: string
+          enum:
+          - IN_QUEUE
+          - IN_PROCESS
+          - PASSED
+          - FAILED
+          - SUCCESS
+        result:
+          type: string
+          enum:
+          - PENDING
+          - CLEAN
+          - EDITED
+          - UNDETERMINED
+      required:
+      - id
+      - unauthenticatedSessionId
+      - insertedAt
+      - type
+      - processStatus
+      - result
+    PublicPostSessionResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        applicantDetailId:
+          type: string
+          format: uuid
+        identityId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      required:
+      - token
+      - id
+      - applicantDetailId
+      - identityId
     ApplicationResponse:
       type: object
       properties:
@@ -1418,49 +1507,6 @@ components:
       - rentalHistories
       - isTaxReturnConnected
       - taxReturnData
-    ProofResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        fileName:
-          type: string
-        unauthenticatedSessionId:
-          type: string
-          format: uuid
-        insertedAt:
-          type: string
-          description: An ISO-formattted datetime
-        type:
-          type: string
-          example: BANK_STATEMENT
-          enum:
-          - BANK_STATEMENT
-          - PAYSTUB
-          - OTHER
-        processStatus:
-          type: string
-          enum:
-          - IN_QUEUE
-          - IN_PROCESS
-          - PASSED
-          - FAILED
-          - SUCCESS
-        result:
-          type: string
-          enum:
-          - PENDING
-          - CLEAN
-          - EDITED
-          - UNDETERMINED
-      required:
-      - id
-      - unauthenticatedSessionId
-      - insertedAt
-      - type
-      - processStatus
-      - result
     PublicPostSessionBody:
       type: object
       properties:
@@ -1497,28 +1543,6 @@ components:
       - companyShortId
       - propertyShortId
       additionalProperties: false
-    PublicPostSessionResponse:
-      type: object
-      properties:
-        token:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        applicantDetailId:
-          type: string
-          format: uuid
-        identityId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      required:
-      - token
-      - id
-      - applicantDetailId
-      - identityId
   securitySchemes:
     bearerAuth:
       type: http
