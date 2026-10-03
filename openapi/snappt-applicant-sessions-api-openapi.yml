@@ -1315,49 +1315,6 @@ components:
       - companyShortId
       - propertyShortId
       additionalProperties: false
-    ProofResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        fileName:
-          type: string
-        unauthenticatedSessionId:
-          type: string
-          format: uuid
-        insertedAt:
-          type: string
-          description: An ISO-formattted datetime
-        type:
-          type: string
-          example: BANK_STATEMENT
-          enum:
-          - BANK_STATEMENT
-          - PAYSTUB
-          - OTHER
-        processStatus:
-          type: string
-          enum:
-          - IN_QUEUE
-          - IN_PROCESS
-          - PASSED
-          - FAILED
-          - SUCCESS
-        result:
-          type: string
-          enum:
-          - PENDING
-          - CLEAN
-          - EDITED
-          - UNDETERMINED
-      required:
-      - id
-      - unauthenticatedSessionId
-      - insertedAt
-      - type
-      - processStatus
-      - result
     ApplicationResponse:
       type: object
       properties:
@@ -1543,6 +1500,49 @@ components:
       - rentalHistories
       - isTaxReturnConnected
       - taxReturnData
+    ProofResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        fileName:
+          type: string
+        unauthenticatedSessionId:
+          type: string
+          format: uuid
+        insertedAt:
+          type: string
+          description: An ISO-formattted datetime
+        type:
+          type: string
+          example: BANK_STATEMENT
+          enum:
+          - BANK_STATEMENT
+          - PAYSTUB
+          - OTHER
+        processStatus:
+          type: string
+          enum:
+          - IN_QUEUE
+          - IN_PROCESS
+          - PASSED
+          - FAILED
+          - SUCCESS
+        result:
+          type: string
+          enum:
+          - PENDING
+          - CLEAN
+          - EDITED
+          - UNDETERMINED
+      required:
+      - id
+      - unauthenticatedSessionId
+      - insertedAt
+      - type
+      - processStatus
+      - result
   securitySchemes:
     bearerAuth:
       type: http
