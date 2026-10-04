@@ -1257,64 +1257,49 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    PublicPostSessionResponse:
+    ProofResponse:
       type: object
       properties:
-        token:
-          type: string
-          format: uuid
         id:
           type: string
           format: uuid
-        applicantDetailId:
+        fileName:
+          type: string
+        unauthenticatedSessionId:
           type: string
           format: uuid
-        identityId:
-          type:
-          - string
-          - 'null'
-          format: uuid
+        insertedAt:
+          type: string
+          description: An ISO-formattted datetime
+        type:
+          type: string
+          example: BANK_STATEMENT
+          enum:
+          - BANK_STATEMENT
+          - PAYSTUB
+          - OTHER
+        processStatus:
+          type: string
+          enum:
+          - IN_QUEUE
+          - IN_PROCESS
+          - PASSED
+          - FAILED
+          - SUCCESS
+        result:
+          type: string
+          enum:
+          - PENDING
+          - CLEAN
+          - EDITED
+          - UNDETERMINED
       required:
-      - token
       - id
-      - applicantDetailId
-      - identityId
-    PublicPostSessionBody:
-      type: object
-      properties:
-        companyShortId:
-          type: string
-        propertyShortId:
-          type: string
-        firstName:
-          type: string
-          description: Optional, can be provided later via PUT /session/application.
-          example: Bob
-        lastName:
-          type: string
-          description: Optional, can be provided later via PUT /session/application.
-          example: Smith
-        email:
-          type: string
-          format: email
-          description: Optional, can be provided later via PUT /session/application.
-          example: bob@gmail.com
-        applicantIdentifier:
-          type: string
-          format: uuid
-          description: The applicant identifier that links this application to a previous application if it exists.
-          example: 00000000-0000-0000-0000-000000000000
-        identityId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: The id that relates to the universal user concept across all applications.
-          example: 00000000-0000-0000-0000-000000000000
-      required:
-      - companyShortId
-      - propertyShortId
-      additionalProperties: false
+      - unauthenticatedSessionId
+      - insertedAt
+      - type
+      - processStatus
+      - result
     ApplicationResponse:
       type: object
       properties:
@@ -1500,49 +1485,64 @@ components:
       - rentalHistories
       - isTaxReturnConnected
       - taxReturnData
-    ProofResponse:
+    PublicPostSessionBody:
       type: object
       properties:
+        companyShortId:
+          type: string
+        propertyShortId:
+          type: string
+        firstName:
+          type: string
+          description: Optional, can be provided later via PUT /session/application.
+          example: Bob
+        lastName:
+          type: string
+          description: Optional, can be provided later via PUT /session/application.
+          example: Smith
+        email:
+          type: string
+          format: email
+          description: Optional, can be provided later via PUT /session/application.
+          example: bob@gmail.com
+        applicantIdentifier:
+          type: string
+          format: uuid
+          description: The applicant identifier that links this application to a previous application if it exists.
+          example: 00000000-0000-0000-0000-000000000000
+        identityId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: The id that relates to the universal user concept across all applications.
+          example: 00000000-0000-0000-0000-000000000000
+      required:
+      - companyShortId
+      - propertyShortId
+      additionalProperties: false
+    PublicPostSessionResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          format: uuid
         id:
           type: string
           format: uuid
-        fileName:
-          type: string
-        unauthenticatedSessionId:
+        applicantDetailId:
           type: string
           format: uuid
-        insertedAt:
-          type: string
-          description: An ISO-formattted datetime
-        type:
-          type: string
-          example: BANK_STATEMENT
-          enum:
-          - BANK_STATEMENT
-          - PAYSTUB
-          - OTHER
-        processStatus:
-          type: string
-          enum:
-          - IN_QUEUE
-          - IN_PROCESS
-          - PASSED
-          - FAILED
-          - SUCCESS
-        result:
-          type: string
-          enum:
-          - PENDING
-          - CLEAN
-          - EDITED
-          - UNDETERMINED
+        identityId:
+          type:
+          - string
+          - 'null'
+          format: uuid
       required:
+      - token
       - id
-      - unauthenticatedSessionId
-      - insertedAt
-      - type
-      - processStatus
-      - result
+      - applicantDetailId
+      - identityId
   securitySchemes:
     bearerAuth:
       type: http
