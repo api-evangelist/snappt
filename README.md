@@ -64,5 +64,141 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Snappt is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/snappt_stock/
+Snappt is a Los Angeles-based applicant-screening and document-fraud-detection company serving the multifamily rental and property-management industry. Its Applicant Trust Platform combines proprietary AI document forensics with human review to detect edited pay stubs and bank statements, verify applicant income from traditional and connected payroll sources, verify identity with biometric and document checks, and confirm rental payment history. Snappt exposes this to property-management systems and partners through the Snappt Enterprise API — a partner API-key-authenticated REST API covering properties, applicant sessions, document upload, fraud and income reports, ID-verification sessions and outbound webhooks — plus an embeddable browser SDK that launches the applicant verification flow as a modal inside a partner's own leasing flow.
+
+**Areas:** Company · Fraud Prevention · Document Verification · Identity Verification · Income Verification · Property Management · Multifamily · Real Estate · PropTech · Tenant Screening · Rental Applications · Webhook
+
+## Snappt on APIs.io
+
+Everything profiled for Snappt is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/snappt/](https://apis.io/providers/snappt/)** — or go straight to one of the APIs or properties below.
+
+### APIs (7)
+
+- [Snappt Account API](https://apis.io/apis/snappt/snappt-account-api/) — The Account API from Snappt — 1 operation(s) for account.
+- [Snappt Applicant Sessions API](https://apis.io/apis/snappt/snappt-applicant-sessions-api/) — The Applicant Sessions API from Snappt — 8 operation(s) for applicant sessions.
+- [Snappt Applicants API](https://apis.io/apis/snappt/snappt-applicants-api/) — The Applicants API from Snappt — 7 operation(s) for applicants.
+- [Snappt ID Verification API](https://apis.io/apis/snappt/snappt-id-verification-api/) — The ID Verification API from Snappt — 8 operation(s) for id verification.
+- [Snappt Internal IDV API](https://apis.io/apis/snappt/snappt-internal-idv-api/) — The Internal IDV API from Snappt — 1 operation(s) for internal idv.
+- [Snappt Properties API](https://apis.io/apis/snappt/snappt-properties-api/) — The Properties API from Snappt — 8 operation(s) for properties.
+- [Snappt Webhooks API](https://apis.io/apis/snappt/snappt-webhooks-api/) — The Webhooks API from Snappt — 3 operation(s) for webhooks.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Snappt Enterprise Api Webhooks](https://apis.io/asyncapis/snappt/snappt-enterprise-api-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [snappt](https://apis.io/servers/snappt/snappt/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Snappt Agentic Access](https://apis.io/agentic-access/snappt/snappt-agentic-access/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Snappt Account API](https://apis.io/collections/snappt/open-snappt-account-api/)
+- [Snappt Applicant Sessions API](https://apis.io/collections/snappt/open-snappt-applicant-sessions-api/)
+- [Snappt Applicants API](https://apis.io/collections/snappt/open-snappt-applicants-api/)
+- [Snappt ID Verification API](https://apis.io/collections/snappt/open-snappt-id-verification-api/)
+- [Snappt Internal IDV API](https://apis.io/collections/snappt/open-snappt-internal-idv-api/)
+- [Snappt Properties API](https://apis.io/collections/snappt/open-snappt-properties-api/)
+- [Snappt Webhooks API](https://apis.io/collections/snappt/open-snappt-webhooks-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Snappt Enterprise Api Overlay](https://apis.io/overlays/snappt/snappt-enterprise-api-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Snappt Authentication](https://apis.io/security/snappt/snappt-authentication/)
+- [Snappt Domain Security](https://apis.io/security/snappt/snappt-domain-security/)
+- [Snappt Trust Center](https://apis.io/security/snappt/snappt-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://snappt.com/)
+- [Documentation](https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection)
+- [Getting started](https://snappt-enterprise-api.readme.io/docs/getting-started-fraud-detection)
+- [API reference](https://snappt-enterprise-api.readme.io/reference/get_account)
+- [Pricing](https://snappt.com/pricing/)
+- [Sign up](https://client.snappt.com/login)
+- [Support](https://snappt.com/contact-support/)
+- [Blog](https://snappt.com/blog/)
+- [Compliance](https://snappt.com/security/)
+- [Terms of service](https://snappt.com/terms-conditions/)
+- [Privacy policy](https://snappt.com/privacy-policy/)
+- [GitHub](https://github.com/Snappt)
+- [Status](https://status.snappt.com/)
+
+## API Evangelist rating
+
+**Kin Score 54.3** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 55.1 |
+| Contract governance | 18.2 |
+| Operational transparency | 50.0 |
+| Developer ergonomics | 54.2 |
+| Access clarity | 47.4 |
+
+**Agent readiness 26.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/snappt/](https://apis.io/providers/snappt/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Snappt: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/snappt/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
